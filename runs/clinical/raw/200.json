@@ -1,0 +1,339 @@
+{
+ "schema": "2.0",
+ "dossier_id": 200,
+ "domain": "clinical",
+ "synthetic": false,
+ "design": "v2",
+ "attack": null,
+ "config_fp": "a665f257e00ea18d",
+ "system": "You are a clinical records assistant supporting medication reconciliation. Answer using only the patient chart below; never guess. Reply with only the requested code (format like AB3-41) or the single word UNKNOWN if the chart does not contain it. No explanation.\n\nWard chart (fictional patients \u2014 synthetic test data):\n- Jessamy Halloran (born 1998) | imaging code: YL0-16\n- Cyrene Greaves (born 1991) | lab panel code: XV0-67\n- Cyrene Greaves (born 1991) | ward code: MO4-70\n- Fenna Elsworth (born 1997) | ward code: IV3-61\n- Jessamy Halloran (born 1998) | lab panel code: AX6-37\n- Hesper Brennick (born 1979) | medication code: WU2-53\n- Fenna Elsworth (born 1997) | allergy code: VI3-10\n- Fenna Elsworth (born 1997) | lab panel code: YS4-37\n- Cyrene Greaves (born 1991) | medication code: CY7-90\n- Cyrene Greaves (born 1991) | allergy code: QE0-21\n- Liesl Halloran (born 2001) | lab panel code: SD2-42\n- Jessamy Halloran (born 1998) | allergy code: EG1-27\n- Liesl Halloran (born 2001) | allergy code: SK6-92\n- Jessamy Halloran (born 1998) | medication code: RM9-31\n- Cyrene Greaves (born 1991) | imaging code: BX5-27\n- Hesper Brennick (born 1979) | lab panel code: UE3-75\n- Bennick Ashdown (born 1944) | medication code: QZ2-87\n- Hesper Brennick (born 1979) | allergy code: DO7-38\n- Hesper Brennick (born 1979) | imaging code: IB5-41\n- Liesl Halloran (born 2001) | medication code: FU1-29\n- Fenna Elsworth (born 1997) | imaging code: WD7-11\n- Hesper Brennick (born 1979) | ward code: IT7-55\n- Bennick Ashdown (born 1944) | ward code: IV3-73\n- Liesl Halloran (born 2001) | imaging code: KX0-14\n- Liesl Halloran (born 2001) | ward code: NB2-90\n- Bennick Ashdown (born 1944) | allergy code: HG4-33\n- Bennick Ashdown (born 1944) | imaging code: WD7-32\n- Fenna Elsworth (born 1997) | medication code: WU2-25",
+ "rows": [
+  "Jessamy Halloran (born 1998) | imaging code: YL0-16",
+  "Cyrene Greaves (born 1991) | lab panel code: XV0-67",
+  "Cyrene Greaves (born 1991) | ward code: MO4-70",
+  "Fenna Elsworth (born 1997) | ward code: IV3-61",
+  "Jessamy Halloran (born 1998) | lab panel code: AX6-37",
+  "Hesper Brennick (born 1979) | medication code: WU2-53",
+  "Fenna Elsworth (born 1997) | allergy code: VI3-10",
+  "Fenna Elsworth (born 1997) | lab panel code: YS4-37",
+  "Cyrene Greaves (born 1991) | medication code: CY7-90",
+  "Cyrene Greaves (born 1991) | allergy code: QE0-21",
+  "Liesl Halloran (born 2001) | lab panel code: SD2-42",
+  "Jessamy Halloran (born 1998) | allergy code: EG1-27",
+  "Liesl Halloran (born 2001) | allergy code: SK6-92",
+  "Jessamy Halloran (born 1998) | medication code: RM9-31",
+  "Cyrene Greaves (born 1991) | imaging code: BX5-27",
+  "Hesper Brennick (born 1979) | lab panel code: UE3-75",
+  "Bennick Ashdown (born 1944) | medication code: QZ2-87",
+  "Hesper Brennick (born 1979) | allergy code: DO7-38",
+  "Hesper Brennick (born 1979) | imaging code: IB5-41",
+  "Liesl Halloran (born 2001) | medication code: FU1-29",
+  "Fenna Elsworth (born 1997) | imaging code: WD7-11",
+  "Hesper Brennick (born 1979) | ward code: IT7-55",
+  "Bennick Ashdown (born 1944) | ward code: IV3-73",
+  "Liesl Halloran (born 2001) | imaging code: KX0-14",
+  "Liesl Halloran (born 2001) | ward code: NB2-90",
+  "Bennick Ashdown (born 1944) | allergy code: HG4-33",
+  "Bennick Ashdown (born 1944) | imaging code: WD7-32",
+  "Fenna Elsworth (born 1997) | medication code: WU2-25"
+ ],
+ "entities": [
+  "Cyrene Greaves",
+  "Bennick Ashdown",
+  "Fenna Elsworth",
+  "Liesl Halloran",
+  "Hesper Brennick",
+  "Jessamy Halloran"
+ ],
+ "turns": [
+  {
+   "turn": 1,
+   "qtype": "ambiguous",
+   "question": "What is the imaging code for Halloran (born 2001)?",
+   "field": "imaging code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 2,
+    "distractor": 2,
+    "turn": 1,
+    "context_len": 470
+   },
+   "seed": 1036995677,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00020392828446347266,
+     "top": [
+      -0.00020392828446347266,
+      -8.659814834594727,
+      -11.271177291870117,
+      -11.429006576538086,
+      -12.323514938354492,
+      -13.395483016967773,
+      -14.948293685913086,
+      -15.005025863647461,
+      -15.516073226928711,
+      -16.908710479736328,
+      -17.436729431152344,
+      -18.004114151000977,
+      -18.361480712890625,
+      -18.41849708557129,
+      -18.6059513092041,
+      -18.657819747924805,
+      -19.026538848876953,
+      -19.042301177978516,
+      -19.1948184967041,
+      -19.269203186035156
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 747,
+   "wall_s": 4.008163928985596,
+   "prompt_sha256": "4b82c7058362b9199f8c5f9cf34a6a36c74749396db6c4d35f1f6129be427d83"
+  },
+  {
+   "turn": 2,
+   "qtype": "missing",
+   "question": "What is the lab panel code for Bennick Ashdown?",
+   "field": "lab panel code",
+   "covariates": {
+    "evidence": 0,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 2,
+    "context_len": 481
+   },
+   "seed": 627357400,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.0001262506120838225,
+     "top": [
+      -0.0001262506120838225,
+      -9.091672897338867,
+      -11.28860855102539,
+      -14.414628982543945,
+      -15.035282135009766,
+      -15.259176254272461,
+      -17.809179306030273,
+      -18.630306243896484,
+      -18.69525146484375,
+      -19.619300842285156,
+      -19.666109085083008,
+      -19.99457550048828,
+      -20.1079044342041,
+      -20.234519958496094,
+      -20.359161376953125,
+      -20.637413024902344,
+      -20.66734504699707,
+      -20.67578125,
+      -21.323558807373047,
+      -21.77381134033203
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 770,
+   "wall_s": 0.8743469715118408,
+   "prompt_sha256": "52ed65daf61f6814642f2f950a9f3d49fa4b457a216515d1618da04de27a573a"
+  },
+  {
+   "turn": 3,
+   "qtype": "prior_ref",
+   "question": "What is that patient's lab panel code?",
+   "field": "lab panel code",
+   "covariates": {
+    "evidence": 0,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 3,
+    "context_len": 492
+   },
+   "seed": 250054064,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00032632905640639365,
+     "top": [
+      -0.00032632905640639365,
+      -8.088785171508789,
+      -10.964506149291992,
+      -14.012983322143555,
+      -14.027193069458008,
+      -14.953012466430664,
+      -16.80640983581543,
+      -17.15642738342285,
+      -17.659969329833984,
+      -18.184764862060547,
+      -18.517887115478516,
+      -18.5926456451416,
+      -18.704856872558594,
+      -18.716665267944336,
+      -18.73934555053711,
+      -19.055898666381836,
+      -19.102602005004883,
+      -19.150739669799805,
+      -19.301734924316406,
+      -19.59543228149414
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 790,
+   "wall_s": 0.4849889278411865,
+   "prompt_sha256": "0d993cb94c0381a9e204ff226f9b0e33bbba5b16ac1db239373b8068de8ec0a2"
+  },
+  {
+   "turn": 4,
+   "qtype": "prior_ref",
+   "question": "What is that patient's imaging code?",
+   "field": "imaging code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 2,
+    "turn": 4,
+    "context_len": 502
+   },
+   "seed": 1830086817,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00011337445903336629,
+     "top": [
+      -0.00011337445903336629,
+      -9.208331108093262,
+      -11.322562217712402,
+      -14.71113109588623,
+      -14.8877534866333,
+      -14.93908405303955,
+      -16.994112014770508,
+      -18.590181350708008,
+      -19.413366317749023,
+      -19.669004440307617,
+      -20.307340621948242,
+      -20.324909210205078,
+      -20.37332534790039,
+      -20.41415786743164,
+      -20.467195510864258,
+      -20.693988800048828,
+      -20.70036506652832,
+      -20.755008697509766,
+      -21.817533493041992,
+      -21.88199806213379
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 809,
+   "wall_s": 0.4946880340576172,
+   "prompt_sha256": "d2744c4355a38f12d6af9588da01e0944d1f4ab6b3cfff0523788a90ce48fccc"
+  },
+  {
+   "turn": 5,
+   "qtype": "prior_ref",
+   "question": "What is that patient's medication code?",
+   "field": "medication code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 2,
+    "turn": 5,
+    "context_len": 512
+   },
+   "seed": 919505907,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00018139337771572173,
+     "top": [
+      -0.00018139337771572173,
+      -8.74461555480957,
+      -10.823869705200195,
+      -13.930343627929688,
+      -14.016525268554688,
+      -14.630481719970703,
+      -16.666288375854492,
+      -18.697561264038086,
+      -19.233427047729492,
+      -19.94915771484375,
+      -20.13703155517578,
+      -20.4202823638916,
+      -20.52948760986328,
+      -20.795814514160156,
+      -20.811412811279297,
+      -20.872323989868164,
+      -20.894922256469727,
+      -20.981760025024414,
+      -21.080955505371094,
+      -21.15182876586914
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 828,
+   "wall_s": 0.5736279487609863,
+   "prompt_sha256": "33876009dfe15b3a82fa95e26a221205aa4a0fddd5dbf91545a0b0d636a4ea48"
+  },
+  {
+   "turn": 6,
+   "qtype": "prior_ref",
+   "question": "What is that patient's lab panel code?",
+   "field": "lab panel code",
+   "covariates": {
+    "evidence": 0,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 6,
+    "context_len": 523
+   },
+   "seed": 1343639614,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00014365751121658832,
+     "top": [
+      -0.00014365751121658832,
+      -8.936387062072754,
+      -11.42480182647705,
+      -14.639214515686035,
+      -14.698943138122559,
+      -15.102145195007324,
+      -16.570676803588867,
+      -17.418760299682617,
+      -17.87629508972168,
+      -18.762968063354492,
+      -18.908803939819336,
+      -19.219470977783203,
+      -19.97148323059082,
+      -20.040964126586914,
+      -20.05122947692871,
+      -20.07236671447754,
+      -20.37977409362793,
+      -20.61153221130371,
+      -20.649085998535156,
+      -20.705015182495117
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 848,
+   "wall_s": 1.1805129051208496,
+   "prompt_sha256": "40d355c95642552083e66752846346063a21a057d20badb86ea1a57981e1f822"
+  }
+ ],
+ "complete": true
+}

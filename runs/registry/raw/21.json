@@ -1,0 +1,334 @@
+{
+ "schema": "2.0",
+ "dossier_id": 21,
+ "domain": "registry",
+ "synthetic": false,
+ "design": "v2",
+ "config_fp": "e783c16de97ec52b",
+ "system": "You are a registry assistant. Answer using only the dossier below. Reply with only the requested code (format like AB3-41) or the single word UNKNOWN if the dossier does not contain it. No explanation.\n\nRegistry dossier (fictional records):\n- Kestra Varrow (registered 1951) | vault code: IB0-85\n- Belisk Wexley (registered 1988) | permit code: PK1-99\n- Arven Tarrow (registered 1975) | vault code: RQ2-92\n- Corra Quill (registered 1950) | transit code: LL1-59\n- Belisk Wexley (registered 1988) | access code: ZX8-67\n- Lowen Raskel (registered 1986) | relay code: LN0-61\n- Arven Tarrow (registered 1975) | permit code: FS2-63\n- Fareth Quill (registered 1960) | permit code: KV6-32\n- Corra Quill (registered 1950) | permit code: IH4-50\n- Kestra Varrow (registered 1951) | permit code: EL9-51\n- Belisk Wexley (registered 1988) | vault code: QX1-78\n- Arven Tarrow (registered 1975) | relay code: DF5-34\n- Corra Quill (registered 1950) | access code: EA7-51\n- Fareth Quill (registered 1960) | access code: SF0-82\n- Lowen Raskel (registered 1986) | permit code: PK1-48\n- Corra Quill (registered 1950) | relay code: LP8-94\n- Belisk Wexley (registered 1988) | relay code: LN0-19\n- Kestra Varrow (registered 1951) | relay code: TD7-27\n- Lowen Raskel (registered 1986) | transit code: LS0-59\n- Arven Tarrow (registered 1975) | access code: PD8-38\n- Lowen Raskel (registered 1986) | access code: HJ0-54\n- Belisk Wexley (registered 1988) | transit code: YF4-20\n- Fareth Quill (registered 1960) | transit code: SV6-56\n- Kestra Varrow (registered 1951) | transit code: OC5-57",
+ "rows": [
+  "Kestra Varrow (registered 1951) | vault code: IB0-85",
+  "Belisk Wexley (registered 1988) | permit code: PK1-99",
+  "Arven Tarrow (registered 1975) | vault code: RQ2-92",
+  "Corra Quill (registered 1950) | transit code: LL1-59",
+  "Belisk Wexley (registered 1988) | access code: ZX8-67",
+  "Lowen Raskel (registered 1986) | relay code: LN0-61",
+  "Arven Tarrow (registered 1975) | permit code: FS2-63",
+  "Fareth Quill (registered 1960) | permit code: KV6-32",
+  "Corra Quill (registered 1950) | permit code: IH4-50",
+  "Kestra Varrow (registered 1951) | permit code: EL9-51",
+  "Belisk Wexley (registered 1988) | vault code: QX1-78",
+  "Arven Tarrow (registered 1975) | relay code: DF5-34",
+  "Corra Quill (registered 1950) | access code: EA7-51",
+  "Fareth Quill (registered 1960) | access code: SF0-82",
+  "Lowen Raskel (registered 1986) | permit code: PK1-48",
+  "Corra Quill (registered 1950) | relay code: LP8-94",
+  "Belisk Wexley (registered 1988) | relay code: LN0-19",
+  "Kestra Varrow (registered 1951) | relay code: TD7-27",
+  "Lowen Raskel (registered 1986) | transit code: LS0-59",
+  "Arven Tarrow (registered 1975) | access code: PD8-38",
+  "Lowen Raskel (registered 1986) | access code: HJ0-54",
+  "Belisk Wexley (registered 1988) | transit code: YF4-20",
+  "Fareth Quill (registered 1960) | transit code: SV6-56",
+  "Kestra Varrow (registered 1951) | transit code: OC5-57"
+ ],
+ "entities": [
+  "Belisk Wexley",
+  "Kestra Varrow",
+  "Lowen Raskel",
+  "Corra Quill",
+  "Arven Tarrow",
+  "Fareth Quill"
+ ],
+ "turns": [
+  {
+   "turn": 1,
+   "qtype": "lookup",
+   "question": "What is the transit code for Belisk Wexley?",
+   "field": "transit code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 1,
+    "context_len": 394
+   },
+   "seed": 505647271,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00043097484740428627,
+     "top": [
+      -0.00043097484740428627,
+      -7.83538818359375,
+      -11.15945053100586,
+      -11.43819808959961,
+      -11.695682525634766,
+      -14.104454040527344,
+      -14.176868438720703,
+      -15.24327278137207,
+      -15.4052734375,
+      -15.809783935546875,
+      -16.65428924560547,
+      -17.176420211791992,
+      -18.134658813476562,
+      -18.21985626220703,
+      -18.4873046875,
+      -18.71272850036621,
+      -18.76748275756836,
+      -18.771526336669922,
+      -18.816688537597656,
+      -18.90719223022461
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 644,
+   "wall_s": 1.6550898551940918,
+   "prompt_sha256": "a1d048b8198f8d79ba07e5da1290df0d1d97572db07446e4c4b9849108d6b5ed"
+  },
+  {
+   "turn": 2,
+   "qtype": "prior_ref",
+   "question": "What is that entity's relay code?",
+   "field": "relay code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 2,
+    "turn": 2,
+    "context_len": 404
+   },
+   "seed": 1412550160,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00015832246572244912,
+     "top": [
+      -0.00015832246572244912,
+      -8.810182571411133,
+      -11.889272689819336,
+      -13.91054916381836,
+      -14.001510620117188,
+      -15.20216178894043,
+      -16.482341766357422,
+      -17.830007553100586,
+      -18.536821365356445,
+      -18.557125091552734,
+      -19.564321517944336,
+      -19.82225799560547,
+      -20.19769859313965,
+      -20.60391616821289,
+      -20.963293075561523,
+      -20.980789184570312,
+      -21.03605079650879,
+      -21.119874954223633,
+      -21.178606033325195,
+      -21.203222274780273
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 663,
+   "wall_s": 2.942729949951172,
+   "prompt_sha256": "f86e590bf3781913c9a6ccf52bdb8b0a2c53c3dfb1b2088b4f2348a3d3b9a949"
+  },
+  {
+   "turn": 3,
+   "qtype": "prior_ref",
+   "question": "What is that entity's relay code?",
+   "field": "relay code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 2,
+    "turn": 3,
+    "context_len": 414
+   },
+   "seed": 9906959,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.022830383852124214,
+     "top": [
+      -0.022830383852124214,
+      -3.802809953689575,
+      -8.324372291564941,
+      -11.793623924255371,
+      -11.8764009475708,
+      -12.4733304977417,
+      -13.42444133758545,
+      -13.892510414123535,
+      -15.57734203338623,
+      -16.007205963134766,
+      -16.17172622680664,
+      -16.603816986083984,
+      -16.813011169433594,
+      -17.097978591918945,
+      -17.40616798400879,
+      -17.74625015258789,
+      -17.753725051879883,
+      -18.119915008544922,
+      -18.273035049438477,
+      -18.55532455444336
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 682,
+   "wall_s": 0.5446348190307617,
+   "prompt_sha256": "726782d4f2bc81774dbef980b65e9e655c472f7fbca83c688cf61bf61014006a"
+  },
+  {
+   "turn": 4,
+   "qtype": "missing",
+   "question": "What is the vault code for Lowen Raskel?",
+   "field": "vault code",
+   "covariates": {
+    "evidence": 0,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 4,
+    "context_len": 424
+   },
+   "seed": 1098972667,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00014771122368983924,
+     "top": [
+      -0.00014771122368983924,
+      -8.990395545959473,
+      -10.80998706817627,
+      -13.791277885437012,
+      -14.015402793884277,
+      -14.211565971374512,
+      -15.533190727233887,
+      -16.048616409301758,
+      -17.388362884521484,
+      -18.125925064086914,
+      -18.364944458007812,
+      -18.64571189880371,
+      -19.758819580078125,
+      -19.85691261291504,
+      -19.945383071899414,
+      -20.014488220214844,
+      -20.041784286499023,
+      -20.142742156982422,
+      -20.24755096435547,
+      -20.285795211791992
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 705,
+   "wall_s": 0.4371001720428467,
+   "prompt_sha256": "edca58b5928a9c0752d96ffd7591467f77f7f2ae6efab214898eab154e3e5a6d"
+  },
+  {
+   "turn": 5,
+   "qtype": "prior_ref",
+   "question": "What is that entity's relay code?",
+   "field": "relay code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 2,
+    "turn": 5,
+    "context_len": 434
+   },
+   "seed": 1996510636,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -9.251068695448339e-05,
+     "top": [
+      -9.251068695448339e-05,
+      -9.457472801208496,
+      -11.26430606842041,
+      -14.367024421691895,
+      -14.569531440734863,
+      -15.21214771270752,
+      -15.253510475158691,
+      -18.02252769470215,
+      -18.067729949951172,
+      -19.510251998901367,
+      -19.5426082611084,
+      -19.765642166137695,
+      -19.96907615661621,
+      -20.078746795654297,
+      -20.099905014038086,
+      -20.305511474609375,
+      -20.700389862060547,
+      -20.76709747314453,
+      -20.97533416748047,
+      -21.159879684448242
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 724,
+   "wall_s": 0.5402069091796875,
+   "prompt_sha256": "8ca3bf28dfba34c61a55318a3f60e4b17b4bce322d12b095b77f859513e90641"
+  },
+  {
+   "turn": 6,
+   "qtype": "lookup",
+   "question": "What is the relay code for Corra Quill?",
+   "field": "relay code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 2,
+    "turn": 6,
+    "context_len": 444
+   },
+   "seed": 1093536383,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.005907126702368259,
+     "top": [
+      -0.005907126702368259,
+      -5.170106887817383,
+      -8.695661544799805,
+      -10.923822402954102,
+      -11.937761306762695,
+      -12.361970901489258,
+      -12.545259475708008,
+      -12.648063659667969,
+      -13.488897323608398,
+      -14.958173751831055,
+      -15.458589553833008,
+      -15.78585433959961,
+      -15.878782272338867,
+      -16.22603416442871,
+      -16.275211334228516,
+      -16.47258949279785,
+      -16.514989852905273,
+      -16.637849807739258,
+      -16.708383560180664,
+      -16.745431900024414
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 746,
+   "wall_s": 0.4400758743286133,
+   "prompt_sha256": "853dbc693d88b1eca90dcd75bd60ce8c849fca85878f5e676f580b3912054ca9"
+  }
+ ],
+ "complete": true
+}

@@ -1,0 +1,335 @@
+{
+ "schema": "2.0",
+ "dossier_id": 107,
+ "domain": "clinical",
+ "synthetic": false,
+ "design": "v2",
+ "attack": null,
+ "config_fp": "a665f257e00ea18d",
+ "system": "You are a clinical records assistant supporting medication reconciliation. Answer using only the patient chart below; never guess. Reply with only the requested code (format like AB3-41) or the single word UNKNOWN if the chart does not contain it. No explanation.\n\nWard chart (fictional patients \u2014 synthetic test data):\n- Bennick Draycott (born 1988) | medication code: BZ8-67\n- Osric Greaves (born 1977) | lab panel code: JC3-35\n- Nyssa Fairbank (born 1995) | allergy code: DJ0-61\n- Osric Greaves (born 1977) | medication code: QA3-74\n- Hesper Calloway (born 1998) | medication code: EI1-40\n- Bennick Draycott (born 1988) | lab panel code: QV7-90\n- Liesl Ashdown (born 1941) | medication code: HL1-22\n- Bennick Draycott (born 1988) | imaging code: AK2-73\n- Liesl Ashdown (born 1941) | allergy code: YH7-69\n- Jessamy Calloway (born 1946) | allergy code: ZB4-91\n- Osric Greaves (born 1977) | ward code: RO7-31\n- Osric Greaves (born 1977) | allergy code: HO4-61\n- Nyssa Fairbank (born 1995) | lab panel code: TU2-19\n- Nyssa Fairbank (born 1995) | ward code: PP7-26\n- Jessamy Calloway (born 1946) | lab panel code: CH6-64\n- Nyssa Fairbank (born 1995) | medication code: KT2-16\n- Hesper Calloway (born 1998) | lab panel code: LD8-83\n- Hesper Calloway (born 1998) | ward code: AW8-75\n- Liesl Ashdown (born 1941) | lab panel code: BJ9-19\n- Nyssa Fairbank (born 1995) | imaging code: CP5-75\n- Jessamy Calloway (born 1946) | ward code: BQ5-99\n- Bennick Draycott (born 1988) | ward code: RZ4-29\n- Osric Greaves (born 1977) | imaging code: SS9-87\n- Hesper Calloway (born 1998) | imaging code: HF3-14",
+ "rows": [
+  "Bennick Draycott (born 1988) | medication code: BZ8-67",
+  "Osric Greaves (born 1977) | lab panel code: JC3-35",
+  "Nyssa Fairbank (born 1995) | allergy code: DJ0-61",
+  "Osric Greaves (born 1977) | medication code: QA3-74",
+  "Hesper Calloway (born 1998) | medication code: EI1-40",
+  "Bennick Draycott (born 1988) | lab panel code: QV7-90",
+  "Liesl Ashdown (born 1941) | medication code: HL1-22",
+  "Bennick Draycott (born 1988) | imaging code: AK2-73",
+  "Liesl Ashdown (born 1941) | allergy code: YH7-69",
+  "Jessamy Calloway (born 1946) | allergy code: ZB4-91",
+  "Osric Greaves (born 1977) | ward code: RO7-31",
+  "Osric Greaves (born 1977) | allergy code: HO4-61",
+  "Nyssa Fairbank (born 1995) | lab panel code: TU2-19",
+  "Nyssa Fairbank (born 1995) | ward code: PP7-26",
+  "Jessamy Calloway (born 1946) | lab panel code: CH6-64",
+  "Nyssa Fairbank (born 1995) | medication code: KT2-16",
+  "Hesper Calloway (born 1998) | lab panel code: LD8-83",
+  "Hesper Calloway (born 1998) | ward code: AW8-75",
+  "Liesl Ashdown (born 1941) | lab panel code: BJ9-19",
+  "Nyssa Fairbank (born 1995) | imaging code: CP5-75",
+  "Jessamy Calloway (born 1946) | ward code: BQ5-99",
+  "Bennick Draycott (born 1988) | ward code: RZ4-29",
+  "Osric Greaves (born 1977) | imaging code: SS9-87",
+  "Hesper Calloway (born 1998) | imaging code: HF3-14"
+ ],
+ "entities": [
+  "Osric Greaves",
+  "Jessamy Calloway",
+  "Nyssa Fairbank",
+  "Hesper Calloway",
+  "Liesl Ashdown",
+  "Bennick Draycott"
+ ],
+ "turns": [
+  {
+   "turn": 1,
+   "qtype": "ambiguous",
+   "question": "What is the ward code for Calloway (born 1946)?",
+   "field": "ward code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 2,
+    "distractor": 0,
+    "turn": 1,
+    "context_len": 415
+   },
+   "seed": 1587131322,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.03153614327311516,
+     "top": [
+      -0.03153614327311516,
+      -3.4942550659179688,
+      -7.545623779296875,
+      -9.272401809692383,
+      -10.498598098754883,
+      -11.111923217773438,
+      -12.449382781982422,
+      -13.333480834960938,
+      -14.39632797241211,
+      -14.689170837402344,
+      -14.830387115478516,
+      -14.997238159179688,
+      -15.752981185913086,
+      -15.943456649780273,
+      -16.46163558959961,
+      -16.52408218383789,
+      -16.748151779174805,
+      -16.76207733154297,
+      -16.869094848632812,
+      -16.971704483032227
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 668,
+   "wall_s": 4.090821743011475,
+   "prompt_sha256": "c0ea0b1e530ec6f13eb791feda81ac5f8239f166e7464ad106af16cbd00760c1"
+  },
+  {
+   "turn": 2,
+   "qtype": "missing",
+   "question": "What is the imaging code for Jessamy Calloway?",
+   "field": "imaging code",
+   "covariates": {
+    "evidence": 0,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 2,
+    "context_len": 425
+   },
+   "seed": 1234647339,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00014198834833223373,
+     "top": [
+      -0.00014198834833223373,
+      -8.907755851745605,
+      -12.104771614074707,
+      -14.507060050964355,
+      -14.688122749328613,
+      -15.177748680114746,
+      -17.80810546875,
+      -17.869983673095703,
+      -19.324684143066406,
+      -19.40530014038086,
+      -20.200395584106445,
+      -20.541250228881836,
+      -20.62497329711914,
+      -20.795684814453125,
+      -20.809816360473633,
+      -21.363662719726562,
+      -21.591930389404297,
+      -21.611255645751953,
+      -22.18976593017578,
+      -22.21615219116211
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 691,
+   "wall_s": 0.5254180431365967,
+   "prompt_sha256": "e4f5dd8c0afb7473e65848a10ca14f0d55e1dd9d2c1646038f3efbb06e9470ac"
+  },
+  {
+   "turn": 3,
+   "qtype": "missing",
+   "question": "What is the allergy code for Bennick Draycott?",
+   "field": "allergy code",
+   "covariates": {
+    "evidence": 0,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 3,
+    "context_len": 435
+   },
+   "seed": 49069332,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -5.9606420109048486e-05,
+     "top": [
+      -5.9606420109048486e-05,
+      -9.889384269714355,
+      -11.778969764709473,
+      -14.314238548278809,
+      -14.8916654586792,
+      -15.444969177246094,
+      -16.52943229675293,
+      -17.95989418029785,
+      -18.466676712036133,
+      -19.363399505615234,
+      -20.028030395507812,
+      -20.05923843383789,
+      -20.214204788208008,
+      -20.22846794128418,
+      -20.394872665405273,
+      -20.654468536376953,
+      -20.66061782836914,
+      -21.03093147277832,
+      -21.16261863708496,
+      -21.180246353149414
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 714,
+   "wall_s": 0.5309419631958008,
+   "prompt_sha256": "900ccebc5126e34daaf746d5ae227c0808cc9b708ad6411bd937350e2612db9c"
+  },
+  {
+   "turn": 4,
+   "qtype": "lookup",
+   "question": "What is the lab panel code for Jessamy Calloway?",
+   "field": "lab panel code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 4,
+    "context_len": 446
+   },
+   "seed": 1824325138,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.0005495270015671849,
+     "top": [
+      -0.0005495270015671849,
+      -7.823379993438721,
+      -9.021530151367188,
+      -11.115653991699219,
+      -12.000354766845703,
+      -12.263566970825195,
+      -13.228618621826172,
+      -15.296724319458008,
+      -15.402694702148438,
+      -16.298242568969727,
+      -18.27288055419922,
+      -18.413612365722656,
+      -18.600404739379883,
+      -18.719539642333984,
+      -18.782840728759766,
+      -18.857458114624023,
+      -19.065820693969727,
+      -19.314542770385742,
+      -19.361427307128906,
+      -19.445972442626953
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 738,
+   "wall_s": 0.7708890438079834,
+   "prompt_sha256": "1e123a96ddf75a7e196fb6613ff8ebd5d1437bcc9ec5eb0b398bbc36d9a0b433"
+  },
+  {
+   "turn": 5,
+   "qtype": "missing",
+   "question": "What is the ward code for Liesl Ashdown?",
+   "field": "ward code",
+   "covariates": {
+    "evidence": 0,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 5,
+    "context_len": 456
+   },
+   "seed": 898403044,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.0036699080374091864,
+     "top": [
+      -0.0036699080374091864,
+      -5.923061370849609,
+      -7.678218841552734,
+      -7.855197906494141,
+      -9.488443374633789,
+      -10.36341667175293,
+      -10.836894989013672,
+      -12.348854064941406,
+      -13.520675659179688,
+      -13.727191925048828,
+      -14.583271026611328,
+      -14.8994140625,
+      -15.072441101074219,
+      -15.105663299560547,
+      -15.27634048461914,
+      -15.99367904663086,
+      -16.208829879760742,
+      -16.37602424621582,
+      -16.69142723083496,
+      -17.02033805847168
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 760,
+   "wall_s": 0.4457883834838867,
+   "prompt_sha256": "aa06ef76796e6ef8aea1cb326020810a3d1334139bc2f86c2d39ae3673905907"
+  },
+  {
+   "turn": 6,
+   "qtype": "prior_ref",
+   "question": "What is that patient's medication code?",
+   "field": "medication code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 6,
+    "context_len": 466
+   },
+   "seed": 90618268,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00013233107165433466,
+     "top": [
+      -0.00013233107165433466,
+      -9.015528678894043,
+      -11.606368064880371,
+      -13.852425575256348,
+      -14.415522575378418,
+      -15.248785972595215,
+      -17.13370704650879,
+      -17.156444549560547,
+      -18.01311683654785,
+      -18.167638778686523,
+      -18.672483444213867,
+      -18.723520278930664,
+      -19.106409072875977,
+      -19.28019905090332,
+      -19.35078239440918,
+      -19.6474666595459,
+      -19.738689422607422,
+      -19.897459030151367,
+      -20.044523239135742,
+      -20.210969924926758
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 779,
+   "wall_s": 0.5073180198669434,
+   "prompt_sha256": "cc4cf69dceef76856495cc81ca7d0efad64f087fb98cf4096b35a535829a81c8"
+  }
+ ],
+ "complete": true
+}

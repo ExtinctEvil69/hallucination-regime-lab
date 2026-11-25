@@ -1,0 +1,334 @@
+{
+ "schema": "2.0",
+ "dossier_id": 60,
+ "domain": "registry",
+ "synthetic": false,
+ "design": "v2",
+ "config_fp": "e783c16de97ec52b",
+ "system": "You are a registry assistant. Answer using only the dossier below. Reply with only the requested code (format like AB3-41) or the single word UNKNOWN if the dossier does not contain it. No explanation.\n\nRegistry dossier (fictional records):\n- Pellan Raskel (registered 1941) | relay code: HA9-72\n- Dovran Raskel (registered 1970) | access code: DL1-97\n- Corra Quill (registered 1998) | relay code: QC4-40\n- Corra Quill (registered 1998) | permit code: QC0-21\n- Belisk Wexley (registered 2004) | access code: OQ7-62\n- Gaelin Yarden (registered 2001) | relay code: HG1-92\n- Dovran Raskel (registered 1970) | permit code: KY6-53\n- Corra Quill (registered 1998) | vault code: WK4-92\n- Gaelin Yarden (registered 2001) | vault code: IB5-78\n- Gaelin Yarden (registered 2001) | permit code: YB2-85\n- Gaelin Yarden (registered 2001) | access code: GC9-82\n- Hollis Solvane (registered 1965) | vault code: RF0-38\n- Pellan Raskel (registered 1941) | access code: XM7-43\n- Dovran Raskel (registered 1970) | vault code: GA4-13\n- Corra Quill (registered 1998) | access code: GI7-92\n- Corra Quill (registered 1998) | transit code: EZ0-90\n- Dovran Raskel (registered 1970) | transit code: WU8-74\n- Belisk Wexley (registered 2004) | relay code: PB3-57\n- Belisk Wexley (registered 2004) | transit code: PQ1-77\n- Hollis Solvane (registered 1965) | permit code: OO4-77\n- Hollis Solvane (registered 1965) | transit code: LJ4-43\n- Pellan Raskel (registered 1941) | permit code: VM9-18\n- Dovran Raskel (registered 1970) | relay code: MJ7-44\n- Hollis Solvane (registered 1965) | access code: PH4-21",
+ "rows": [
+  "Pellan Raskel (registered 1941) | relay code: HA9-72",
+  "Dovran Raskel (registered 1970) | access code: DL1-97",
+  "Corra Quill (registered 1998) | relay code: QC4-40",
+  "Corra Quill (registered 1998) | permit code: QC0-21",
+  "Belisk Wexley (registered 2004) | access code: OQ7-62",
+  "Gaelin Yarden (registered 2001) | relay code: HG1-92",
+  "Dovran Raskel (registered 1970) | permit code: KY6-53",
+  "Corra Quill (registered 1998) | vault code: WK4-92",
+  "Gaelin Yarden (registered 2001) | vault code: IB5-78",
+  "Gaelin Yarden (registered 2001) | permit code: YB2-85",
+  "Gaelin Yarden (registered 2001) | access code: GC9-82",
+  "Hollis Solvane (registered 1965) | vault code: RF0-38",
+  "Pellan Raskel (registered 1941) | access code: XM7-43",
+  "Dovran Raskel (registered 1970) | vault code: GA4-13",
+  "Corra Quill (registered 1998) | access code: GI7-92",
+  "Corra Quill (registered 1998) | transit code: EZ0-90",
+  "Dovran Raskel (registered 1970) | transit code: WU8-74",
+  "Belisk Wexley (registered 2004) | relay code: PB3-57",
+  "Belisk Wexley (registered 2004) | transit code: PQ1-77",
+  "Hollis Solvane (registered 1965) | permit code: OO4-77",
+  "Hollis Solvane (registered 1965) | transit code: LJ4-43",
+  "Pellan Raskel (registered 1941) | permit code: VM9-18",
+  "Dovran Raskel (registered 1970) | relay code: MJ7-44",
+  "Hollis Solvane (registered 1965) | access code: PH4-21"
+ ],
+ "entities": [
+  "Pellan Raskel",
+  "Hollis Solvane",
+  "Gaelin Yarden",
+  "Belisk Wexley",
+  "Corra Quill",
+  "Dovran Raskel"
+ ],
+ "turns": [
+  {
+   "turn": 1,
+   "qtype": "lookup",
+   "question": "What is the vault code for Hollis Solvane?",
+   "field": "vault code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 1,
+    "context_len": 394
+   },
+   "seed": 161456708,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.0024399699177592993,
+     "top": [
+      -0.0024399699177592993,
+      -6.600059986114502,
+      -6.984785556793213,
+      -9.887933731079102,
+      -10.049882888793945,
+      -10.330150604248047,
+      -11.615914344787598,
+      -11.893316268920898,
+      -12.560323715209961,
+      -13.000075340270996,
+      -14.373058319091797,
+      -14.53007698059082,
+      -14.628233909606934,
+      -14.900049209594727,
+      -15.455962181091309,
+      -15.810994148254395,
+      -16.093936920166016,
+      -16.424036026000977,
+      -16.559816360473633,
+      -16.88534927368164
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 650,
+   "wall_s": 1.6512460708618164,
+   "prompt_sha256": "6438526deb2a566d52c9ad508cf0891991e006201ae3318426b22bc66d18c238"
+  },
+  {
+   "turn": 2,
+   "qtype": "missing",
+   "question": "What is the vault code for Belisk Wexley?",
+   "field": "vault code",
+   "covariates": {
+    "evidence": 0,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 2,
+    "context_len": 404
+   },
+   "seed": 977584101,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.002103990875184536,
+     "top": [
+      -0.002103990875184536,
+      -6.380231857299805,
+      -7.957624435424805,
+      -10.08924674987793,
+      -11.483163833618164,
+      -13.000005722045898,
+      -13.532468795776367,
+      -14.557010650634766,
+      -14.687633514404297,
+      -15.476472854614258,
+      -15.562606811523438,
+      -16.35927963256836,
+      -16.43108558654785,
+      -16.617544174194336,
+      -17.110658645629883,
+      -17.688020706176758,
+      -17.766624450683594,
+      -18.263126373291016,
+      -18.472307205200195,
+      -18.665102005004883
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 673,
+   "wall_s": 2.828106164932251,
+   "prompt_sha256": "2bfb71f275741a2b8e1b6abedc8cb45dff1f2f0ee17cb33dae77bb4063dd0a33"
+  },
+  {
+   "turn": 3,
+   "qtype": "lookup",
+   "question": "What is the relay code for Gaelin Yarden?",
+   "field": "relay code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 3,
+    "context_len": 414
+   },
+   "seed": 347826966,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00017495494103059173,
+     "top": [
+      -0.00017495494103059173,
+      -8.74699878692627,
+      -11.208344459533691,
+      -13.746692657470703,
+      -13.854440689086914,
+      -14.98425579071045,
+      -16.59054946899414,
+      -17.652706146240234,
+      -18.217744827270508,
+      -18.57404327392578,
+      -18.83347511291504,
+      -19.875972747802734,
+      -20.63469123840332,
+      -20.73494529724121,
+      -20.782169342041016,
+      -20.905086517333984,
+      -21.15020751953125,
+      -21.280651092529297,
+      -21.406715393066406,
+      -21.628868103027344
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 695,
+   "wall_s": 0.594825029373169,
+   "prompt_sha256": "884185aa82f25132962ed4f6d1e29e2df3b4ed31ea280040b17d7a2feceed3da"
+  },
+  {
+   "turn": 4,
+   "qtype": "prior_ref",
+   "question": "What is that entity's relay code?",
+   "field": "relay code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 4,
+    "context_len": 424
+   },
+   "seed": 270929793,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00022980230278335512,
+     "top": [
+      -0.00022980230278335512,
+      -8.446816444396973,
+      -11.383606910705566,
+      -13.060803413391113,
+      -13.58342456817627,
+      -15.134879112243652,
+      -16.296531677246094,
+      -16.52937126159668,
+      -17.109073638916016,
+      -18.2445068359375,
+      -18.720752716064453,
+      -18.764972686767578,
+      -19.034393310546875,
+      -19.19702911376953,
+      -19.407365798950195,
+      -19.45326042175293,
+      -19.525583267211914,
+      -19.58221435546875,
+      -19.673763275146484,
+      -19.873775482177734
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 714,
+   "wall_s": 0.537816047668457,
+   "prompt_sha256": "e5f378e683f06df1a978036388df36d2e8f5a0bc6f96899bb6148a92e82eda3e"
+  },
+  {
+   "turn": 5,
+   "qtype": "prior_ref",
+   "question": "What is that entity's access code?",
+   "field": "access code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 5,
+    "context_len": 434
+   },
+   "seed": 800085615,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00022169425210449845,
+     "top": [
+      -0.00022169425210449845,
+      -8.573978424072266,
+      -10.414285659790039,
+      -13.318809509277344,
+      -14.213754653930664,
+      -14.826709747314453,
+      -16.778392791748047,
+      -17.748180389404297,
+      -18.7921142578125,
+      -19.433839797973633,
+      -19.441349029541016,
+      -19.574398040771484,
+      -19.920236587524414,
+      -20.360544204711914,
+      -20.38555145263672,
+      -20.58648681640625,
+      -20.622907638549805,
+      -20.64133644104004,
+      -20.772476196289062,
+      -20.82007598876953
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 733,
+   "wall_s": 0.4698328971862793,
+   "prompt_sha256": "8180f93ef659479fb60650122ee6c9fbbc14a82270a9c7c291dbab07c314ae32"
+  },
+  {
+   "turn": 6,
+   "qtype": "prior_ref",
+   "question": "What is that entity's permit code?",
+   "field": "permit code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 6,
+    "context_len": 444
+   },
+   "seed": 254843842,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00017555108934175223,
+     "top": [
+      -0.00017555108934175223,
+      -8.826555252075195,
+      -10.513404846191406,
+      -14.104984283447266,
+      -14.498703002929688,
+      -14.989006042480469,
+      -17.19223403930664,
+      -19.140247344970703,
+      -19.44873046875,
+      -19.560701370239258,
+      -19.90019416809082,
+      -20.560810089111328,
+      -20.67854118347168,
+      -21.03549575805664,
+      -21.29029083251953,
+      -21.415809631347656,
+      -21.44086456298828,
+      -21.668441772460938,
+      -21.80926513671875,
+      -21.87316131591797
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 752,
+   "wall_s": 0.802556037902832,
+   "prompt_sha256": "307940123001605cb9ed8a31a485a5feb1ab36ef835f453ff5e5c151301ecc9f"
+  }
+ ],
+ "complete": true
+}

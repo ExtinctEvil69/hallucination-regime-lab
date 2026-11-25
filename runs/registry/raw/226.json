@@ -1,0 +1,337 @@
+{
+ "schema": "2.0",
+ "dossier_id": 226,
+ "domain": "registry",
+ "synthetic": false,
+ "design": "v2",
+ "config_fp": "e783c16de97ec52b",
+ "system": "You are a registry assistant. Answer using only the dossier below. Reply with only the requested code (format like AB3-41) or the single word UNKNOWN if the dossier does not contain it. No explanation.\n\nRegistry dossier (fictional records):\n- Jorran Yarden (registered 1990) | access code: YX4-38\n- Jorran Yarden (registered 1990) | vault code: UP5-42\n- Isvet Raskel (registered 1946) | vault code: EC9-37\n- Arven Tarrow (registered 1943) | vault code: RT2-19\n- Dovran Solvane (registered 1941) | vault code: HY9-41\n- Hollis Tarrow (registered 1979) | vault code: SV5-81\n- Hollis Tarrow (registered 1979) | relay code: LZ2-35\n- Arven Tarrow (registered 1943) | permit code: ZW6-93\n- Kestra Quill (registered 1985) | vault code: TM8-82\n- Hollis Tarrow (registered 1979) | permit code: ED6-52\n- Isvet Raskel (registered 1946) | relay code: WA6-33\n- Kestra Quill (registered 1985) | permit code: NI6-10\n- Dovran Solvane (registered 1941) | transit code: YT0-66\n- Hollis Tarrow (registered 1979) | access code: QI1-62\n- Hollis Tarrow (registered 1979) | transit code: YT0-26\n- Dovran Solvane (registered 1941) | relay code: PN8-59\n- Dovran Solvane (registered 1941) | access code: JF5-54\n- Jorran Yarden (registered 1990) | relay code: DL4-49\n- Arven Tarrow (registered 1943) | access code: EM1-25\n- Jorran Yarden (registered 1990) | transit code: VU3-72\n- Dovran Solvane (registered 1941) | permit code: ED6-96\n- Jorran Yarden (registered 1990) | permit code: DZ5-10\n- Arven Tarrow (registered 1943) | transit code: DD1-67\n- Isvet Raskel (registered 1946) | access code: IY7-32\n- Isvet Raskel (registered 1946) | transit code: NF0-62\n- Kestra Quill (registered 1985) | transit code: DD1-89\n- Kestra Quill (registered 1985) | relay code: US9-34",
+ "rows": [
+  "Jorran Yarden (registered 1990) | access code: YX4-38",
+  "Jorran Yarden (registered 1990) | vault code: UP5-42",
+  "Isvet Raskel (registered 1946) | vault code: EC9-37",
+  "Arven Tarrow (registered 1943) | vault code: RT2-19",
+  "Dovran Solvane (registered 1941) | vault code: HY9-41",
+  "Hollis Tarrow (registered 1979) | vault code: SV5-81",
+  "Hollis Tarrow (registered 1979) | relay code: LZ2-35",
+  "Arven Tarrow (registered 1943) | permit code: ZW6-93",
+  "Kestra Quill (registered 1985) | vault code: TM8-82",
+  "Hollis Tarrow (registered 1979) | permit code: ED6-52",
+  "Isvet Raskel (registered 1946) | relay code: WA6-33",
+  "Kestra Quill (registered 1985) | permit code: NI6-10",
+  "Dovran Solvane (registered 1941) | transit code: YT0-66",
+  "Hollis Tarrow (registered 1979) | access code: QI1-62",
+  "Hollis Tarrow (registered 1979) | transit code: YT0-26",
+  "Dovran Solvane (registered 1941) | relay code: PN8-59",
+  "Dovran Solvane (registered 1941) | access code: JF5-54",
+  "Jorran Yarden (registered 1990) | relay code: DL4-49",
+  "Arven Tarrow (registered 1943) | access code: EM1-25",
+  "Jorran Yarden (registered 1990) | transit code: VU3-72",
+  "Dovran Solvane (registered 1941) | permit code: ED6-96",
+  "Jorran Yarden (registered 1990) | permit code: DZ5-10",
+  "Arven Tarrow (registered 1943) | transit code: DD1-67",
+  "Isvet Raskel (registered 1946) | access code: IY7-32",
+  "Isvet Raskel (registered 1946) | transit code: NF0-62",
+  "Kestra Quill (registered 1985) | transit code: DD1-89",
+  "Kestra Quill (registered 1985) | relay code: US9-34"
+ ],
+ "entities": [
+  "Isvet Raskel",
+  "Jorran Yarden",
+  "Dovran Solvane",
+  "Arven Tarrow",
+  "Kestra Quill",
+  "Hollis Tarrow"
+ ],
+ "turns": [
+  {
+   "turn": 1,
+   "qtype": "lookup",
+   "question": "What is the permit code for Jorran Yarden?",
+   "field": "permit code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 2,
+    "turn": 1,
+    "context_len": 436
+   },
+   "seed": 906677725,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.006064468063414097,
+     "top": [
+      -0.006064468063414097,
+      -5.119647026062012,
+      -9.944823265075684,
+      -11.5413179397583,
+      -12.17920207977295,
+      -12.306777000427246,
+      -14.72407054901123,
+      -15.305926322937012,
+      -16.33681869506836,
+      -18.366708755493164,
+      -18.391464233398438,
+      -18.555580139160156,
+      -18.559633255004883,
+      -18.612390518188477,
+      -19.02652931213379,
+      -19.490253448486328,
+      -19.570621490478516,
+      -19.857624053955078,
+      -20.418411254882812,
+      -20.663721084594727
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 726,
+   "wall_s": 3.2712199687957764,
+   "prompt_sha256": "07d357b9c83e947c58f892162a228568e75a6472b1b3bcbe917aad079c7dead5"
+  },
+  {
+   "turn": 2,
+   "qtype": "ambiguous",
+   "question": "What is the vault code for Tarrow (registered 1979)?",
+   "field": "vault code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 2,
+    "distractor": 0,
+    "turn": 2,
+    "context_len": 449
+   },
+   "seed": 880400430,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -9.26299107959494e-05,
+     "top": [
+      -9.26299107959494e-05,
+      -9.401623725891113,
+      -11.785521507263184,
+      -13.792296409606934,
+      -14.157891273498535,
+      -14.860548973083496,
+      -15.928433418273926,
+      -16.58983039855957,
+      -18.552621841430664,
+      -19.3839054107666,
+      -19.562101364135742,
+      -19.823787689208984,
+      -20.001001358032227,
+      -20.12272071838379,
+      -20.227956771850586,
+      -20.40788459777832,
+      -20.73978614807129,
+      -20.81193733215332,
+      -20.8360652923584,
+      -20.923492431640625
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 753,
+   "wall_s": 1.6981871128082275,
+   "prompt_sha256": "423805130e3d3368b43c774824a748d3f8a6d0bf99b021264fe47612440efb9c"
+  },
+  {
+   "turn": 3,
+   "qtype": "prior_ref",
+   "question": "What is that entity's access code?",
+   "field": "access code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 3,
+    "context_len": 459
+   },
+   "seed": 1145402986,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -9.942548786057159e-05,
+     "top": [
+      -9.942548786057159e-05,
+      -9.35415267944336,
+      -11.504600524902344,
+      -13.284469604492188,
+      -14.279212951660156,
+      -14.715143203735352,
+      -16.90148162841797,
+      -17.42107391357422,
+      -19.242919921875,
+      -19.404769897460938,
+      -19.417638778686523,
+      -19.519855499267578,
+      -19.887754440307617,
+      -20.171058654785156,
+      -20.21912384033203,
+      -20.256961822509766,
+      -20.338729858398438,
+      -20.51056671142578,
+      -20.6677303314209,
+      -20.913375854492188
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 772,
+   "wall_s": 0.5332989692687988,
+   "prompt_sha256": "b9800c8e3edcd92a49b79a38491b81c5db9b01b07957bbf0eeeb02b1d4105338"
+  },
+  {
+   "turn": 4,
+   "qtype": "prior_ref",
+   "question": "What is that entity's relay code?",
+   "field": "relay code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 4,
+    "context_len": 469
+   },
+   "seed": 184867415,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.000251742108957842,
+     "top": [
+      -0.000251742108957842,
+      -8.39506721496582,
+      -11.219228744506836,
+      -11.687580108642578,
+      -13.278995513916016,
+      -13.614952087402344,
+      -13.851715087890625,
+      -15.77033805847168,
+      -17.01441764831543,
+      -18.185691833496094,
+      -18.727359771728516,
+      -18.84630584716797,
+      -19.030567169189453,
+      -19.143539428710938,
+      -19.233503341674805,
+      -19.576107025146484,
+      -20.15137481689453,
+      -20.21913719177246,
+      -20.656890869140625,
+      -20.819345474243164
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 791,
+   "wall_s": 0.4424440860748291,
+   "prompt_sha256": "7a371ff7f63ce0471f09aa9b1082c059a82e4025021f136e84245669faa1ef9b"
+  },
+  {
+   "turn": 5,
+   "qtype": "prior_ref",
+   "question": "What is that entity's access code?",
+   "field": "access code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 5,
+    "context_len": 479
+   },
+   "seed": 972929872,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00021978648146614432,
+     "top": [
+      -0.00021978648146614432,
+      -8.515480041503906,
+      -11.007606506347656,
+      -13.232576370239258,
+      -14.558778762817383,
+      -14.640128135681152,
+      -15.972774505615234,
+      -17.38423728942871,
+      -18.388504028320312,
+      -18.598182678222656,
+      -19.70142936706543,
+      -19.821313858032227,
+      -19.919940948486328,
+      -20.1976261138916,
+      -20.21268081665039,
+      -20.34574317932129,
+      -20.409181594848633,
+      -20.418981552124023,
+      -20.456680297851562,
+      -20.662038803100586
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 810,
+   "wall_s": 0.7353801727294922,
+   "prompt_sha256": "8e0228f7e9be283d60ad240840ec1ab5c373f4c6913b2fc325b2db51f23b3515"
+  },
+  {
+   "turn": 6,
+   "qtype": "prior_ref",
+   "question": "What is that entity's access code?",
+   "field": "access code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 6,
+    "context_len": 489
+   },
+   "seed": 366069469,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00025520005146972835,
+     "top": [
+      -0.00025520005146972835,
+      -8.411699295043945,
+      -10.390953063964844,
+      -13.644168853759766,
+      -14.678522109985352,
+      -14.809083938598633,
+      -16.062862396240234,
+      -17.118366241455078,
+      -18.063800811767578,
+      -18.695764541625977,
+      -19.53396987915039,
+      -19.766427993774414,
+      -19.79228973388672,
+      -19.854312896728516,
+      -19.884252548217773,
+      -19.910409927368164,
+      -20.002117156982422,
+      -20.120975494384766,
+      -20.272733688354492,
+      -20.312877655029297
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 829,
+   "wall_s": 0.9453041553497314,
+   "prompt_sha256": "15e9585902a87d27f5d60e6682c5cc4e52b31a9c446722765c0f65fb741d40bc"
+  }
+ ],
+ "complete": true
+}

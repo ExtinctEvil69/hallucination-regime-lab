@@ -1,0 +1,35 @@
+{
+ "dossier_id": 30015,
+ "labels": [
+  {
+   "turn": 1,
+   "label": "G",
+   "reason": "correct"
+  },
+  {
+   "turn": 2,
+   "label": "G",
+   "reason": "correct"
+  },
+  {
+   "turn": 3,
+   "label": "G",
+   "reason": "warranted_unknown"
+  },
+  {
+   "turn": 4,
+   "label": "H",
+   "reason": "invented_code"
+  },
+  {
+   "turn": 5,
+   "label": "H",
+   "reason": "invented_code"
+  },
+  {
+   "turn": 6,
+   "label": "G",
+   "reason": "correct"
+  }
+ ]
+}

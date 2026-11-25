@@ -1,0 +1,337 @@
+{
+ "schema": "2.0",
+ "dossier_id": 260,
+ "domain": "registry",
+ "synthetic": false,
+ "design": "v2",
+ "config_fp": "e783c16de97ec52b",
+ "system": "You are a registry assistant. Answer using only the dossier below. Reply with only the requested code (format like AB3-41) or the single word UNKNOWN if the dossier does not contain it. No explanation.\n\nRegistry dossier (fictional records):\n- Arven Varrow (registered 1968) | access code: OZ3-15\n- Pellan Raskel (registered 1969) | access code: PA8-61\n- Fareth Quill (registered 1958) | transit code: DG7-33\n- Fareth Quill (registered 1958) | relay code: ZA8-32\n- Marrik Solvane (registered 1980) | permit code: PM2-67\n- Arven Varrow (registered 1968) | relay code: QP6-28\n- Isvet Tarrow (registered 1979) | access code: US0-37\n- Arven Varrow (registered 1968) | permit code: PM2-93\n- Isvet Tarrow (registered 1979) | vault code: XE2-93\n- Jorran Quill (registered 1999) | permit code: RN3-36\n- Jorran Quill (registered 1999) | access code: CF7-74\n- Pellan Raskel (registered 1969) | permit code: RZ0-37\n- Fareth Quill (registered 1958) | permit code: JO1-25\n- Isvet Tarrow (registered 1979) | transit code: DC2-10\n- Marrik Solvane (registered 1980) | relay code: QP6-96\n- Jorran Quill (registered 1999) | relay code: HQ8-69\n- Marrik Solvane (registered 1980) | vault code: IS5-18\n- Pellan Raskel (registered 1969) | relay code: KG9-53\n- Fareth Quill (registered 1958) | vault code: LA8-62\n- Arven Varrow (registered 1968) | transit code: VI5-93\n- Pellan Raskel (registered 1969) | transit code: YK2-91\n- Marrik Solvane (registered 1980) | access code: TO3-94\n- Jorran Quill (registered 1999) | transit code: VA2-17\n- Fareth Quill (registered 1958) | access code: YG4-53\n- Isvet Tarrow (registered 1979) | permit code: NN3-37\n- Jorran Quill (registered 1999) | vault code: SR9-44\n- Isvet Tarrow (registered 1979) | relay code: RG6-48",
+ "rows": [
+  "Arven Varrow (registered 1968) | access code: OZ3-15",
+  "Pellan Raskel (registered 1969) | access code: PA8-61",
+  "Fareth Quill (registered 1958) | transit code: DG7-33",
+  "Fareth Quill (registered 1958) | relay code: ZA8-32",
+  "Marrik Solvane (registered 1980) | permit code: PM2-67",
+  "Arven Varrow (registered 1968) | relay code: QP6-28",
+  "Isvet Tarrow (registered 1979) | access code: US0-37",
+  "Arven Varrow (registered 1968) | permit code: PM2-93",
+  "Isvet Tarrow (registered 1979) | vault code: XE2-93",
+  "Jorran Quill (registered 1999) | permit code: RN3-36",
+  "Jorran Quill (registered 1999) | access code: CF7-74",
+  "Pellan Raskel (registered 1969) | permit code: RZ0-37",
+  "Fareth Quill (registered 1958) | permit code: JO1-25",
+  "Isvet Tarrow (registered 1979) | transit code: DC2-10",
+  "Marrik Solvane (registered 1980) | relay code: QP6-96",
+  "Jorran Quill (registered 1999) | relay code: HQ8-69",
+  "Marrik Solvane (registered 1980) | vault code: IS5-18",
+  "Pellan Raskel (registered 1969) | relay code: KG9-53",
+  "Fareth Quill (registered 1958) | vault code: LA8-62",
+  "Arven Varrow (registered 1968) | transit code: VI5-93",
+  "Pellan Raskel (registered 1969) | transit code: YK2-91",
+  "Marrik Solvane (registered 1980) | access code: TO3-94",
+  "Jorran Quill (registered 1999) | transit code: VA2-17",
+  "Fareth Quill (registered 1958) | access code: YG4-53",
+  "Isvet Tarrow (registered 1979) | permit code: NN3-37",
+  "Jorran Quill (registered 1999) | vault code: SR9-44",
+  "Isvet Tarrow (registered 1979) | relay code: RG6-48"
+ ],
+ "entities": [
+  "Marrik Solvane",
+  "Arven Varrow",
+  "Jorran Quill",
+  "Fareth Quill",
+  "Isvet Tarrow",
+  "Pellan Raskel"
+ ],
+ "turns": [
+  {
+   "turn": 1,
+   "qtype": "ambiguous",
+   "question": "What is the vault code for Quill (registered 1999)?",
+   "field": "vault code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 2,
+    "distractor": 0,
+    "turn": 1,
+    "context_len": 439
+   },
+   "seed": 221031751,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.0006063630571588874,
+     "top": [
+      -0.0006063630571588874,
+      -7.658390045166016,
+      -10.11850357055664,
+      -10.159515380859375,
+      -10.374618530273438,
+      -11.085590362548828,
+      -12.723331451416016,
+      -13.061527252197266,
+      -13.588926315307617,
+      -14.060630798339844,
+      -14.240398406982422,
+      -15.376903533935547,
+      -15.501087188720703,
+      -15.945049285888672,
+      -16.212566375732422,
+      -16.78518295288086,
+      -16.844528198242188,
+      -16.9752197265625,
+      -17.425765991210938,
+      -17.574575424194336
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 721,
+   "wall_s": 4.039988040924072,
+   "prompt_sha256": "f1aa9bd492d62fae0b5ed24d1d174be6932d7013803791396eceea8d56d2228b"
+  },
+  {
+   "turn": 2,
+   "qtype": "prior_ref",
+   "question": "What is that entity's vault code?",
+   "field": "vault code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 2,
+    "context_len": 449
+   },
+   "seed": 2131003215,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.0001866395614342764,
+     "top": [
+      -0.0001866395614342764,
+      -8.644851684570312,
+      -11.895294189453125,
+      -12.884891510009766,
+      -13.986434936523438,
+      -15.211467742919922,
+      -16.284391403198242,
+      -16.545438766479492,
+      -17.158203125,
+      -17.517181396484375,
+      -18.87972640991211,
+      -18.90342903137207,
+      -19.25099754333496,
+      -19.26310920715332,
+      -19.522418975830078,
+      -19.72480010986328,
+      -19.849510192871094,
+      -20.151111602783203,
+      -20.284164428710938,
+      -20.386356353759766
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 740,
+   "wall_s": 0.8845469951629639,
+   "prompt_sha256": "6a729ed26b7389d9f0779ca66c88a78a7783e30dfb3d22d4e387b2858618f2cb"
+  },
+  {
+   "turn": 3,
+   "qtype": "missing",
+   "question": "What is the transit code for Marrik Solvane?",
+   "field": "transit code",
+   "covariates": {
+    "evidence": 0,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 3,
+    "context_len": 459
+   },
+   "seed": 432227676,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.003993487451225519,
+     "top": [
+      -0.003993487451225519,
+      -5.609994411468506,
+      -8.432588577270508,
+      -9.508743286132812,
+      -11.02367877960205,
+      -12.015944480895996,
+      -12.03711223602295,
+      -13.587905883789062,
+      -14.083970069885254,
+      -14.317621231079102,
+      -14.615043640136719,
+      -14.864447593688965,
+      -15.34899616241455,
+      -15.384437561035156,
+      -15.750590324401855,
+      -16.048583984375,
+      -16.4710693359375,
+      -16.53972625732422,
+      -16.658416748046875,
+      -16.676319122314453
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 763,
+   "wall_s": 0.5451972484588623,
+   "prompt_sha256": "1df116aa70d1c15f09b457312c68aaee173b33b71acda77f17927282e5202d00"
+  },
+  {
+   "turn": 4,
+   "qtype": "prior_ref",
+   "question": "What is that entity's transit code?",
+   "field": "transit code",
+   "covariates": {
+    "evidence": 0,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 4,
+    "context_len": 469
+   },
+   "seed": 1132008335,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00018985880888067186,
+     "top": [
+      -0.00018985880888067186,
+      -8.654810905456543,
+      -11.178614616394043,
+      -13.650164604187012,
+      -15.377354621887207,
+      -15.462088584899902,
+      -18.241119384765625,
+      -18.603504180908203,
+      -20.301406860351562,
+      -20.474727630615234,
+      -20.48302459716797,
+      -20.719127655029297,
+      -21.378202438354492,
+      -21.673128128051758,
+      -22.227916717529297,
+      -22.52070426940918,
+      -22.801422119140625,
+      -22.828733444213867,
+      -23.742029190063477,
+      -24.330280303955078
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 782,
+   "wall_s": 0.5010781288146973,
+   "prompt_sha256": "8365f1f052e143e67866ac06a20cf3f6ed49503ce2bc50446473976655bc53f6"
+  },
+  {
+   "turn": 5,
+   "qtype": "missing",
+   "question": "What is the vault code for Pellan Raskel?",
+   "field": "vault code",
+   "covariates": {
+    "evidence": 0,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 5,
+    "context_len": 479
+   },
+   "seed": 1297120965,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00010252524225506932,
+     "top": [
+      -0.00010252524225506932,
+      -9.320796966552734,
+      -11.362173080444336,
+      -14.401555061340332,
+      -14.988811492919922,
+      -15.278984069824219,
+      -16.49303436279297,
+      -17.084997177124023,
+      -19.039884567260742,
+      -19.25859832763672,
+      -20.582107543945312,
+      -21.256179809570312,
+      -21.523170471191406,
+      -21.681203842163086,
+      -21.70438003540039,
+      -21.78997039794922,
+      -21.79745864868164,
+      -21.887420654296875,
+      -21.898035049438477,
+      -22.322792053222656
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 805,
+   "wall_s": 0.4615659713745117,
+   "prompt_sha256": "cfc4ab63b1e98e5298d08c2e97fb4aa0ad11db322ac1cc66e5dcf073d0f37fd3"
+  },
+  {
+   "turn": 6,
+   "qtype": "prior_ref",
+   "question": "What is that entity's vault code?",
+   "field": "vault code",
+   "covariates": {
+    "evidence": 0,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 6,
+    "context_len": 489
+   },
+   "seed": 2052936389,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00011957406968576834,
+     "top": [
+      -0.00011957406968576834,
+      -9.203059196472168,
+      -10.916974067687988,
+      -15.057724952697754,
+      -15.131478309631348,
+      -15.594613075256348,
+      -16.384172439575195,
+      -18.613142013549805,
+      -19.025312423706055,
+      -19.334007263183594,
+      -20.329477310180664,
+      -20.85288429260254,
+      -20.891916275024414,
+      -21.043203353881836,
+      -21.438356399536133,
+      -21.568374633789062,
+      -21.72088050842285,
+      -21.834943771362305,
+      -21.98211669921875,
+      -22.16513442993164
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 824,
+   "wall_s": 1.534430980682373,
+   "prompt_sha256": "9cb2abdcf613b55798501ffca447cc739db8ff934cd7df367290606e9f64a71e"
+  }
+ ],
+ "complete": true
+}

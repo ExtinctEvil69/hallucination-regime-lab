@@ -1,0 +1,35 @@
+{
+ "dossier_id": 462,
+ "labels": [
+  {
+   "turn": 1,
+   "label": "U",
+   "reason": "unwarranted_abstention"
+  },
+  {
+   "turn": 2,
+   "label": "G",
+   "reason": "correct"
+  },
+  {
+   "turn": 3,
+   "label": "U",
+   "reason": "unwarranted_abstention"
+  },
+  {
+   "turn": 4,
+   "label": "G",
+   "reason": "correct"
+  },
+  {
+   "turn": 5,
+   "label": "G",
+   "reason": "correct"
+  },
+  {
+   "turn": 6,
+   "label": "G",
+   "reason": "warranted_unknown"
+  }
+ ]
+}

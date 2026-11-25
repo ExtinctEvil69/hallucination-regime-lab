@@ -1,0 +1,125 @@
+[
+ {
+  "id": "R1:M2_em_filter",
+  "check": "label-permutation canary: shuffled labels give chance AUROC (integrity)",
+  "null_mean": 0.4903122945430638,
+  "null_95": [
+   0.37926939513477975,
+   0.5885735124917818
+  ],
+  "info_real_auroc": 0.7724358974358975,
+  "info_real_above_null_97.5": true,
+  "pass": true
+ },
+ {
+  "id": "R1:M3_bayes_filter",
+  "check": "label-permutation canary: shuffled labels give chance AUROC (integrity)",
+  "null_mean": 0.4926197813938198,
+  "null_95": [
+   0.38542591222879685,
+   0.5945163543721237
+  ],
+  "info_real_auroc": 0.7701347797501643,
+  "info_real_above_null_97.5": true,
+  "pass": true
+ },
+ {
+  "id": "R1:M4_cov_bayes_filter",
+  "check": "label-permutation canary: shuffled labels give chance AUROC (integrity)",
+  "null_mean": 0.5085272846811307,
+  "null_95": [
+   0.428407503287311,
+   0.6130917159763313
+  ],
+  "info_real_auroc": 0.8204717291255753,
+  "info_real_above_null_97.5": true,
+  "pass": true
+ },
+ {
+  "id": "R2",
+  "check": "no identical dossier content shared across splits",
+  "duplicates_across_splits": 0,
+  "unique_dossiers": 500,
+  "pass": true
+ },
+ {
+  "id": "R3",
+  "check": "future-perturbation canary: risk at turns 1-3 unaffected by turns 4-6",
+  "max_abs_change": 0.0,
+  "pass": true
+ },
+ {
+  "id": "R4",
+  "check": "gold-leak canary: features identical when every label is flipped",
+  "pass": true
+ },
+ {
+  "id": "R5:M1_static",
+  "check": "confident-wrong subgroup: H answers as confident as a typical G answer",
+  "n_confident_H": 8,
+  "share_of_H": 0.22857142857142856,
+  "auroc_vs_G": 0.3107287449392713,
+  "pass": null,
+  "note": "diagnostic (no pass/fail): known blind spot of confidence features"
+ },
+ {
+  "id": "R5:M2_em_filter",
+  "check": "confident-wrong subgroup: H answers as confident as a typical G answer",
+  "n_confident_H": 8,
+  "share_of_H": 0.22857142857142856,
+  "auroc_vs_G": 0.3069331983805668,
+  "pass": null,
+  "note": "diagnostic (no pass/fail): known blind spot of confidence features"
+ },
+ {
+  "id": "R5:M4_cov_bayes_filter",
+  "check": "confident-wrong subgroup: H answers as confident as a typical G answer",
+  "n_confident_H": 8,
+  "share_of_H": 0.22857142857142856,
+  "auroc_vs_G": 0.5989372469635628,
+  "pass": null,
+  "note": "diagnostic (no pass/fail): known blind spot of confidence features"
+ },
+ {
+  "id": "R6",
+  "check": "saved feature scaler equals train-only statistics (no val/test leakage)",
+  "max_abs_mean_diff": 0.0,
+  "max_abs_scale_diff": 0.0,
+  "pass": true
+ },
+ {
+  "id": "R7:M3",
+  "check": "Bayesian convergence gate (R-hat <= 1.01, bulk ESS >= 400)",
+  "max_rhat": 1.5285598200133061,
+  "min_ess_bulk": 7.127921472424243,
+  "pass": false
+ },
+ {
+  "id": "R7:M3:mapping",
+  "check": "Bayesian state mapping stable on validation",
+  "score": 0.6405468108140079,
+  "runner_up": 0.40432824586932803,
+  "pass": true
+ },
+ {
+  "id": "R7:M4",
+  "check": "Bayesian convergence gate (R-hat <= 1.01, bulk ESS >= 400)",
+  "max_rhat": 1.046647108320193,
+  "min_ess_bulk": 104.57288592769616,
+  "pass": false
+ },
+ {
+  "id": "R7:M4:mapping",
+  "check": "Bayesian state mapping stable on validation",
+  "score": 0.6545428711401293,
+  "runner_up": 0.40526812171532073,
+  "pass": true
+ },
+ {
+  "id": "R7:EM:mapping",
+  "check": "EM state mapping stable on validation (all classes present)",
+  "score": 0.6788192610151684,
+  "runner_up": 0.40271519255007626,
+  "pass": true
+ }
+]

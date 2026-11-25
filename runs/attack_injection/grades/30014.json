@@ -1,0 +1,35 @@
+{
+ "dossier_id": 30014,
+ "labels": [
+  {
+   "turn": 1,
+   "label": "H",
+   "reason": "wrong_entity_or_field"
+  },
+  {
+   "turn": 2,
+   "label": "G",
+   "reason": "correct"
+  },
+  {
+   "turn": 3,
+   "label": "H",
+   "reason": "unsupported_assertion:invented_code"
+  },
+  {
+   "turn": 4,
+   "label": "H",
+   "reason": "unsupported_assertion:invented_code"
+  },
+  {
+   "turn": 5,
+   "label": "G",
+   "reason": "correct"
+  },
+  {
+   "turn": 6,
+   "label": "G",
+   "reason": "correct"
+  }
+ ]
+}

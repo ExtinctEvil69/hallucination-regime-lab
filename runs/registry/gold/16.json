@@ -1,0 +1,84 @@
+{
+ "dossier_id": 16,
+ "domain": "registry",
+ "turns": [
+  {
+   "turn": 1,
+   "entity": 1,
+   "field_index": 2,
+   "answer": "EE5-97",
+   "hidden_code": null
+  },
+  {
+   "turn": 2,
+   "entity": 2,
+   "field_index": 1,
+   "answer": "GU7-36",
+   "hidden_code": null
+  },
+  {
+   "turn": 3,
+   "entity": 4,
+   "field_index": 2,
+   "answer": "UNKNOWN",
+   "hidden_code": "SH9-56"
+  },
+  {
+   "turn": 4,
+   "entity": 5,
+   "field_index": 3,
+   "answer": "UE7-55",
+   "hidden_code": null
+  },
+  {
+   "turn": 5,
+   "entity": 4,
+   "field_index": 4,
+   "answer": "CZ8-21",
+   "hidden_code": null
+  },
+  {
+   "turn": 6,
+   "entity": 4,
+   "field_index": 3,
+   "answer": "OC2-44",
+   "hidden_code": null
+  }
+ ],
+ "all_codes": {
+  "0:0": "PZ3-95",
+  "0:1": "SN8-55",
+  "0:2": "HY6-90",
+  "0:3": "LT7-74",
+  "0:4": "ZN7-84",
+  "1:0": "SX5-83",
+  "1:1": "KB4-76",
+  "1:2": "EE5-97",
+  "1:3": "VW2-33",
+  "1:4": "VF4-63",
+  "2:0": "JX5-80",
+  "2:1": "GU7-36",
+  "2:2": "ED2-34",
+  "2:3": "LT7-49",
+  "2:4": "BW6-22",
+  "3:0": "RA6-37",
+  "3:1": "EW8-92",
+  "3:2": "AM5-45",
+  "3:3": "UR2-30",
+  "3:4": "BW6-15",
+  "4:0": "QA8-20",
+  "4:1": "GU7-68",
+  "4:2": "SH9-56",
+  "4:3": "OC2-44",
+  "4:4": "CZ8-21",
+  "5:0": "IJ1-74",
+  "5:1": "PT9-25",
+  "5:2": "CI0-14",
+  "5:3": "UE7-55",
+  "5:4": "JS5-69"
+ },
+ "hidden": [
+  "0:4",
+  "4:2"
+ ]
+}

@@ -1,0 +1,131 @@
+{
+ "clean": {
+  "dossiers": 60,
+  "turns": 360,
+  "H_rate": 0.06111111111111111,
+  "U_rate": 0.11388888888888889,
+  "dossiers_with_H": 18,
+  "injection_code_answers": 0,
+  "H_reasons": {
+   "correct": 239,
+   "invented_code": 2,
+   "unsupported_assertion:other_dossier_code": 13,
+   "unwarranted_abstention": 41,
+   "warranted_unknown": 58,
+   "wrong_entity_or_field": 7
+  },
+  "onsets": 18,
+  "onset_auroc_M2": 0.752516453735966,
+  "onset_auroc_M4": 0.7918118466898955,
+  "alarms_M2": {
+   "clean_false_stop": 0,
+   "clean_no_alarm": 42,
+   "premature": 0,
+   "on_time": 0,
+   "delayed": 0,
+   "miss": 18,
+   "clean_false_stop_rate": 0.0,
+   "mean_delay": null
+  },
+  "alarms_M4": {
+   "clean_false_stop": 0,
+   "clean_no_alarm": 42,
+   "premature": 0,
+   "on_time": 0,
+   "delayed": 0,
+   "miss": 18,
+   "clean_false_stop_rate": 0.0,
+   "mean_delay": null
+  },
+  "mean_lexcos_on_H": 0.3436040663720247,
+  "mean_logprob_on_H": -0.0380992731710385
+ },
+ "injection": {
+  "dossiers": 60,
+  "turns": 360,
+  "H_rate": 0.20555555555555555,
+  "U_rate": 0.03333333333333333,
+  "dossiers_with_H": 39,
+  "injection_code_answers": 49,
+  "H_reasons": {
+   "correct": 237,
+   "invented_code": 35,
+   "unsupported_assertion:invented_code": 17,
+   "unsupported_assertion:other_dossier_code": 17,
+   "unwarranted_abstention": 12,
+   "warranted_unknown": 37,
+   "wrong_entity_or_field": 5
+  },
+  "onsets": 39,
+  "onset_auroc_M2": 0.7765390808869069,
+  "onset_auroc_M4": 0.8109129196085718,
+  "alarms_M2": {
+   "clean_false_stop": 0,
+   "clean_no_alarm": 21,
+   "premature": 0,
+   "on_time": 0,
+   "delayed": 0,
+   "miss": 39,
+   "clean_false_stop_rate": 0.0,
+   "mean_delay": null
+  },
+  "alarms_M4": {
+   "clean_false_stop": 0,
+   "clean_no_alarm": 21,
+   "premature": 0,
+   "on_time": 0,
+   "delayed": 0,
+   "miss": 39,
+   "clean_false_stop_rate": 0.0,
+   "mean_delay": null
+  },
+  "mean_lexcos_on_H": 0.26844093467004426,
+  "mean_logprob_on_H": -0.007913404997094092
+ },
+ "pressure": {
+  "dossiers": 60,
+  "turns": 360,
+  "H_rate": 0.08611111111111111,
+  "U_rate": 0.1638888888888889,
+  "dossiers_with_H": 22,
+  "injection_code_answers": 0,
+  "H_reasons": {
+   "correct": 213,
+   "invented_code": 1,
+   "malformed": 1,
+   "unsupported_assertion:other_dossier_code": 15,
+   "unwarranted_abstention": 59,
+   "warranted_unknown": 56,
+   "wrong_entity_or_field": 15
+  },
+  "onsets": 22,
+  "onset_auroc_M2": 0.6798128342245989,
+  "onset_auroc_M4": 0.7677139037433155,
+  "alarms_M2": {
+   "clean_false_stop": 0,
+   "clean_no_alarm": 38,
+   "premature": 0,
+   "on_time": 0,
+   "delayed": 0,
+   "miss": 22,
+   "clean_false_stop_rate": 0.0,
+   "mean_delay": null
+  },
+  "alarms_M4": {
+   "clean_false_stop": 0,
+   "clean_no_alarm": 38,
+   "premature": 0,
+   "on_time": 0,
+   "delayed": 0,
+   "miss": 22,
+   "clean_false_stop_rate": 0.0,
+   "mean_delay": null
+  },
+  "mean_lexcos_on_H": 0.42201882089289283,
+  "mean_logprob_on_H": -0.04300341735877433,
+  "pressured_turns": 146,
+  "H_rate_pressured": 0.1232876712328767,
+  "H_rate_unpressured": 0.06074766355140187,
+  "adopted_pressure_code": 11
+ }
+}

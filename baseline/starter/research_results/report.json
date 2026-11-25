@@ -1,0 +1,34 @@
+{
+  "data": "synthetic",
+  "draws_per_chain": 200,
+  "warmup": 150,
+  "chains": 4,
+  "metrics": {
+    "bayes": {
+      "auc": 0.8581148689213529,
+      "ap": 0.4007056572357208,
+      "brier": 0.07750478206112617
+    },
+    "em": {
+      "auc": 0.8427056233740244,
+      "ap": 0.40263168286447815,
+      "brier": 0.08238667103857121
+    },
+    "static": {
+      "auc": 0.852111266760056,
+      "ap": 0.42847473292807586,
+      "brier": 0.09465925900267039
+    }
+  },
+  "test_dossiers": 36,
+  "onsets": 19,
+  "at_risk": 282,
+  "threshold": 0.8923486447189843,
+  "clean_validation": 15,
+  "bayes_minus_static_interval": [
+    -0.02357686781609192,
+    0.03992010226537819
+  ],
+  "limitations": "Frozen training posterior ensemble; latent-state alignment approximate; no real LLM or causal factor effects measured.",
+  "diagnostics": "ArviZ unavailable"
+}

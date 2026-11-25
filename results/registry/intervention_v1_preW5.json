@@ -1,0 +1,91 @@
+{
+ "after_H": {
+  "n_prefixes": 121,
+  "arms": {
+   "corrected": {
+    "H_rate": 0.024793388429752067,
+    "U_rate": 0.09917355371900827,
+    "n_valid": 121
+   },
+   "original": {
+    "H_rate": 0.1446280991735537,
+    "U_rate": 0.05785123966942149,
+    "n_valid": 121
+   },
+   "reground": {
+    "H_rate": 0.10743801652892562,
+    "U_rate": 0.14049586776859505,
+    "n_valid": 121
+   }
+  },
+  "contrasts": {
+   "corrected - original": {
+    "risk_difference_H": -0.11983471074380166,
+    "boot95": [
+     -0.17768595041322313,
+     -0.06611570247933884
+    ],
+    "bayes_boot95": [
+     -0.18244614728349373,
+     -0.06969357818949079
+    ],
+    "P(RD<0)": 1.0,
+    "n_pairs": 121,
+    "pairs_better": 15,
+    "pairs_worse": 0,
+    "risk_difference_U": 0.04132231404958678
+   },
+   "reground - original": {
+    "risk_difference_H": -0.0371900826446281,
+    "boot95": [
+     -0.09090909090909091,
+     0.01652892561983471
+    ],
+    "bayes_boot95": [
+     -0.09276292871447175,
+     0.011593014878162078
+    ],
+    "P(RD<0)": 0.932,
+    "n_pairs": 121,
+    "pairs_better": 8,
+    "pairs_worse": 3,
+    "risk_difference_U": 0.08264462809917356
+   }
+  }
+ },
+ "after_G": {
+  "n_prefixes": 121,
+  "arms": {
+   "original": {
+    "H_rate": 0.0,
+    "U_rate": 0.1115702479338843,
+    "n_valid": 121
+   },
+   "reground": {
+    "H_rate": 0.01652892561983471,
+    "U_rate": 0.21487603305785125,
+    "n_valid": 121
+   }
+  },
+  "contrasts": {
+   "reground - original": {
+    "risk_difference_H": 0.01652892561983471,
+    "boot95": [
+     0.0,
+     0.04132231404958678
+    ],
+    "bayes_boot95": [
+     0.0018308802177599735,
+     0.04469443965572259
+    ],
+    "P(RD<0)": 0.0,
+    "n_pairs": 121,
+    "pairs_better": 0,
+    "pairs_worse": 2,
+    "risk_difference_U": 0.10330578512396695
+   }
+  }
+ },
+ "estimand": "ITT risk difference E[Y(arm) - Y(original)] of next-turn H, prefix-level, matched seeds",
+ "synthetic": false
+}

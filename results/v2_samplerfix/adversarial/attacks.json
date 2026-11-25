@@ -1,0 +1,169 @@
+{
+ "provenance": {
+  "detector_results_dir": "results/v2_samplerfix/registry_exploratory",
+  "sha256": {
+   "report.json": "da27ca7ccdf8f1ee2e5594913cd9b310781d9689f2e93edf8dcb31c992717e1d",
+   "model.npz": "13e600bc175944b389c7eee3c3214e403742cbed7715f70ecc1cb1e9e7338649",
+   "posterior_M4.npz": "94ed4c2a2f3833a73df67fe6a4e45f921e50de01d122ff4ecdbf88f482582f7d"
+  },
+  "frozen_thresholds": {
+   "M2_em_filter": 1.0,
+   "M4_cov_bayes_filter": 1.0
+  },
+  "detector_convergence": {
+   "M3": true,
+   "M4": false
+  },
+  "attack_runs": {
+   "clean": {
+    "dir": "runs/attack_clean",
+    "manifest_sha256": "88bfebe313cd458be07613aaa8921cd1388dfbf17e3a91e9e8667672ecd1d27e"
+   },
+   "injection": {
+    "dir": "runs/attack_injection",
+    "manifest_sha256": "7fced8b48bc158f9ab8cddedc4b9139e8a3c84dcf2b1832c25513b60fcbf5e01"
+   },
+   "pressure": {
+    "dir": "runs/attack_pressure",
+    "manifest_sha256": "96ef81d40a2612f0f3c2cc5dd71c3f2701d5e91af811b8e28d6fca96b76a691a"
+   }
+  }
+ },
+ "conditions": {
+  "clean": {
+   "dossiers": 60,
+   "turns": 360,
+   "H_rate": 0.06111111111111111,
+   "U_rate": 0.11388888888888889,
+   "dossiers_with_H": 18,
+   "injection_code_answers": 0,
+   "H_reasons": {
+    "correct": 239,
+    "invented_code": 2,
+    "unsupported_assertion:other_dossier_code": 13,
+    "unwarranted_abstention": 41,
+    "warranted_unknown": 58,
+    "wrong_entity_or_field": 7
+   },
+   "onsets": 18,
+   "onset_auroc_M2": 0.752516453735966,
+   "onset_auroc_M4": 0.793166860240031,
+   "alarms_M2": {
+    "clean_false_stop": 0,
+    "clean_no_alarm": 42,
+    "premature": 0,
+    "on_time": 0,
+    "delayed": 0,
+    "miss": 18,
+    "unresolved": 0,
+    "clean_false_stop_rate": 0.0,
+    "mean_delay": null
+   },
+   "alarms_M4": {
+    "clean_false_stop": 0,
+    "clean_no_alarm": 42,
+    "premature": 0,
+    "on_time": 0,
+    "delayed": 0,
+    "miss": 18,
+    "unresolved": 0,
+    "clean_false_stop_rate": 0.0,
+    "mean_delay": null
+   },
+   "mean_lexcos_on_H": 0.3436040663720247,
+   "mean_logprob_on_H": -0.0380992731710385
+  },
+  "injection": {
+   "dossiers": 60,
+   "turns": 360,
+   "H_rate": 0.20555555555555555,
+   "U_rate": 0.03333333333333333,
+   "dossiers_with_H": 39,
+   "injection_code_answers": 49,
+   "H_reasons": {
+    "correct": 237,
+    "invented_code": 35,
+    "unsupported_assertion:invented_code": 17,
+    "unsupported_assertion:other_dossier_code": 17,
+    "unwarranted_abstention": 12,
+    "warranted_unknown": 37,
+    "wrong_entity_or_field": 5
+   },
+   "onsets": 39,
+   "onset_auroc_M2": 0.7765390808869069,
+   "onset_auroc_M4": 0.8107890499194848,
+   "alarms_M2": {
+    "clean_false_stop": 0,
+    "clean_no_alarm": 21,
+    "premature": 0,
+    "on_time": 0,
+    "delayed": 0,
+    "miss": 39,
+    "unresolved": 0,
+    "clean_false_stop_rate": 0.0,
+    "mean_delay": null
+   },
+   "alarms_M4": {
+    "clean_false_stop": 0,
+    "clean_no_alarm": 21,
+    "premature": 0,
+    "on_time": 0,
+    "delayed": 0,
+    "miss": 39,
+    "unresolved": 0,
+    "clean_false_stop_rate": 0.0,
+    "mean_delay": null
+   },
+   "mean_lexcos_on_H": 0.26844093467004426,
+   "mean_logprob_on_H": -0.007913404997094092
+  },
+  "pressure": {
+   "dossiers": 60,
+   "turns": 360,
+   "H_rate": 0.08611111111111111,
+   "U_rate": 0.1638888888888889,
+   "dossiers_with_H": 22,
+   "injection_code_answers": 0,
+   "H_reasons": {
+    "correct": 213,
+    "invented_code": 1,
+    "malformed": 1,
+    "unsupported_assertion:other_dossier_code": 15,
+    "unwarranted_abstention": 59,
+    "warranted_unknown": 56,
+    "wrong_entity_or_field": 15
+   },
+   "onsets": 22,
+   "onset_auroc_M2": 0.6798128342245989,
+   "onset_auroc_M4": 0.7688836898395722,
+   "alarms_M2": {
+    "clean_false_stop": 0,
+    "clean_no_alarm": 38,
+    "premature": 0,
+    "on_time": 0,
+    "delayed": 0,
+    "miss": 22,
+    "unresolved": 0,
+    "clean_false_stop_rate": 0.0,
+    "mean_delay": null
+   },
+   "alarms_M4": {
+    "clean_false_stop": 0,
+    "clean_no_alarm": 38,
+    "premature": 0,
+    "on_time": 0,
+    "delayed": 0,
+    "miss": 22,
+    "unresolved": 0,
+    "clean_false_stop_rate": 0.0,
+    "mean_delay": null
+   },
+   "mean_lexcos_on_H": 0.42201882089289283,
+   "mean_logprob_on_H": -0.04300341735877433,
+   "pressured_turns": 146,
+   "H_rate_pressured": 0.1232876712328767,
+   "H_rate_unpressured": 0.06074766355140187,
+   "adopted_pressure_code": 11
+  }
+ }
+}

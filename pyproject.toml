@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "regime-lab"
+version = "2.0.0"
+description = "Bayesian Hallucination Regime Lab: covariate-dependent Bayesian HMMs for LLM hallucination onset"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26", "scipy>=1.11"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+report = ["matplotlib>=3.8"]
+
+[tool.setuptools.packages.find]
+include = ["regime_lab*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,123 @@
+{
+ "after_H": {
+  "n_prefixes": 121,
+  "arms": {
+   "corrected": {
+    "H_rate": 0.024793388429752067,
+    "U_rate": 0.09917355371900827,
+    "n_valid": 242
+   },
+   "original": {
+    "H_rate": 0.1446280991735537,
+    "U_rate": 0.05785123966942149,
+    "n_valid": 242
+   },
+   "reground": {
+    "H_rate": 0.10743801652892562,
+    "U_rate": 0.14049586776859505,
+    "n_valid": 242
+   }
+  },
+  "pending_by_arm": {
+   "corrected": 0,
+   "original": 0,
+   "reground": 0
+  },
+  "contrasts": {
+   "corrected - original": {
+    "estimand": "complete-pair risk difference (replicate-paired, prefix-averaged); not strict ITT",
+    "risk_difference_H": -0.11983471074380166,
+    "boot95": [
+     -0.17768595041322313,
+     -0.06611570247933884
+    ],
+    "bayes_boot95": [
+     -0.18244614728349373,
+     -0.06969357818949079
+    ],
+    "P(RD<0)": 1.0,
+    "n_pairs": 121,
+    "pairs_better": 15,
+    "pairs_worse": 0,
+    "sign_test_p": 6.103515625e-05,
+    "sparse_discordance": false,
+    "itt_bounds_H": [
+     -0.11983471074380166,
+     -0.11983471074380166
+    ],
+    "risk_difference_U": 0.04132231404958678
+   },
+   "reground - original": {
+    "estimand": "complete-pair risk difference (replicate-paired, prefix-averaged); not strict ITT",
+    "risk_difference_H": -0.0371900826446281,
+    "boot95": [
+     -0.09090909090909091,
+     0.01652892561983471
+    ],
+    "bayes_boot95": [
+     -0.09276292871447175,
+     0.011593014878162078
+    ],
+    "P(RD<0)": 0.932,
+    "n_pairs": 121,
+    "pairs_better": 8,
+    "pairs_worse": 3,
+    "sign_test_p": 0.2265625,
+    "sparse_discordance": false,
+    "itt_bounds_H": [
+     -0.0371900826446281,
+     -0.0371900826446281
+    ],
+    "risk_difference_U": 0.08264462809917356
+   }
+  }
+ },
+ "after_G": {
+  "n_prefixes": 121,
+  "arms": {
+   "original": {
+    "H_rate": 0.0,
+    "U_rate": 0.1115702479338843,
+    "n_valid": 242
+   },
+   "reground": {
+    "H_rate": 0.01652892561983471,
+    "U_rate": 0.21487603305785125,
+    "n_valid": 242
+   }
+  },
+  "pending_by_arm": {
+   "original": 0,
+   "reground": 0
+  },
+  "contrasts": {
+   "reground - original": {
+    "estimand": "complete-pair risk difference (replicate-paired, prefix-averaged); not strict ITT",
+    "risk_difference_H": 0.01652892561983471,
+    "boot95": [
+     0.0,
+     0.04132231404958678
+    ],
+    "bayes_boot95": [
+     0.0018308802177599735,
+     0.04469443965572259
+    ],
+    "P(RD<0)": 0.0,
+    "n_pairs": 121,
+    "pairs_better": 0,
+    "pairs_worse": 2,
+    "sign_test_p": 0.5,
+    "sparse_discordance": true,
+    "itt_bounds_H": [
+     0.01652892561983471,
+     0.01652892561983471
+    ],
+    "risk_difference_U": 0.10330578512396695
+   }
+  }
+ },
+ "estimand": "complete-pair risk difference E[Y(arm) - Y(original)] of next-turn H, replicate-paired with matched seeds, averaged per prefix; strict-ITT bounds and pending counts reported",
+ "supplementary": "sign_test_p: exact two-sided sign test on discordant prefixes (post hoc, W5)",
+ "synthetic": false,
+ "version": "2 (F7 replicate pairing + W5 sign test; recomputed from saved rows, no new generations)"
+}

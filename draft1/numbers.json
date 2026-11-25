@@ -1,0 +1,1293 @@
+{
+ "data_registry": {
+  "dossiers": 500,
+  "turns": 3000,
+  "G": 2471,
+  "U": 342,
+  "H": 186,
+  "P": 1,
+  "Hpct": 6.2,
+  "Gpct": 82.36666666666666,
+  "Upct": 11.4,
+  "onset_dossiers": 135,
+  "wrong_entity": 64,
+  "missing_row_code": 110,
+  "invented": 12
+ },
+ "data_clinical": {
+  "dossiers": 300,
+  "turns": 1800,
+  "G": 1577,
+  "U": 167,
+  "H": 56,
+  "P": 0,
+  "Hpct": 3.111111111111111,
+  "Gpct": 87.61111111111111,
+  "Upct": 9.277777777777779,
+  "onset_dossiers": 44,
+  "wrong_entity": 24,
+  "missing_row_code": 32,
+  "invented": 0
+ },
+ "pilot": {
+  "pilot_v1_registry": 0.0,
+  "pilot_v2_registry": 6.944444444444445,
+  "pilot_v2_clinical": 5.555555555555555
+ },
+ "registry": {
+  "primary": {
+   "estimate": -0.033941485864562804,
+   "lo": -0.07867356282139838,
+   "hi": 0.015435757922871371,
+   "valid_reps": 2000,
+   "reps": 2000,
+   "p_gt0": 0.0895
+  },
+  "m4_minus_static": {
+   "estimate": 0.12409598948060485,
+   "lo": -0.034356491725210506,
+   "hi": 0.2800241593914771,
+   "valid_reps": 2000,
+   "reps": 2000,
+   "p_gt0": 0.936
+  },
+  "auroc": {
+   "M0_single_feature": {
+    "est": 0.7553007889546351,
+    "lo": 0.6404662859461966,
+    "hi": 0.8588554565717066
+   },
+   "M1_static": {
+    "est": 0.7118671926364234,
+    "lo": 0.5855980395379312,
+    "hi": 0.8253475455636625
+   },
+   "M2_em_filter": {
+    "est": 0.6779257067718606,
+    "lo": 0.5612072093548709,
+    "hi": 0.7876514335708557
+   },
+   "M3_bayes_filter": {
+    "est": 0.6686390532544378,
+    "lo": 0.5546059862800785,
+    "hi": 0.7824536331547906
+   },
+   "M3_bayes_reweighted": {
+    "est": 0.6481755424063116,
+    "lo": 0.5286726201644932,
+    "hi": 0.7749601766535034
+   },
+   "M4_cov_bayes_filter": {
+    "est": 0.8359631821170282,
+    "lo": 0.7523388089941204,
+    "hi": 0.9075207334113339
+   }
+  },
+  "onsets": 24,
+  "risk_set": 531,
+  "conv": {
+   "M3": {
+    "rhat": 1.8750222615905903,
+    "ess": 5.654741166513554,
+    "ok": false
+   },
+   "M4": {
+    "rhat": 1.6625470877920854,
+    "ess": 6.356206215785366,
+    "ok": false
+   }
+  },
+  "conv_pre": {
+   "M3": {
+    "rhat": 2.345294817649848,
+    "ess": 4.920228034806434
+   },
+   "M4": {
+    "rhat": 2.402510305546183,
+    "ess": 4.872269905998814
+   }
+  },
+  "factor": {
+   "evidence": {
+    "median": -0.033354842632277934,
+    "lo": -0.06908483475547668,
+    "hi": -0.008097584653897814,
+    "p_gt0": 0.0075
+   },
+   "ambiguity": {
+    "median": 0.0005447986833432847,
+    "lo": -0.019838480596741873,
+    "hi": 0.03254260075974283,
+    "p_gt0": 0.52125
+   },
+   "distractor": {
+    "median": 0.0002672222240896555,
+    "lo": -0.009036640785249421,
+    "hi": 0.01745154335575245,
+    "p_gt0": 0.57125
+   },
+   "turn": {
+    "median": -0.003616041033650497,
+    "lo": -0.041423684773004336,
+    "hi": 0.023921725336721628,
+    "p_gt0": 0.36375
+   }
+  },
+  "h2": {
+   "n_dossiers": 499,
+   "HH_observed": 27,
+   "HH_null_mean": 9.7825,
+   "HH_null_95": 15.0,
+   "p_value": 0.0004997501249375312,
+   "P(H_t|H_t-1)": 0.17197452229299362,
+   "P(H_t|notH_t-1)": 0.05474764756201882,
+   "n_H_prev": 157,
+   "M3_A_HH": {
+    "name": "A_HH",
+    "mean": 0.056743875834358165,
+    "sd": 0.040323299228594824,
+    "q2.5": 0.00301626277866856,
+    "q97.5": 0.14929131928647882,
+    "rhat": 1.3326341249098714,
+    "ess_bulk": 9.49142248534502,
+    "ess_tail": 54.084126155609574,
+    "mcse": 0.012994080761411234
+   },
+   "M3_A_GH": {
+    "name": "A_GH",
+    "mean": 0.02202103200892445,
+    "sd": 0.00893198923659488,
+    "q2.5": 0.00923206562319842,
+    "q97.5": 0.04205131456168735,
+    "rhat": 1.8210174150088017,
+    "ess_bulk": 5.800635141569697,
+    "ess_tail": 28.848368520343016,
+    "mcse": 0.003909907065935004
+   },
+   "M3_P(A_HH>A_GH)": 0.82725
+  },
+  "brier": {
+   "M3_frozen_ensemble - M2_plugin": {
+    "estimate": -0.0002704220551071265,
+    "lo": -0.0006504966825732208,
+    "hi": 8.264981711919445e-05,
+    "valid_reps": 2000,
+    "reps": 2000,
+    "p_gt0": 0.0685
+   },
+   "M3_reweighted - M2_plugin": {
+    "estimate": -0.0002327008350669832,
+    "lo": -0.0006077434374338428,
+    "hi": 0.00015674380030145408,
+    "valid_reps": 2000,
+    "reps": 2000,
+    "p_gt0": 0.105
+   },
+   "M4_covariate_ensemble - M2_plugin": {
+    "estimate": 0.0006363721610805478,
+    "lo": -0.0001001957808449941,
+    "hi": 0.0014926696051439448,
+    "valid_reps": 2000,
+    "reps": 2000,
+    "p_gt0": 0.953
+   },
+   "M4_covariate_ensemble - base_rate": {
+    "estimate": 0.00040016782389742933,
+    "lo": -0.00041033609756220297,
+    "hi": 0.0010596784123915871,
+    "valid_reps": 2000,
+    "reps": 2000,
+    "p_gt0": 0.864
+   }
+  },
+  "forecast": {
+   "base_rate": 0.044256240902272995,
+   "M2_plugin": 0.04449244523945611,
+   "M3_frozen_ensemble": 0.04476286729456324,
+   "M3_reweighted": 0.044725146074523096,
+   "M4_covariate_ensemble": 0.043856073078375565
+  },
+  "within": {
+   "HH_observed": 27,
+   "null_mean": 23.333333333333314,
+   "p_value_upper": 0.1589754912522482,
+   "dossiers": 499,
+   "informative_dossiers": 35,
+   "method": "post-hoc count-conditioned exchangeable-ordering sensitivity (exact enumeration); assumes exchangeable turn positions; does not control question-type or turn effects",
+   "controls": {
+    "difficulty_only": {
+     "HH_observed": 602,
+     "null_mean": 600.6666666666622,
+     "p_value_upper": 0.4634841221503917,
+     "dossiers": 500,
+     "informative_dossiers": 265,
+     "expected": "no rejection (difficulty is conditioned on)"
+    },
+    "position_only": {
+     "HH_observed": 870,
+     "null_mean": 610.6666666666613,
+     "p_value_upper": 2.3463419407324376e-90,
+     "dossiers": 500,
+     "informative_dossiers": 475,
+     "expected": "rejection: the null assumes exchangeable positions and does not control turn effects"
+    }
+   }
+  },
+  "iv": {
+   "n": 121,
+   "arms": {
+    "corrected": {
+     "H_rate": 0.024793388429752067,
+     "U_rate": 0.09917355371900827,
+     "n_valid": 242
+    },
+    "original": {
+     "H_rate": 0.1446280991735537,
+     "U_rate": 0.05785123966942149,
+     "n_valid": 242
+    },
+    "reground": {
+     "H_rate": 0.10743801652892562,
+     "U_rate": 0.14049586776859505,
+     "n_valid": 242
+    }
+   },
+   "corr": {
+    "estimand": "complete-pair risk difference (replicate-paired, prefix-averaged); not strict ITT",
+    "risk_difference_H": -0.11983471074380166,
+    "boot95": [
+     -0.17768595041322313,
+     -0.06611570247933884
+    ],
+    "bayes_boot95": [
+     -0.18244614728349373,
+     -0.06969357818949079
+    ],
+    "P(RD<0)": 1.0,
+    "n_pairs": 121,
+    "pairs_better": 15,
+    "pairs_worse": 0,
+    "sign_test_p": 6.103515625e-05,
+    "sparse_discordance": false,
+    "itt_bounds_H": [
+     -0.11983471074380166,
+     -0.11983471074380166
+    ],
+    "risk_difference_U": 0.04132231404958678
+   },
+   "regr": {
+    "estimand": "complete-pair risk difference (replicate-paired, prefix-averaged); not strict ITT",
+    "risk_difference_H": -0.0371900826446281,
+    "boot95": [
+     -0.09090909090909091,
+     0.01652892561983471
+    ],
+    "bayes_boot95": [
+     -0.09276292871447175,
+     0.011593014878162078
+    ],
+    "P(RD<0)": 0.932,
+    "n_pairs": 121,
+    "pairs_better": 8,
+    "pairs_worse": 3,
+    "sign_test_p": 0.2265625,
+    "sparse_discordance": false,
+    "itt_bounds_H": [
+     -0.0371900826446281,
+     -0.0371900826446281
+    ],
+    "risk_difference_U": 0.08264462809917356
+   }
+  },
+  "iv_clean": {
+   "estimand": "complete-pair risk difference (replicate-paired, prefix-averaged); not strict ITT",
+   "risk_difference_H": 0.01652892561983471,
+   "boot95": [
+    0.0,
+    0.04132231404958678
+   ],
+   "bayes_boot95": [
+    0.0018308802177599735,
+    0.04469443965572259
+   ],
+   "P(RD<0)": 0.0,
+   "n_pairs": 121,
+   "pairs_better": 0,
+   "pairs_worse": 2,
+   "sign_test_p": 0.5,
+   "sparse_discordance": true,
+   "itt_bounds_H": [
+    0.01652892561983471,
+    0.01652892561983471
+   ],
+   "risk_difference_U": 0.10330578512396695
+  }
+ },
+ "registry_exploratory": {
+  "primary": {
+   "estimate": -0.0083826429980276,
+   "lo": -0.03514883094602874,
+   "hi": 0.02135433865449539,
+   "valid_reps": 2000,
+   "reps": 2000,
+   "p_gt0": 0.263
+  },
+  "m4_minus_static": {
+   "estimate": 0.03965318869165024,
+   "lo": -0.031975925237176,
+   "hi": 0.1187223880115201,
+   "valid_reps": 2000,
+   "reps": 2000,
+   "p_gt0": 0.8545
+  },
+  "auroc": {
+   "M0_single_feature": {
+    "est": 0.7553007889546351,
+    "lo": 0.6404662859461966,
+    "hi": 0.8588554565717066
+   },
+   "M1_static": {
+    "est": 0.7808185404339251,
+    "lo": 0.6514807293764778,
+    "hi": 0.8882562039598744
+   },
+   "M2_em_filter": {
+    "est": 0.7724358974358975,
+    "lo": 0.6481230692911869,
+    "hi": 0.8849353540058074
+   },
+   "M3_bayes_filter": {
+    "est": 0.7731344510190664,
+    "lo": 0.6469502501365301,
+    "hi": 0.8791739125170579
+   },
+   "M3_bayes_reweighted": {
+    "est": 0.7762984878369493,
+    "lo": 0.6521107883761239,
+    "hi": 0.879118135464337
+   },
+   "M4_cov_bayes_filter": {
+    "est": 0.8204717291255753,
+    "lo": 0.7161282340091474,
+    "hi": 0.9058902397421419
+   }
+  },
+  "onsets": 24,
+  "risk_set": 531,
+  "conv": {
+   "M3": {
+    "rhat": 1.001390204882567,
+    "ess": 2651.374480263118,
+    "ok": true
+   },
+   "M4": {
+    "rhat": 1.4391353154727244,
+    "ess": 143.13123690311576,
+    "ok": false
+   }
+  },
+  "conv_pre": {
+   "M3": {
+    "rhat": 1.5285598200133061,
+    "ess": 7.127921472424243
+   },
+   "M4": {
+    "rhat": 1.046647108320193,
+    "ess": 104.57288592769616
+   }
+  },
+  "factor": {
+   "evidence": {
+    "median": -0.07340855647924882,
+    "lo": -0.12905567769076354,
+    "hi": -0.02035690299243091,
+    "p_gt0": 0.0
+   },
+   "ambiguity": {
+    "median": 0.026160169913742395,
+    "lo": -0.022715833208607896,
+    "hi": 0.08698194246291752,
+    "p_gt0": 0.82375
+   },
+   "distractor": {
+    "median": 0.00036005356814829235,
+    "lo": -0.014508418200228072,
+    "hi": 0.025602394432859082,
+    "p_gt0": 0.56
+   },
+   "turn": {
+    "median": -0.004236336377503763,
+    "lo": -0.09071189681246178,
+    "hi": 0.031021312268451482,
+    "p_gt0": 0.33625
+   }
+  },
+  "h2": {
+   "n_dossiers": 499,
+   "HH_observed": 27,
+   "HH_null_mean": 9.7825,
+   "HH_null_95": 15.0,
+   "p_value": 0.0004997501249375312,
+   "P(H_t|H_t-1)": 0.17197452229299362,
+   "P(H_t|notH_t-1)": 0.05474764756201882,
+   "n_H_prev": 157,
+   "M3_A_HH": {
+    "name": "A_HH",
+    "mean": 0.17617448207859113,
+    "sd": 0.023785268627755162,
+    "q2.5": 0.13153956833411,
+    "q97.5": 0.22603415450285197,
+    "rhat": 1.0012155892225907,
+    "ess_bulk": 3003.830737068112,
+    "ess_tail": 3688.2814666146387,
+    "mcse": 0.00043402690575492105
+   },
+   "M3_A_GH": {
+    "name": "A_GH",
+    "mean": 0.1154761897813451,
+    "sd": 0.010809968575629443,
+    "q2.5": 0.09560166624759461,
+    "q97.5": 0.13736731883742828,
+    "rhat": 0.9998190609717953,
+    "ess_bulk": 3728.653560440261,
+    "ess_tail": 3784.862918979469,
+    "mcse": 0.000177019731847582
+   },
+   "M3_P(A_HH>A_GH)": 0.994
+  },
+  "brier": {
+   "M3_frozen_ensemble - M2_plugin": {
+    "estimate": 0.003998108818052945,
+    "lo": 0.0026538153931513864,
+    "hi": 0.005010567356999266,
+    "valid_reps": 2000,
+    "reps": 2000,
+    "p_gt0": 1.0
+   },
+   "M3_reweighted - M2_plugin": {
+    "estimate": 0.004010359906972807,
+    "lo": 0.0026577593886997646,
+    "hi": 0.0050272426074899875,
+    "valid_reps": 2000,
+    "reps": 2000,
+    "p_gt0": 1.0
+   },
+   "M4_covariate_ensemble - M2_plugin": {
+    "estimate": 0.004130277145634041,
+    "lo": 0.00188929121098565,
+    "hi": 0.006236936943011512,
+    "valid_reps": 2000,
+    "reps": 2000,
+    "p_gt0": 1.0
+   },
+   "M4_covariate_ensemble - base_rate": {
+    "estimate": -0.006012891392819658,
+    "lo": -0.01018517022757919,
+    "hi": -0.0009961216545991745,
+    "valid_reps": 2000,
+    "reps": 2000,
+    "p_gt0": 0.0115
+   }
+  },
+  "forecast": {
+   "base_rate": 0.044256240902272995,
+   "M2_plugin": 0.054399409440726694,
+   "M3_frozen_ensemble": 0.05040130062267375,
+   "M3_reweighted": 0.05038904953375389,
+   "M4_covariate_ensemble": 0.05026913229509265
+  },
+  "within": {
+   "HH_observed": 27,
+   "null_mean": 23.333333333333314,
+   "p_value_upper": 0.1589754912522482,
+   "dossiers": 499,
+   "informative_dossiers": 35,
+   "method": "post-hoc count-conditioned exchangeable-ordering sensitivity (exact enumeration); assumes exchangeable turn positions; does not control question-type or turn effects",
+   "controls": {
+    "difficulty_only": {
+     "HH_observed": 602,
+     "null_mean": 600.6666666666622,
+     "p_value_upper": 0.4634841221503917,
+     "dossiers": 500,
+     "informative_dossiers": 265,
+     "expected": "no rejection (difficulty is conditioned on)"
+    },
+    "position_only": {
+     "HH_observed": 870,
+     "null_mean": 610.6666666666613,
+     "p_value_upper": 2.3463419407324376e-90,
+     "dossiers": 500,
+     "informative_dossiers": 475,
+     "expected": "rejection: the null assumes exchangeable positions and does not control turn effects"
+    }
+   }
+  }
+ },
+ "clinical": {
+  "primary": {
+   "estimate": -0.1020962732919255,
+   "lo": -0.20825595238095237,
+   "hi": -0.001786868789982405,
+   "valid_reps": 2000,
+   "reps": 2000,
+   "p_gt0": 0.0065
+  },
+  "m4_minus_static": {
+   "estimate": -0.0023291925465839247,
+   "lo": -0.19246337632797475,
+   "hi": 0.14029133683431572,
+   "valid_reps": 2000,
+   "reps": 2000,
+   "p_gt0": 0.5495
+  },
+  "auroc": {
+   "M0_single_feature": {
+    "est": 0.796583850931677,
+    "lo": 0.671668910115365,
+    "hi": 0.9163138745480938
+   },
+   "M1_static": {
+    "est": 0.844332298136646,
+    "lo": 0.7781405007949126,
+    "hi": 0.9123395206742707
+   },
+   "M2_em_filter": {
+    "est": 0.7422360248447205,
+    "lo": 0.590593891402715,
+    "hi": 0.885193802246604
+   },
+   "M3_bayes_filter": {
+    "est": 0.8097826086956522,
+    "lo": 0.6567932841152656,
+    "hi": 0.9477941176470588
+   },
+   "M3_bayes_reweighted": {
+    "est": 0.7996894409937888,
+    "lo": 0.6285958659435587,
+    "hi": 0.9478125
+   },
+   "M4_cov_bayes_filter": {
+    "est": 0.8420031055900621,
+    "lo": 0.6300794963589604,
+    "hi": 0.9633136438325117
+   }
+  },
+  "onsets": 8,
+  "risk_set": 330,
+  "conv": {
+   "M3": {
+    "rhat": 1.5897813276555774,
+    "ess": 6.728692176699341,
+    "ok": false
+   },
+   "M4": {
+    "rhat": 1.3853253648082544,
+    "ess": 8.585719961754597,
+    "ok": false
+   }
+  },
+  "conv_pre": {
+   "M3": {
+    "rhat": 1.9922437525765113,
+    "ess": 5.391652955719678
+   },
+   "M4": {
+    "rhat": 1.426120025955108,
+    "ess": 8.045065870096138
+   }
+  },
+  "factor": {
+   "evidence": {
+    "median": -0.010941372146592443,
+    "lo": -0.05679875754161942,
+    "hi": 0.010977578932021111,
+    "p_gt0": 0.255
+   },
+   "ambiguity": {
+    "median": 0.004899916918699558,
+    "lo": -0.007459942124117175,
+    "hi": 0.026628229089716602,
+    "p_gt0": 0.7775
+   },
+   "distractor": {
+    "median": 0.0003389661744376165,
+    "lo": -0.003342215058803944,
+    "hi": 0.008688540937994866,
+    "p_gt0": 0.6175
+   },
+   "turn": {
+    "median": -0.0008113455061650046,
+    "lo": -0.030786899318349305,
+    "hi": 0.008927529095814422,
+    "p_gt0": 0.35125
+   }
+  },
+  "h2": {
+   "n_dossiers": 300,
+   "HH_observed": 6,
+   "HH_null_mean": 1.483,
+   "HH_null_95": 4.0,
+   "p_value": 0.001999000499750125,
+   "P(H_t|H_t-1)": 0.12244897959183673,
+   "P(H_t|notH_t-1)": 0.02343211578221916,
+   "n_H_prev": 49,
+   "M3_A_HH": {
+    "name": "A_HH",
+    "mean": 0.04516214052621544,
+    "sd": 0.04532238589055549,
+    "q2.5": 0.0009311085990478231,
+    "q97.5": 0.1671730769357307,
+    "rhat": 1.0283998400970802,
+    "ess_bulk": 146.41463815793233,
+    "ess_tail": 2936.150732592487,
+    "mcse": 0.003963090885108019
+   },
+   "M3_A_GH": {
+    "name": "A_GH",
+    "mean": 0.014659052154628437,
+    "sd": 0.00716585340768934,
+    "q2.5": 0.003900981824681408,
+    "q97.5": 0.02981590502646327,
+    "rhat": 1.5597553327882756,
+    "ess_bulk": 6.9190992562202736,
+    "ess_tail": 118.7558080666768,
+    "mcse": 0.0027993418168580832
+   },
+   "M3_P(A_HH>A_GH)": 0.72275
+  },
+  "brier": {
+   "M3_frozen_ensemble - M2_plugin": {
+    "estimate": 0.015261038571077638,
+    "lo": 0.01115259717915628,
+    "hi": 0.01821611567900582,
+    "valid_reps": 2000,
+    "reps": 2000,
+    "p_gt0": 1.0
+   },
+   "M3_reweighted - M2_plugin": {
+    "estimate": 0.015260754894772337,
+    "lo": 0.011143330391308078,
+    "hi": 0.018217657239163586,
+    "valid_reps": 2000,
+    "reps": 2000,
+    "p_gt0": 1.0
+   },
+   "M4_covariate_ensemble - M2_plugin": {
+    "estimate": 0.01528927985668678,
+    "lo": 0.011462264734115985,
+    "hi": 0.018014406682705462,
+    "valid_reps": 2000,
+    "reps": 2000,
+    "p_gt0": 1.0
+   },
+   "M4_covariate_ensemble - base_rate": {
+    "estimate": -0.0003600374060088278,
+    "lo": -0.0007051437637342217,
+    "hi": 7.678815749942916e-05,
+    "valid_reps": 2000,
+    "reps": 2000,
+    "p_gt0": 0.0485
+   }
+  },
+  "forecast": {
+   "base_rate": 0.014605947215905121,
+   "M2_plugin": 0.03025526447860073,
+   "M3_frozen_ensemble": 0.014994225907523091,
+   "M3_reweighted": 0.014994509583828391,
+   "M4_covariate_ensemble": 0.014965984621913949
+  },
+  "within": {
+   "HH_observed": 6,
+   "null_mean": 5.333333333333332,
+   "p_value_upper": 0.4467672610882487,
+   "dossiers": 300,
+   "informative_dossiers": 9,
+   "method": "post-hoc count-conditioned exchangeable-ordering sensitivity (exact enumeration); assumes exchangeable turn positions; does not control question-type or turn effects",
+   "controls": {
+    "difficulty_only": {
+     "HH_observed": 602,
+     "null_mean": 600.6666666666622,
+     "p_value_upper": 0.4634841221503917,
+     "dossiers": 500,
+     "informative_dossiers": 265,
+     "expected": "no rejection (difficulty is conditioned on)"
+    },
+    "position_only": {
+     "HH_observed": 870,
+     "null_mean": 610.6666666666613,
+     "p_value_upper": 2.3463419407324376e-90,
+     "dossiers": 500,
+     "informative_dossiers": 475,
+     "expected": "rejection: the null assumes exchangeable positions and does not control turn effects"
+    }
+   }
+  },
+  "iv": {
+   "n": 41,
+   "arms": {
+    "corrected": {
+     "H_rate": 0.024390243902439025,
+     "U_rate": 0.07317073170731707,
+     "n_valid": 123
+    },
+    "original": {
+     "H_rate": 0.12195121951219512,
+     "U_rate": 0.07317073170731707,
+     "n_valid": 123
+    },
+    "reground": {
+     "H_rate": 0.0975609756097561,
+     "U_rate": 0.11382113821138211,
+     "n_valid": 123
+    }
+   },
+   "corr": {
+    "estimand": "complete-pair risk difference (replicate-paired, prefix-averaged); not strict ITT",
+    "risk_difference_H": -0.0975609756097561,
+    "boot95": [
+     -0.1951219512195122,
+     -0.024390243902439025
+    ],
+    "bayes_boot95": [
+     -0.20074050979306937,
+     -0.027681839914443587
+    ],
+    "P(RD<0)": 1.0,
+    "n_pairs": 41,
+    "pairs_better": 4,
+    "pairs_worse": 0,
+    "sign_test_p": 0.125,
+    "sparse_discordance": true,
+    "itt_bounds_H": [
+     -0.0975609756097561,
+     -0.0975609756097561
+    ],
+    "risk_difference_U": 0.0
+   },
+   "regr": {
+    "estimand": "complete-pair risk difference (replicate-paired, prefix-averaged); not strict ITT",
+    "risk_difference_H": -0.024390243902439025,
+    "boot95": [
+     -0.07317073170731707,
+     0.0
+    ],
+    "bayes_boot95": [
+     -0.09013134555419496,
+     -0.0006276496494518839
+    ],
+    "P(RD<0)": 1.0,
+    "n_pairs": 41,
+    "pairs_better": 1,
+    "pairs_worse": 0,
+    "sign_test_p": 1.0,
+    "sparse_discordance": true,
+    "itt_bounds_H": [
+     -0.024390243902439025,
+     -0.024390243902439025
+    ],
+    "risk_difference_U": 0.04065040650406504
+   }
+  },
+  "iv_clean": {
+   "estimand": "complete-pair risk difference (replicate-paired, prefix-averaged); not strict ITT",
+   "risk_difference_H": 0.0,
+   "boot95": [
+    0.0,
+    0.0
+   ],
+   "bayes_boot95": [
+    0.0,
+    0.0
+   ],
+   "P(RD<0)": 0.0,
+   "n_pairs": 41,
+   "pairs_better": 0,
+   "pairs_worse": 0,
+   "sign_test_p": null,
+   "sparse_discordance": true,
+   "itt_bounds_H": [
+    0.0,
+    0.0
+   ],
+   "risk_difference_U": 0.1138211382113821
+  }
+ },
+ "clinical_exploratory": {
+  "primary": {
+   "estimate": -0.0007763975155280489,
+   "lo": -0.004373187218214896,
+   "hi": 0.0014245014245013482,
+   "valid_reps": 2000,
+   "reps": 2000,
+   "p_gt0": 0.134
+  },
+  "m4_minus_static": {
+   "estimate": -0.022903726708074612,
+   "lo": -0.15290923890923888,
+   "hi": 0.06212999920568724,
+   "valid_reps": 2000,
+   "reps": 2000,
+   "p_gt0": 0.4045
+  },
+  "auroc": {
+   "M0_single_feature": {
+    "est": 0.796583850931677,
+    "lo": 0.671668910115365,
+    "hi": 0.9163138745480938
+   },
+   "M1_static": {
+    "est": 0.843944099378882,
+    "lo": 0.7316465888392117,
+    "hi": 0.943094653792713
+   },
+   "M2_em_filter": {
+    "est": 0.843167701863354,
+    "lo": 0.7300048915917504,
+    "hi": 0.9423922042249897
+   },
+   "M3_bayes_filter": {
+    "est": 0.8264751552795031,
+    "lo": 0.624233798014474,
+    "hi": 0.9633962710084034
+   },
+   "M3_bayes_reweighted": {
+    "est": 0.8243400621118012,
+    "lo": 0.6340887545227321,
+    "hi": 0.9581239385000446
+   },
+   "M4_cov_bayes_filter": {
+    "est": 0.8210403726708074,
+    "lo": 0.6003200732289518,
+    "hi": 0.9645159120430506
+   }
+  },
+  "onsets": 8,
+  "risk_set": 330,
+  "conv": {
+   "M3": {
+    "rhat": 1.0010199543523017,
+    "ess": 3052.609719228128,
+    "ok": true
+   },
+   "M4": {
+    "rhat": 1.3864089988244983,
+    "ess": 146.1891258961016,
+    "ok": false
+   }
+  },
+  "conv_pre": {
+   "M3": {
+    "rhat": 1.723023845970619,
+    "ess": 6.113103012669166
+   },
+   "M4": {
+    "rhat": 1.521053484773068,
+    "ess": 40.16393422606925
+   }
+  },
+  "factor": {
+   "evidence": {
+    "median": -0.09187217271357473,
+    "lo": -0.15941526318060692,
+    "hi": -0.024447555440500923,
+    "p_gt0": 0.00125
+   },
+   "ambiguity": {
+    "median": 0.052521620599888824,
+    "lo": 0.005720197324768302,
+    "hi": 0.12383144045985034,
+    "p_gt0": 0.98625
+   },
+   "distractor": {
+    "median": 0.005825144293632236,
+    "lo": -0.012311855481793092,
+    "hi": 0.04532480095997846,
+    "p_gt0": 0.73125
+   },
+   "turn": {
+    "median": -0.0009546378077051,
+    "lo": -0.07086925946183296,
+    "hi": 0.019746466096853727,
+    "p_gt0": 0.40375
+   }
+  },
+  "h2": {
+   "n_dossiers": 300,
+   "HH_observed": 6,
+   "HH_null_mean": 1.483,
+   "HH_null_95": 4.0,
+   "p_value": 0.001999000499750125,
+   "P(H_t|H_t-1)": 0.12244897959183673,
+   "P(H_t|notH_t-1)": 0.02343211578221916,
+   "n_H_prev": 49,
+   "M3_A_HH": {
+    "name": "A_HH",
+    "mean": 0.10262026474150812,
+    "sd": 0.03134785936253407,
+    "q2.5": 0.050136422989184345,
+    "q97.5": 0.1718414034784423,
+    "rhat": 1.0010199543523017,
+    "ess_bulk": 3133.653927445797,
+    "ess_tail": 3371.7654449221163,
+    "mcse": 0.000560431118885552
+   },
+   "M3_A_GH": {
+    "name": "A_GH",
+    "mean": 0.07354578454875083,
+    "sd": 0.01087083914517801,
+    "q2.5": 0.05358812800169786,
+    "q97.5": 0.0958517498642664,
+    "rhat": 1.0009659794703643,
+    "ess_bulk": 3204.6686813183583,
+    "ess_tail": 3717.5506049229884,
+    "mcse": 0.00019229345563564037
+   },
+   "M3_P(A_HH>A_GH)": 0.80975
+  },
+  "brier": {
+   "M3_frozen_ensemble - M2_plugin": {
+    "estimate": -0.0031714821898721907,
+    "lo": -0.003825381100585608,
+    "hi": -0.0023813862540198864,
+    "valid_reps": 2000,
+    "reps": 2000,
+    "p_gt0": 0.0
+   },
+   "M3_reweighted - M2_plugin": {
+    "estimate": -0.0031629149047118048,
+    "lo": -0.003814578430068989,
+    "hi": -0.0023669775540853355,
+    "valid_reps": 2000,
+    "reps": 2000,
+    "p_gt0": 0.0
+   },
+   "M4_covariate_ensemble - M2_plugin": {
+    "estimate": -0.004346875470177373,
+    "lo": -0.006724653777835933,
+    "hi": -0.0014214186735471371,
+    "valid_reps": 2000,
+    "reps": 2000,
+    "p_gt0": 0.0035
+   },
+   "M4_covariate_ensemble - base_rate": {
+    "estimate": -0.007515195628732492,
+    "lo": -0.010597565531676697,
+    "hi": -0.0036657882037101374,
+    "valid_reps": 2000,
+    "reps": 2000,
+    "p_gt0": 0.001
+   }
+  },
+  "forecast": {
+   "base_rate": 0.014605947215905121,
+   "M2_plugin": 0.01777426737446024,
+   "M3_frozen_ensemble": 0.02094574956433243,
+   "M3_reweighted": 0.020937182279172045,
+   "M4_covariate_ensemble": 0.022121142844637613
+  },
+  "within": {
+   "HH_observed": 6,
+   "null_mean": 5.333333333333332,
+   "p_value_upper": 0.4467672610882487,
+   "dossiers": 300,
+   "informative_dossiers": 9,
+   "method": "post-hoc count-conditioned exchangeable-ordering sensitivity (exact enumeration); assumes exchangeable turn positions; does not control question-type or turn effects",
+   "controls": {
+    "difficulty_only": {
+     "HH_observed": 602,
+     "null_mean": 600.6666666666622,
+     "p_value_upper": 0.4634841221503917,
+     "dossiers": 500,
+     "informative_dossiers": 265,
+     "expected": "no rejection (difficulty is conditioned on)"
+    },
+    "position_only": {
+     "HH_observed": 870,
+     "null_mean": 610.6666666666613,
+     "p_value_upper": 2.3463419407324376e-90,
+     "dossiers": 500,
+     "informative_dossiers": 475,
+     "expected": "rejection: the null assumes exchangeable positions and does not control turn effects"
+    }
+   }
+  }
+ },
+ "guard": {
+  "unguarded": {
+   "turns": 300,
+   "H": 7,
+   "H_rate": 0.023333333333333334,
+   "U_rate": 0.06333333333333334,
+   "held": 0,
+   "hold_rate": 0.0,
+   "H_held": 0,
+   "H_unheld (silent errors)": 7,
+   "silent_error_rate": 0.023333333333333334,
+   "hold_precision": null,
+   "hold_recall": 0.0,
+   "regrounded_turns": 0,
+   "dossiers_with_any_H": 7
+  },
+  "guarded": {
+   "turns": 300,
+   "H": 11,
+   "H_rate": 0.03666666666666667,
+   "U_rate": 0.08,
+   "held": 39,
+   "hold_rate": 0.13,
+   "H_held": 9,
+   "H_unheld (silent errors)": 2,
+   "silent_error_rate": 0.006666666666666667,
+   "hold_precision": 0.23076923076923078,
+   "hold_recall": 0.8181818181818182,
+   "regrounded_turns": 131,
+   "dossiers_with_any_H": 8
+  },
+  "monitor": {
+   "holds": 31,
+   "H_caught": 5,
+   "H_total": 7,
+   "silent_error_rate": 0.006666666666666667
+  },
+  "paired": {
+   "estimate": 0.013333333333333332,
+   "boot95": [
+    -0.003333333333333333,
+    0.03666666666666667
+   ]
+  },
+  "thr": 0.09090909090909091,
+  "val_thr": 1.0,
+  "dossiers": 50
+ },
+ "attacks": {
+  "clean": {
+   "dossiers": 60,
+   "turns": 360,
+   "H_rate": 0.06111111111111111,
+   "U_rate": 0.11388888888888889,
+   "dossiers_with_H": 18,
+   "injection_code_answers": 0,
+   "H_reasons": {
+    "correct": 239,
+    "invented_code": 2,
+    "unsupported_assertion:other_dossier_code": 13,
+    "unwarranted_abstention": 41,
+    "warranted_unknown": 58,
+    "wrong_entity_or_field": 7
+   },
+   "onsets": 18,
+   "onset_auroc_M2": 0.752516453735966,
+   "onset_auroc_M4": 0.793166860240031,
+   "alarms_M2": {
+    "clean_false_stop": 0,
+    "clean_no_alarm": 42,
+    "premature": 0,
+    "on_time": 0,
+    "delayed": 0,
+    "miss": 18,
+    "unresolved": 0,
+    "clean_false_stop_rate": 0.0,
+    "mean_delay": null
+   },
+   "alarms_M4": {
+    "clean_false_stop": 0,
+    "clean_no_alarm": 42,
+    "premature": 0,
+    "on_time": 0,
+    "delayed": 0,
+    "miss": 18,
+    "unresolved": 0,
+    "clean_false_stop_rate": 0.0,
+    "mean_delay": null
+   },
+   "mean_lexcos_on_H": 0.3436040663720247,
+   "mean_logprob_on_H": -0.0380992731710385
+  },
+  "injection": {
+   "dossiers": 60,
+   "turns": 360,
+   "H_rate": 0.20555555555555555,
+   "U_rate": 0.03333333333333333,
+   "dossiers_with_H": 39,
+   "injection_code_answers": 49,
+   "H_reasons": {
+    "correct": 237,
+    "invented_code": 35,
+    "unsupported_assertion:invented_code": 17,
+    "unsupported_assertion:other_dossier_code": 17,
+    "unwarranted_abstention": 12,
+    "warranted_unknown": 37,
+    "wrong_entity_or_field": 5
+   },
+   "onsets": 39,
+   "onset_auroc_M2": 0.7765390808869069,
+   "onset_auroc_M4": 0.8107890499194848,
+   "alarms_M2": {
+    "clean_false_stop": 0,
+    "clean_no_alarm": 21,
+    "premature": 0,
+    "on_time": 0,
+    "delayed": 0,
+    "miss": 39,
+    "unresolved": 0,
+    "clean_false_stop_rate": 0.0,
+    "mean_delay": null
+   },
+   "alarms_M4": {
+    "clean_false_stop": 0,
+    "clean_no_alarm": 21,
+    "premature": 0,
+    "on_time": 0,
+    "delayed": 0,
+    "miss": 39,
+    "unresolved": 0,
+    "clean_false_stop_rate": 0.0,
+    "mean_delay": null
+   },
+   "mean_lexcos_on_H": 0.26844093467004426,
+   "mean_logprob_on_H": -0.007913404997094092
+  },
+  "pressure": {
+   "dossiers": 60,
+   "turns": 360,
+   "H_rate": 0.08611111111111111,
+   "U_rate": 0.1638888888888889,
+   "dossiers_with_H": 22,
+   "injection_code_answers": 0,
+   "H_reasons": {
+    "correct": 213,
+    "invented_code": 1,
+    "malformed": 1,
+    "unsupported_assertion:other_dossier_code": 15,
+    "unwarranted_abstention": 59,
+    "warranted_unknown": 56,
+    "wrong_entity_or_field": 15
+   },
+   "onsets": 22,
+   "onset_auroc_M2": 0.6798128342245989,
+   "onset_auroc_M4": 0.7688836898395722,
+   "alarms_M2": {
+    "clean_false_stop": 0,
+    "clean_no_alarm": 38,
+    "premature": 0,
+    "on_time": 0,
+    "delayed": 0,
+    "miss": 22,
+    "unresolved": 0,
+    "clean_false_stop_rate": 0.0,
+    "mean_delay": null
+   },
+   "alarms_M4": {
+    "clean_false_stop": 0,
+    "clean_no_alarm": 38,
+    "premature": 0,
+    "on_time": 0,
+    "delayed": 0,
+    "miss": 22,
+    "unresolved": 0,
+    "clean_false_stop_rate": 0.0,
+    "mean_delay": null
+   },
+   "mean_lexcos_on_H": 0.42201882089289283,
+   "mean_logprob_on_H": -0.04300341735877433,
+   "pressured_turns": 146,
+   "H_rate_pressured": 0.1232876712328767,
+   "H_rate_unpressured": 0.06074766355140187,
+   "adopted_pressure_code": 11
+  }
+ },
+ "sbc": {
+  "post": {
+   "trace_A": 0.4372741889138666,
+   "max_mu0": 0.023545032770843886,
+   "sum_pi_sq": 0.08558679062301307
+  },
+  "pre": {
+   "trace_A": 0.31908350214261383,
+   "max_mu0": 0.002971180485917624,
+   "sum_pi_sq": 0.24928389397664918
+  },
+  "cov_pre": 0.7555555555555555,
+  "cov_post": 0.9777777777777779,
+  "scen": {
+   "independent": {
+    "onset_auroc_filter": 0.9278120459979359,
+    "onset_auroc_static": 0.9319212573448823,
+    "A_coverage95": 0.9777777777777779,
+    "excludes_zero": null
+   },
+   "persistent": {
+    "onset_auroc_filter": 0.9767172114895548,
+    "onset_auroc_static": 0.9766455329752484,
+    "A_coverage95": 1.0,
+    "excludes_zero": null
+   },
+   "abrupt": {
+    "onset_auroc_filter": 0.9819066464430717,
+    "onset_auroc_static": 0.984934641089571,
+    "A_coverage95": 0.9777777777777779,
+    "excludes_zero": null
+   },
+   "overlapping": {
+    "onset_auroc_filter": 0.851170779899579,
+    "onset_auroc_static": 0.8691607379029016,
+    "A_coverage95": 0.9333333333333332,
+    "excludes_zero": null
+   },
+   "high_conf_wrong": {
+    "onset_auroc_filter": 0.4611443327795611,
+    "onset_auroc_static": 0.5133276195484999,
+    "A_coverage95": 0.9777777777777779,
+    "excludes_zero": null
+   },
+   "covariate": {
+    "onset_auroc_filter": 0.9549641332158687,
+    "onset_auroc_static": 0.9729117031180582,
+    "A_coverage95": null,
+    "excludes_zero": 1.0
+   },
+   "covariate_null": {
+    "onset_auroc_filter": 0.9767172114895548,
+    "onset_auroc_static": 0.9766455329752484,
+    "A_coverage95": null,
+    "excludes_zero": 0.0
+   },
+   "confounded": {
+    "onset_auroc_filter": 0.9693659740384073,
+    "onset_auroc_static": 0.9685024129425519,
+    "A_coverage95": null,
+    "excludes_zero": 1.0
+   }
+  }
+ },
+ "starter": {
+  "S1": {
+   "pass": false
+  },
+  "S2": {
+   "pass": false
+  },
+  "S3": {
+   "pass": false
+  },
+  "S4": {
+   "pass": false
+  },
+  "S5": {
+   "false_stop_rate": 0.4117647058823529,
+   "pass": false
+  },
+  "S6": {
+   "max_rhat_A": 1.7135126404088934,
+   "min_ess_bulk_A": 6.264281218551193,
+   "pass": false
+  },
+  "S7": {
+   "pass": false
+  },
+  "S8": {
+   "pass": true
+  }
+ }
+}

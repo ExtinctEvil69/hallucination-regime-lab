@@ -1,0 +1,35 @@
+{
+ "dossier_id": 30007,
+ "labels": [
+  {
+   "turn": 1,
+   "label": "G",
+   "reason": "correct"
+  },
+  {
+   "turn": 2,
+   "label": "H",
+   "reason": "wrong_entity_or_field"
+  },
+  {
+   "turn": 3,
+   "label": "G",
+   "reason": "correct"
+  },
+  {
+   "turn": 4,
+   "label": "P",
+   "reason": "malformed"
+  },
+  {
+   "turn": 5,
+   "label": "G",
+   "reason": "warranted_unknown"
+  },
+  {
+   "turn": 6,
+   "label": "G",
+   "reason": "correct"
+  }
+ ]
+}

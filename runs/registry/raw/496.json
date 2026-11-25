@@ -1,0 +1,337 @@
+{
+ "schema": "2.0",
+ "dossier_id": 496,
+ "domain": "registry",
+ "synthetic": false,
+ "design": "v2",
+ "config_fp": "e783c16de97ec52b",
+ "system": "You are a registry assistant. Answer using only the dossier below. Reply with only the requested code (format like AB3-41) or the single word UNKNOWN if the dossier does not contain it. No explanation.\n\nRegistry dossier (fictional records):\n- Nesta Wexley (registered 1972) | vault code: GU5-71\n- Hollis Varrow (registered 2000) | vault code: WT7-25\n- Nesta Wexley (registered 1972) | relay code: BB6-80\n- Hollis Varrow (registered 2000) | relay code: EV5-99\n- Orrin Yarden (registered 1981) | transit code: DZ1-97\n- Hollis Varrow (registered 2000) | transit code: DL4-14\n- Dovran Varrow (registered 1946) | vault code: HE2-22\n- Pellan Raskel (registered 1949) | relay code: RQ7-13\n- Dovran Varrow (registered 1946) | access code: KH8-13\n- Pellan Raskel (registered 1949) | permit code: GK6-34\n- Nesta Wexley (registered 1972) | permit code: VW1-37\n- Gaelin Ulden (registered 1945) | access code: QD7-15\n- Pellan Raskel (registered 1949) | transit code: ZA0-14\n- Orrin Yarden (registered 1981) | vault code: HI2-26\n- Nesta Wexley (registered 1972) | access code: QL8-83\n- Pellan Raskel (registered 1949) | access code: PJ2-38\n- Orrin Yarden (registered 1981) | relay code: ST8-37\n- Hollis Varrow (registered 2000) | permit code: FB7-55\n- Gaelin Ulden (registered 1945) | transit code: AI8-85\n- Orrin Yarden (registered 1981) | access code: QQ3-19\n- Orrin Yarden (registered 1981) | permit code: QW6-78\n- Gaelin Ulden (registered 1945) | permit code: CR4-16\n- Dovran Varrow (registered 1946) | permit code: SW5-51\n- Pellan Raskel (registered 1949) | vault code: WC1-13\n- Hollis Varrow (registered 2000) | access code: VK3-70\n- Gaelin Ulden (registered 1945) | relay code: ZC4-28\n- Dovran Varrow (registered 1946) | transit code: ZC5-55",
+ "rows": [
+  "Nesta Wexley (registered 1972) | vault code: GU5-71",
+  "Hollis Varrow (registered 2000) | vault code: WT7-25",
+  "Nesta Wexley (registered 1972) | relay code: BB6-80",
+  "Hollis Varrow (registered 2000) | relay code: EV5-99",
+  "Orrin Yarden (registered 1981) | transit code: DZ1-97",
+  "Hollis Varrow (registered 2000) | transit code: DL4-14",
+  "Dovran Varrow (registered 1946) | vault code: HE2-22",
+  "Pellan Raskel (registered 1949) | relay code: RQ7-13",
+  "Dovran Varrow (registered 1946) | access code: KH8-13",
+  "Pellan Raskel (registered 1949) | permit code: GK6-34",
+  "Nesta Wexley (registered 1972) | permit code: VW1-37",
+  "Gaelin Ulden (registered 1945) | access code: QD7-15",
+  "Pellan Raskel (registered 1949) | transit code: ZA0-14",
+  "Orrin Yarden (registered 1981) | vault code: HI2-26",
+  "Nesta Wexley (registered 1972) | access code: QL8-83",
+  "Pellan Raskel (registered 1949) | access code: PJ2-38",
+  "Orrin Yarden (registered 1981) | relay code: ST8-37",
+  "Hollis Varrow (registered 2000) | permit code: FB7-55",
+  "Gaelin Ulden (registered 1945) | transit code: AI8-85",
+  "Orrin Yarden (registered 1981) | access code: QQ3-19",
+  "Orrin Yarden (registered 1981) | permit code: QW6-78",
+  "Gaelin Ulden (registered 1945) | permit code: CR4-16",
+  "Dovran Varrow (registered 1946) | permit code: SW5-51",
+  "Pellan Raskel (registered 1949) | vault code: WC1-13",
+  "Hollis Varrow (registered 2000) | access code: VK3-70",
+  "Gaelin Ulden (registered 1945) | relay code: ZC4-28",
+  "Dovran Varrow (registered 1946) | transit code: ZC5-55"
+ ],
+ "entities": [
+  "Hollis Varrow",
+  "Nesta Wexley",
+  "Dovran Varrow",
+  "Orrin Yarden",
+  "Pellan Raskel",
+  "Gaelin Ulden"
+ ],
+ "turns": [
+  {
+   "turn": 1,
+   "qtype": "ambiguous",
+   "question": "What is the permit code for Varrow (registered 2000)?",
+   "field": "permit code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 2,
+    "distractor": 0,
+    "turn": 1,
+    "context_len": 439
+   },
+   "seed": 759886445,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00021811718761455268,
+     "top": [
+      -0.00021811718761455268,
+      -8.960938453674316,
+      -9.7880220413208,
+      -10.90038013458252,
+      -12.17503833770752,
+      -12.373993873596191,
+      -13.796555519104004,
+      -14.153517723083496,
+      -14.207119941711426,
+      -14.350451469421387,
+      -14.533055305480957,
+      -14.652209281921387,
+      -14.664448738098145,
+      -15.00110149383545,
+      -16.183216094970703,
+      -16.257278442382812,
+      -16.2725830078125,
+      -16.329050064086914,
+      -16.416587829589844,
+      -16.509349822998047
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 725,
+   "wall_s": 3.2158000469207764,
+   "prompt_sha256": "317d586839826ce7859bddaef51f2fce5143abda9cc5c39b3e4dc79fb027cf8d"
+  },
+  {
+   "turn": 2,
+   "qtype": "prior_ref",
+   "question": "What is that entity's relay code?",
+   "field": "relay code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 2,
+    "context_len": 449
+   },
+   "seed": 729405105,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -5.3287971240933985e-05,
+     "top": [
+      -5.3287971240933985e-05,
+      -9.923065185546875,
+      -12.886882781982422,
+      -14.010997772216797,
+      -14.054655075073242,
+      -15.857076644897461,
+      -17.16598892211914,
+      -18.66440773010254,
+      -18.958087921142578,
+      -19.301603317260742,
+      -19.44833755493164,
+      -19.707651138305664,
+      -20.010051727294922,
+      -20.385051727294922,
+      -20.451419830322266,
+      -20.687490463256836,
+      -21.096622467041016,
+      -21.19778060913086,
+      -21.246395111083984,
+      -21.384517669677734
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 744,
+   "wall_s": 2.1609902381896973,
+   "prompt_sha256": "755743e85bfb0c54be2e0ac146604f848f8ef37acb6c008942ced78a1545e084"
+  },
+  {
+   "turn": 3,
+   "qtype": "missing",
+   "question": "What is the vault code for Gaelin Ulden?",
+   "field": "vault code",
+   "covariates": {
+    "evidence": 0,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 3,
+    "context_len": 459
+   },
+   "seed": 2131376680,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -8.190013613784686e-05,
+     "top": [
+      -8.190013613784686e-05,
+      -9.516454696655273,
+      -11.923341751098633,
+      -14.364667892456055,
+      -14.457996368408203,
+      -14.847204208374023,
+      -16.52106285095215,
+      -17.212100982666016,
+      -18.553638458251953,
+      -18.78877830505371,
+      -20.55219841003418,
+      -20.59139060974121,
+      -20.78348731994629,
+      -20.863710403442383,
+      -20.872371673583984,
+      -21.381032943725586,
+      -21.388450622558594,
+      -21.509918212890625,
+      -21.874004364013672,
+      -21.933874130249023
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 767,
+   "wall_s": 0.5709469318389893,
+   "prompt_sha256": "51bed493072577a03ea478f9b0542e49fbad62312dc5517e6e9c5ae9c32b0552"
+  },
+  {
+   "turn": 4,
+   "qtype": "lookup",
+   "question": "What is the relay code for Orrin Yarden?",
+   "field": "relay code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 4,
+    "context_len": 469
+   },
+   "seed": 668677141,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -0.00013125804252922535,
+     "top": [
+      -0.00013125804252922535,
+      -9.350484848022461,
+      -10.753084182739258,
+      -10.853616714477539,
+      -13.011369705200195,
+      -14.141265869140625,
+      -14.272050857543945,
+      -15.757673263549805,
+      -16.880151748657227,
+      -17.84282875061035,
+      -17.867963790893555,
+      -18.379793167114258,
+      -19.225574493408203,
+      -19.323562622070312,
+      -19.358449935913086,
+      -19.778657913208008,
+      -19.96481704711914,
+      -20.260623931884766,
+      -20.305707931518555,
+      -20.387557983398438
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 789,
+   "wall_s": 0.9376578330993652,
+   "prompt_sha256": "8c49534707d44072c81950f293182c83703090edb39cda911e2c444e45ccd098"
+  },
+  {
+   "turn": 5,
+   "qtype": "lookup",
+   "question": "What is the relay code for Orrin Yarden?",
+   "field": "relay code",
+   "covariates": {
+    "evidence": 1,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 5,
+    "context_len": 479
+   },
+   "seed": 269722533,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -6.652099546045065e-05,
+     "top": [
+      -6.652099546045065e-05,
+      -10.032522201538086,
+      -10.770845413208008,
+      -14.250421524047852,
+      -14.894163131713867,
+      -14.918756484985352,
+      -15.165884017944336,
+      -16.9884090423584,
+      -18.357133865356445,
+      -19.630950927734375,
+      -20.20430564880371,
+      -20.402423858642578,
+      -20.458982467651367,
+      -20.575166702270508,
+      -20.62386131286621,
+      -20.73101043701172,
+      -20.848968505859375,
+      -21.044843673706055,
+      -21.331642150878906,
+      -21.40411376953125
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 811,
+   "wall_s": 0.47526001930236816,
+   "prompt_sha256": "cbc1529c71b1ed7d3a567c1a59c23a00855c56964c8e8ec1bb0df8410d63a373"
+  },
+  {
+   "turn": 6,
+   "qtype": "missing",
+   "question": "What is the transit code for Nesta Wexley?",
+   "field": "transit code",
+   "covariates": {
+    "evidence": 0,
+    "ambiguity": 1,
+    "distractor": 0,
+    "turn": 6,
+    "context_len": 489
+   },
+   "seed": 303761008,
+   "answer": "UNKNOWN",
+   "tokens": [
+    {
+     "token": "UNKNOWN",
+     "logprob": -6.413665687432513e-05,
+     "top": [
+      -6.413665687432513e-05,
+      -9.93131160736084,
+      -11.172472953796387,
+      -14.290593147277832,
+      -14.802142143249512,
+      -14.936820030212402,
+      -15.93884563446045,
+      -16.707763671875,
+      -17.819610595703125,
+      -18.877071380615234,
+      -19.556461334228516,
+      -19.84471893310547,
+      -20.153371810913086,
+      -20.201696395874023,
+      -20.375713348388672,
+      -20.441728591918945,
+      -20.474140167236328,
+      -20.664966583251953,
+      -20.777189254760742,
+      -20.782926559448242
+     ]
+    }
+   ],
+   "done_reason": "stop",
+   "eval_count": 2,
+   "prompt_eval_count": 834,
+   "wall_s": 0.49680209159851074,
+   "prompt_sha256": "8794551e5f3928988f1fe4b47b38c48467b232982cf36aeb0f72556dc2bc9500"
+  }
+ ],
+ "complete": true
+}

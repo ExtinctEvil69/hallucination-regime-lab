@@ -1,0 +1,35 @@
+{
+ "dossier_id": 215,
+ "labels": [
+  {
+   "turn": 1,
+   "label": "H",
+   "reason": "wrong_entity_or_field"
+  },
+  {
+   "turn": 2,
+   "label": "G",
+   "reason": "correct"
+  },
+  {
+   "turn": 3,
+   "label": "G",
+   "reason": "correct"
+  },
+  {
+   "turn": 4,
+   "label": "G",
+   "reason": "correct"
+  },
+  {
+   "turn": 5,
+   "label": "G",
+   "reason": "correct"
+  },
+  {
+   "turn": 6,
+   "label": "G",
+   "reason": "warranted_unknown"
+  }
+ ]
+}

@@ -1,0 +1,39 @@
+{
+ "schema": "2.0",
+ "domain": "registry",
+ "ids": [
+  10000,
+  10001,
+  10002,
+  10003,
+  10004
+ ],
+ "base_seed": 2026,
+ "design": "v1",
+ "generator": {
+  "backend": "ollama",
+  "ollama_version": "0.40.16",
+  "model": "qwen3:4b-instruct",
+  "digest": "",
+  "quantization": "Q4_K_M",
+  "parameter_size": "4.0B",
+  "template_sha256": "40c21f34cf67d8c760ef72f8ad3ae5afad514299d4b06e91dd9a8d705af7b541",
+  "logprob_note": "token logprobs are post-temperature sampling distribution as returned by Ollama; entropy uses top-k alternatives + residual bucket"
+ },
+ "gen_config": {
+  "model": "qwen3:4b-instruct",
+  "temperature": 0.7,
+  "num_predict": 32,
+  "top_logprobs": 20
+ },
+ "config_fp": "c92b3867f79e85d9",
+ "synthetic": false,
+ "python": "3.14.2",
+ "platform": "macOS-26.3-arm64-arm-64bit-Mach-O",
+ "numpy": "2.4.4",
+ "started": 1795580584.4609332,
+ "finished": 1795580593.617968,
+ "seconds": 9.156568050384521,
+ "n_collected": 5,
+ "n_skipped_resume": 0
+}

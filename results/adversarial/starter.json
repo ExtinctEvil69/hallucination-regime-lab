@@ -1,0 +1,83 @@
+[
+ {
+  "id": "S1",
+  "check": "collector model id matches README checkpoint",
+  "collector": "mlx-community/Qwen3.8-27B-4bit",
+  "readme": [
+   "mlx-community/Qwen2.5-7B-Instruct-4bit"
+  ],
+  "pass": false,
+  "note": "Qwen3.8-27B does not correspond to a released Qwen size; README cites Qwen2.5-7B-Instruct-4bit"
+ },
+ {
+  "id": "S2",
+  "check": "starter grader handles common reply formats",
+  "null_labels": [
+   "**RED-03**",
+   "The depot code is RED-03.",
+   "Code: RED-03",
+   "Unknown - not listed",
+   "I cannot find it."
+  ],
+  "labels": {
+   "RED-03": "Grounded",
+   "RED-03.": "Grounded",
+   "red-03": "Grounded",
+   "**RED-03**": null,
+   "The depot code is RED-03.": null,
+   "RED-03\n": "Grounded",
+   "Code: RED-03": null,
+   "UNKNOWN.": "Uncertain",
+   "Unknown - not listed": null,
+   "I cannot find it.": null
+  },
+  "pass": false,
+  "note": "evaluate.labels() raises on any null, so one free-form reply blocks evaluation"
+ },
+ {
+  "id": "S3",
+  "check": "empty generation is recorded as ineligible rather than aborting the run",
+  "pass": false,
+  "note": "collect.py raises RuntimeError on the first empty reply"
+ },
+ {
+  "id": "S4",
+  "check": "lexical grounding of an invented code is zero",
+  "starter_cosine": 0.18257418583505536,
+  "ours": 0.0,
+  "pass": false,
+  "note": "\\w+ splits RED-03 into red/03, so any code sharing a colour prefix looks grounded"
+ },
+ {
+  "id": "S5",
+  "check": "alert threshold limits clean-conversation false stops to <=5%",
+  "clean_test_conversations": 17,
+  "false_stop_rate": 0.4117647058823529,
+  "pass": false,
+  "note": "starter sets the threshold at the 95th pct of negative TURN scores (per-turn rate), not per-conversation as the blueprint requires"
+ },
+ {
+  "id": "S6",
+  "check": "starter Gibbs at reported settings meets R-hat<=1.01 and ESS>=400",
+  "chains": 4,
+  "draws": 200,
+  "warmup": 150,
+  "max_rhat_A": 1.7135126404088934,
+  "min_ess_bulk_A": 6.264281218551193,
+  "pass": false,
+  "note": "research.py reported Bayesian metrics with 'ArviZ unavailable' and no diagnostics"
+ },
+ {
+  "id": "S7",
+  "check": "Bayesian-vs-static comparison uses matched emissions",
+  "pass": false,
+  "note": "research.py compares Bayesian posterior filter with an EM-emission static model, mixing parameter uncertainty with history; fixed here by M1/M2 pairing plus M3 vs M1 reported separately"
+ },
+ {
+  "id": "S8",
+  "check": "independent EM implementation reaches >= starter training log-likelihood",
+  "ours": -4460.3004775807485,
+  "starter": -4464.71638811847,
+  "pass": true
+ }
+]

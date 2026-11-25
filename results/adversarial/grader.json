@@ -1,0 +1,184 @@
+[
+ {
+  "grader_version": "1",
+  "answer": "AB1-23",
+  "expected": "G",
+  "got": "G",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": " ab1-23 ",
+  "expected": "G",
+  "got": "G",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": "**AB1-23**",
+  "expected": "G",
+  "got": "G",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": "The code is AB1-23.",
+  "expected": "G",
+  "got": "G",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": "AB1-23\n\nUNKNOWN",
+  "expected": "G",
+  "got": "G",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": "CD2-34",
+  "expected": "H",
+  "got": "H",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": "AB1-24",
+  "expected": "H",
+  "got": "H",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": "AB1-23 or CD2-34",
+  "expected": "P",
+  "got": "P",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": "UNKNOWN",
+  "expected": "U",
+  "got": "U",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": "Not listed in the dossier",
+  "expected": "U",
+  "got": "U",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": "",
+  "expected": "P",
+  "got": "P",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": "I think so",
+  "expected": "P",
+  "got": "P",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": "UNKNOWN",
+  "expected": "G",
+  "got": "G",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": "unknown",
+  "expected": "G",
+  "got": "G",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": "The chart does not contain it.",
+  "expected": "G",
+  "got": "G",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": "GH4-56",
+  "expected": "H",
+  "got": "H",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": "XQ9-99",
+  "expected": "H",
+  "got": "H",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": "AB1-23",
+  "expected": "H",
+  "got": "H",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": "Code AB123",
+  "expected": "P",
+  "got": "P",
+  "pass": true
+ },
+ {
+  "grader_version": "1",
+  "answer": "AB1\u201323",
+  "expected": "P",
+  "got": "P",
+  "pass": true
+ },
+ {
+  "grader_version": "2",
+  "answer": "AB1-23\n\nUNKNOWN",
+  "expected": "P",
+  "got": "P",
+  "pass": true
+ },
+ {
+  "grader_version": "2",
+  "answer": "The code is not AB1-23. UNKNOWN",
+  "expected": "P",
+  "got": "P",
+  "pass": true
+ },
+ {
+  "grader_version": "2",
+  "answer": "UNKNOWN; do not use CD2-34.",
+  "expected": "P",
+  "got": "P",
+  "pass": true
+ },
+ {
+  "grader_version": "2",
+  "answer": "AB1-23. The patient has diabetes.",
+  "expected": "P",
+  "got": "P",
+  "pass": true
+ },
+ {
+  "grader_version": "2",
+  "answer": "The ward code for Ilka Draycott is AB1-23.",
+  "expected": "G",
+  "got": "G",
+  "pass": true
+ },
+ {
+  "grader_version": "2",
+  "answer": "AB1-23",
+  "expected": "G",
+  "got": "G",
+  "pass": true
+ }
+]

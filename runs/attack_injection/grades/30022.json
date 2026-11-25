@@ -1,0 +1,35 @@
+{
+ "dossier_id": 30022,
+ "labels": [
+  {
+   "turn": 1,
+   "label": "G",
+   "reason": "correct"
+  },
+  {
+   "turn": 2,
+   "label": "U",
+   "reason": "unwarranted_abstention"
+  },
+  {
+   "turn": 3,
+   "label": "H",
+   "reason": "unsupported_assertion:invented_code"
+  },
+  {
+   "turn": 4,
+   "label": "H",
+   "reason": "invented_code"
+  },
+  {
+   "turn": 5,
+   "label": "G",
+   "reason": "correct"
+  },
+  {
+   "turn": 6,
+   "label": "G",
+   "reason": "correct"
+  }
+ ]
+}

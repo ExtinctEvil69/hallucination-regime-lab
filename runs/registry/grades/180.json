@@ -1,0 +1,35 @@
+{
+ "dossier_id": 180,
+ "labels": [
+  {
+   "turn": 1,
+   "label": "H",
+   "reason": "invented_code"
+  },
+  {
+   "turn": 2,
+   "label": "H",
+   "reason": "unsupported_assertion:other_dossier_code"
+  },
+  {
+   "turn": 3,
+   "label": "H",
+   "reason": "unsupported_assertion:other_dossier_code"
+  },
+  {
+   "turn": 4,
+   "label": "G",
+   "reason": "correct"
+  },
+  {
+   "turn": 5,
+   "label": "G",
+   "reason": "correct"
+  },
+  {
+   "turn": 6,
+   "label": "G",
+   "reason": "correct"
+  }
+ ]
+}

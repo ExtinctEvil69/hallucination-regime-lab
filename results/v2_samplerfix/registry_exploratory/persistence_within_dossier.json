@@ -1,0 +1,26 @@
+{
+ "HH_observed": 27,
+ "null_mean": 23.333333333333314,
+ "p_value_upper": 0.1589754912522482,
+ "dossiers": 499,
+ "informative_dossiers": 35,
+ "method": "post-hoc count-conditioned exchangeable-ordering sensitivity (exact enumeration); assumes exchangeable turn positions; does not control question-type or turn effects",
+ "controls": {
+  "difficulty_only": {
+   "HH_observed": 602,
+   "null_mean": 600.6666666666622,
+   "p_value_upper": 0.4634841221503917,
+   "dossiers": 500,
+   "informative_dossiers": 265,
+   "expected": "no rejection (difficulty is conditioned on)"
+  },
+  "position_only": {
+   "HH_observed": 870,
+   "null_mean": 610.6666666666613,
+   "p_value_upper": 2.3463419407324376e-90,
+   "dossiers": 500,
+   "informative_dossiers": 475,
+   "expected": "rejection: the null assumes exchangeable positions and does not control turn effects"
+  }
+ }
+}

@@ -1,0 +1,9 @@
+{
+ "affected_by": "variance Gibbs step shared one Gamma draw across features (fixed)",
+ "affected_outputs": "all M3/M4 posteriors, Bayesian predictions, factor contrasts, Bayesian diagnostics, sticky sensitivity, PPC, and anything scored with them",
+ "unaffected": "EM (M2), matched static (M1), single feature (M0), labels, splits, interventions' raw generations",
+ "corrected_rerun": "results/v2_samplerfix/<study> (same locked configuration)",
+ "status": "kept intact for provenance; do not interpret Bayesian rows",
+ "dir": "results/clinical_exploratory",
+ "marked_at": "2026-11-25 01:47"
+}

@@ -1,0 +1,11 @@
+\begin{table}[H]\centering\scriptsize
+\begin{tabularx}{\linewidth}{c>{\raggedright\arraybackslash}Xccccccc}\toprule
+Turn & Question & Ev/Amb & Prior & Answer & Evidence & Posterior & Guard & Grade\\\midrule
+1 & What is the imaging code for Greaves (born 1962)? & 1/2 & 0.71/0.07/0.22 & \texttt{VE6-33} & 0.00/0.00/1.00 & 0.00/0.00/1.00 & hold & H\\
+2 & What is the ward code for Ilka Draycott? & 0/1 & 0.02/0.87/0.11 & \texttt{UNKNOWN} & 0.00/1.00/0.00 & 0.00/1.00/0.00 & commit & G\\
+3 & What is the ward code for Garrow Fairbank? & 1/1 & 0.62/0.22/0.16 & \texttt{EE0-15} & 1.00/0.00/0.00 & 1.00/0.00/0.00 & commit & G\\
+4 & What is the allergy code for Bennick Greaves? & 1/1 & 0.94/0.03/0.03 & \texttt{CB0-44} & 1.00/0.00/0.00 & 1.00/0.00/0.00 & commit & G\\
+5 & What is the allergy code for Greaves (born 1962)? & 1/2 & 0.74/0.15/0.11 & \texttt{VE6-33} & 1.00/0.00/0.00 & 1.00/0.00/0.00 & commit & G\\
+6 & What is that patient's medication code? & 0/1 & 0.01/0.88/0.11 & \texttt{UNKNOWN} & 0.00/1.00/0.00 & 0.00/1.00/0.00 & commit & G\\
+\bottomrule\end{tabularx}
+\caption{Worked example (corrected model; values recomputed from the saved run).\label{tab:we}}\end{table}

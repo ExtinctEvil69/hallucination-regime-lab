@@ -1,0 +1,88 @@
+{
+ "dossier_id": 130,
+ "domain": "clinical",
+ "turns": [
+  {
+   "turn": 1,
+   "entity": 3,
+   "field_index": 3,
+   "answer": "KV4-16",
+   "hidden_code": null
+  },
+  {
+   "turn": 2,
+   "entity": 1,
+   "field_index": 0,
+   "answer": "AP5-58",
+   "hidden_code": null
+  },
+  {
+   "turn": 3,
+   "entity": 1,
+   "field_index": 2,
+   "answer": "SD1-41",
+   "hidden_code": null
+  },
+  {
+   "turn": 4,
+   "entity": 5,
+   "field_index": 3,
+   "answer": "KK8-81",
+   "hidden_code": null
+  },
+  {
+   "turn": 5,
+   "entity": 3,
+   "field_index": 4,
+   "answer": "CH3-49",
+   "hidden_code": null
+  },
+  {
+   "turn": 6,
+   "entity": 5,
+   "field_index": 1,
+   "answer": "SX4-92",
+   "hidden_code": null
+  }
+ ],
+ "all_codes": {
+  "0:0": "JE4-49",
+  "0:1": "PZ4-68",
+  "0:2": "JB4-71",
+  "0:3": "WX5-34",
+  "0:4": "RD7-47",
+  "1:0": "AP5-58",
+  "1:1": "NY5-36",
+  "1:2": "SD1-41",
+  "1:3": "NA0-39",
+  "1:4": "HQ4-42",
+  "2:0": "GB8-89",
+  "2:1": "LK8-58",
+  "2:2": "MI5-71",
+  "2:3": "LB1-79",
+  "2:4": "IP2-10",
+  "3:0": "US5-90",
+  "3:1": "BM5-48",
+  "3:2": "EK0-31",
+  "3:3": "KV4-16",
+  "3:4": "CH3-49",
+  "4:0": "VB5-75",
+  "4:1": "PZ4-34",
+  "4:2": "MI5-16",
+  "4:3": "PO4-19",
+  "4:4": "IN3-28",
+  "5:0": "WG8-67",
+  "5:1": "SX4-92",
+  "5:2": "SD1-14",
+  "5:3": "KK8-81",
+  "5:4": "KM8-36"
+ },
+ "hidden": [
+  "0:3",
+  "1:4",
+  "2:0",
+  "4:0",
+  "4:4",
+  "5:4"
+ ]
+}

@@ -1,0 +1,18 @@
+# review / debate process files (kept local)
+reviews/
+review_probes.py
+# local tool settings and caches
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+draft1/node_modules/
+# LaTeX build by-products
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+# lock files from concurrent collection
+*.lock
+baseline/starter/research_results/Hallucination_Audit_Findings.pdf

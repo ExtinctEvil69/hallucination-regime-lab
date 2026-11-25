@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hallucination Regime Lab</title>
+<style>
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --surface-2:#f1f3f6; --line:#e3e6eb; --ink:#191919; --ink-2:#5d6470; --ink-3:#8b919b;
+  --accent:#257de0; --accent-soft:#e7f0fc; --orange:#f47230; --aqua:#00a888; --violet:#6a4ce2;
+  --good:#0a8f20; --good-soft:#e4f5e7; --warn:#b97800; --warn-soft:#fff3d6; --bad:#d6303a; --bad-soft:#fde8e9;
+  --shadow:0 1px 2px rgba(16,24,40,.05),0 4px 16px rgba(16,24,40,.06);
+  --radius:14px; --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111317; --surface:#191c21; --surface-2:#20242b; --line:#2c313a; --ink:#eef0f3; --ink-2:#a7adb7; --ink-3:#7b828d;
+    --accent:#4b9bf0; --accent-soft:#1b2a3d; --orange:#ef7a3e; --aqua:#22b897; --violet:#9887ef;
+    --good:#2fbf4a; --good-soft:#15291b; --warn:#f2b632; --warn-soft:#2d2512; --bad:#f05a62; --bad-soft:#341a1d;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111317; --surface:#191c21; --surface-2:#20242b; --line:#2c313a; --ink:#eef0f3; --ink-2:#a7adb7; --ink-3:#7b828d;
+  --accent:#4b9bf0; --accent-soft:#1b2a3d; --orange:#ef7a3e; --aqua:#22b897; --violet:#9887ef;
+  --good:#2fbf4a; --good-soft:#15291b; --warn:#f2b632; --warn-soft:#2d2512; --bad:#f05a62; --bad-soft:#341a1d;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer}
+code,.mono{font-family:var(--mono)}
+/* header */
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{max-width:1480px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:650;letter-spacing:-.01em}
+.logo{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--violet));display:grid;place-items:center;color:#fff;font-size:15px}
+.brand small{display:block;font-weight:450;color:var(--ink-3);font-size:11.5px;margin-top:-2px}
+nav.tabs{display:flex;gap:4px;background:var(--surface-2);padding:4px;border-radius:11px}
+nav.tabs button{border:0;background:transparent;padding:6px 14px;border-radius:8px;color:var(--ink-2);font-weight:550;transition:background .2s,color .2s}
+nav.tabs button.on{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.spacer{flex:1}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:550;background:var(--surface-2);color:var(--ink-2)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ink-3)}
+.pill.ok .dot{background:var(--good);box-shadow:0 0 0 3px color-mix(in srgb,var(--good) 25%,transparent)}
+.pill.off .dot{background:var(--bad)}
+.iconbtn{border:1px solid var(--line);background:var(--surface);border-radius:9px;padding:5px 9px}
+main{max-width:1480px;margin:0 auto;padding:18px 20px 40px}
+.view{display:none;animation:fade .35s ease}
+.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+/* cards / layout */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.card h3{margin:0;font-size:13px;font-weight:650;letter-spacing:.01em;text-transform:uppercase;color:var(--ink-2)}
+.card .hd{display:flex;align-items:center;gap:8px;padding:14px 16px 10px}
+.card .bd{padding:0 16px 16px}
+.grid3{display:grid;grid-template-columns:300px minmax(0,1fr) 380px;gap:16px;align-items:start}
+@media (max-width:1180px){.grid3{grid-template-columns:1fr}}
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:14px}
+.seg{display:inline-flex;background:var(--surface-2);border-radius:10px;padding:3px}
+.seg button{border:0;background:transparent;padding:5px 12px;border-radius:8px;color:var(--ink-2);font-weight:550}
+.seg button.on{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+select,input[type=text]{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:7px 10px}
+input[type=text]:focus,select:focus{outline:2px solid color-mix(in srgb,var(--accent) 45%,transparent);border-color:var(--accent)}
+.btn{border:1px solid var(--line);background:var(--surface);padding:7px 14px;border-radius:10px;font-weight:600;transition:transform .08s,background .2s}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.switch{display:inline-flex;align-items:center;gap:8px;font-weight:550;color:var(--ink-2);user-select:none;cursor:pointer}
+.switch i{width:34px;height:20px;border-radius:999px;background:var(--line);position:relative;transition:background .2s}
+.switch i:after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.switch.on i{background:var(--good)}
+.switch.on i:after{transform:translateX(14px)}
+.muted{color:var(--ink-3)}
+/* chart panel */
+.patient{border:1px solid var(--line);border-radius:11px;padding:9px 11px;margin-bottom:8px;transition:border-color .3s,box-shadow .3s,background .3s}
+.patient.focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);background:color-mix(in srgb,var(--accent-soft) 45%,var(--surface))}
+.patient .nm{font-weight:620;font-size:13.5px}
+.patient .yr{color:var(--ink-3);font-size:12px;font-weight:450}
+.frow{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;padding:3px 6px;border-radius:6px;margin-top:2px;color:var(--ink-2);transition:background .3s}
+.frow code{color:var(--ink);font-size:12px}
+.frow.hit{background:var(--accent-soft);color:var(--ink);animation:pulse 1.2s ease 2}
+.frow.ghost{border:1px dashed var(--bad);color:var(--bad);background:var(--bad-soft)}
+@keyframes pulse{50%{box-shadow:0 0 0 3px var(--accent-soft)}}
+/* chat */
+.chat{height:560px;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth}
+.msg{max-width:84%;padding:10px 13px;border-radius:14px;animation:pop .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+.msg.user{align-self:flex-end;background:var(--accent);color:#fff;border-bottom-right-radius:5px}
+.msg.user .rg{display:block;margin-top:6px;font-size:11.5px;opacity:.9;border-top:1px solid rgba(255,255,255,.3);padding-top:5px}
+.msg.bot{align-self:flex-start;background:var(--surface-2);border-bottom-left-radius:5px;min-width:200px}
+.msg.bot .ans{font-family:var(--mono);font-size:15px;font-weight:600}
+.msg .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tag{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--ink-2)}
+.tag.hold{background:var(--warn-soft);border-color:transparent;color:var(--warn)}
+.tag.ok{background:var(--good-soft);border-color:transparent;color:var(--good)}
+.tag.bad{background:var(--bad-soft);border-color:transparent;color:var(--bad)}
+.tag.info{background:var(--accent-soft);border-color:transparent;color:var(--accent)}
+.tag.reveal{animation:pop .4s ease}
+.turnmark{align-self:center;font-size:11px;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase}
+.typing{display:inline-flex;gap:4px}
+.typing b{width:6px;height:6px;border-radius:50%;background:var(--ink-3);animation:blink 1s infinite}
+.typing b:nth-child(2){animation-delay:.15s}.typing b:nth-child(3){animation-delay:.3s}
+@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+.composer{border-top:1px solid var(--line);padding:12px 16px;display:flex;flex-direction:column;gap:9px}
+.composer .row{display:flex;gap:8px}
+.composer input{flex:1}
+.sugg{display:flex;flex-wrap:wrap;gap:6px}
+.sugg button{border:1px dashed var(--line);background:transparent;border-radius:999px;padding:3px 10px;font-size:12px;color:var(--ink-2)}
+.sugg button:hover{border-color:var(--accent);color:var(--accent)}
+.empty{margin:auto;text-align:center;color:var(--ink-3);max-width:360px}
+.empty b{display:block;color:var(--ink);font-size:15px;margin-bottom:4px}
+/* pipeline */
+.steps{display:flex;flex-direction:column;gap:8px}
+.step{display:grid;grid-template-columns:26px 1fr;gap:10px;padding:9px 10px;border-radius:11px;border:1px solid var(--line);opacity:.45;transition:opacity .35s,border-color .35s,background .35s,transform .35s}
+.step.active{opacity:1;border-color:var(--accent);background:color-mix(in srgb,var(--accent-soft) 55%,var(--surface));transform:translateX(-2px)}
+.step.done{opacity:1}
+.step .n{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;background:var(--surface-2);color:var(--ink-2);transition:background .3s,color .3s}
+.step.active .n{background:var(--accent);color:#fff}
+.step.done .n{background:var(--good-soft);color:var(--good)}
+.step .t{font-weight:620;font-size:13px}
+.step .v{font-size:12.5px;color:var(--ink-2);margin-top:2px;min-height:18px}
+.gauge{position:relative;height:9px;border-radius:999px;background:var(--surface-2);margin-top:7px;overflow:visible}
+.gauge .fill{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:var(--accent);width:0;transition:width .7s cubic-bezier(.2,.8,.2,1),background .3s}
+.gauge .band{position:absolute;top:-2px;bottom:-2px;border-radius:4px;background:color-mix(in srgb,var(--accent) 25%,transparent);transition:left .7s,width .7s}
+.gauge .thr{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink-2)}
+.stack{display:flex;height:12px;border-radius:6px;overflow:hidden;margin-top:7px;background:var(--surface-2)}
+.stack span{transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.fbars{display:grid;grid-template-columns:86px 1fr 44px;gap:4px 8px;align-items:center;font-size:12px;margin-top:6px}
+.fbars .tr{height:7px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.fbars .tr i{display:block;height:100%;width:0;background:var(--aqua);border-radius:999px;transition:width .6s}
+.decision{font-weight:700;font-size:14px}
+/* timeline */
+svg text{fill:var(--ink-2);font-family:var(--sans)}
+.tl-wrap{position:relative}
+.tip{position:fixed;z-index:50;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;padding:7px 9px;border-radius:8px;max-width:280px;opacity:0;transition:opacity .12s;box-shadow:var(--shadow)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:11.5px;color:var(--ink-2);margin-top:6px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.sw{width:14px;height:3px;border-radius:2px;display:inline-block}
+/* hidden markov chain */
+.chaingrid{display:grid;grid-template-columns:360px minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:1180px){.chaingrid{grid-template-columns:1fr}}
+.trellis-wrap{overflow-x:auto}
+.hmm-node{transition:r .7s cubic-bezier(.2,.8,.2,1),fill-opacity .7s}
+.hmm-edge{transition:stroke-width .7s,opacity .7s}
+.fadein{animation:fadein .6s ease both}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.grow{stroke-dasharray:400;stroke-dashoffset:400;animation:grow .9s ease forwards}
+@keyframes grow{to{stroke-dashoffset:0}}
+.bayes{display:grid;grid-template-columns:110px repeat(4,minmax(0,1fr));gap:6px 10px;align-items:center;font-size:12.5px;margin-top:8px}
+.bayes .h{font-weight:650;color:var(--ink-2);font-size:11.5px;text-transform:uppercase;letter-spacing:.03em}
+.bayes .cell{display:flex;align-items:center;gap:6px}
+.bayes .bbar{flex:1;height:8px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.bayes .bbar i{display:block;height:100%;border-radius:999px;animation:barin .8s cubic-bezier(.2,.8,.2,1)}
+@keyframes barin{from{width:0}}
+.bayes .num{font-family:var(--mono);font-size:11.5px;min-width:38px;text-align:right}
+.op{color:var(--ink-3);font-size:12px;text-align:center}
+/* results */
+.rgrid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.c12{grid-column:span 12}.c6{grid-column:span 6}.c4{grid-column:span 4}.c8{grid-column:span 8}
+@media (max-width:1000px){.c6,.c4,.c8{grid-column:span 12}}
+.find{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.fcard{padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--surface);animation:pop .4s ease both}
+.fcard .k{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin-bottom:6px}
+.fcard p{margin:0;font-size:13px;color:var(--ink-2)}
+.fcard b{color:var(--ink)}
+.hero{padding:22px 24px;margin-bottom:16px;background:linear-gradient(135deg,color-mix(in srgb,var(--accent-soft) 70%,var(--surface)),var(--surface))}
+.hero h2{margin:0 0 6px;font-size:22px;letter-spacing:-.02em}
+.hero p{margin:0;color:var(--ink-2);max-width:900px}
+.kpis{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;min-width:150px}
+.kpi .l{font-size:11.5px;color:var(--ink-3);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.kpi .n{font-size:22px;font-weight:700;letter-spacing:-.02em}
+.kpi .s{font-size:12px;color:var(--ink-2)}
+/* how */
+.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:1000px){.how{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.how{grid-template-columns:1fr}}
+.how .card{padding:16px}
+.how .num{width:28px;height:28px;border-radius:9px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:700;margin-bottom:8px}
+.how h4{margin:0 0 4px;font-size:15px}
+.how p{margin:0;color:var(--ink-2);font-size:13px}
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:16px;margin-bottom:16px}
+.flow .node{padding:8px 12px;border-radius:10px;background:var(--surface-2);font-weight:600;font-size:13px}
+.flow .arr{color:var(--ink-3)}
+.flow .node.hl{background:var(--accent);color:#fff}
+.note{font-size:12px;color:var(--ink-3);margin-top:10px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:640px){.bar{padding:10px 16px}main{padding:14px 16px 32px}.chat{height:440px}}
+</style>
+</head>
+<body>
+<header><div class="bar">
+  <div class="brand"><div class="logo">◆</div><div>Hallucination Regime Lab<small>Bayesian guard for a clinical records assistant</small></div></div>
+  <nav class="tabs" id="tabs">
+    <button data-v="live" class="on">Live run</button>
+    <button data-v="replay">Replay</button>
+    <button data-v="chain">Markov chain</button>
+    <button data-v="results">Research results</button>
+    <button data-v="how">How it works</button>
+  </nav>
+  <div class="spacer"></div>
+  <span class="pill" id="status"><span class="dot"></span><span>checking model…</span></span>
+  <button class="iconbtn" id="theme" title="Toggle theme" aria-label="Toggle theme">◐</button>
+</div></header>
+
+<main>
+<!-- ============ LIVE + REPLAY share one workspace ============ -->
+<section class="view on" id="v-work">
+  <div class="toolbar">
+    <div class="seg" id="modeSeg"><button data-m="live" class="on">Live (Qwen)</button><button data-m="replay">Replay saved run</button></div>
+    <label class="muted">Chart</label>
+    <select id="chartSel"></select>
+    <button class="btn" id="newChart" title="Generate an unseen fictional chart">New chart</button>
+    <label class="muted" for="policy">Policy</label>
+    <select id="policy" title="What the guard is allowed to do">
+      <option value="hold" selected>Hold (recommended)</option>
+      <option value="reground">Hold + re-ground prompt</option>
+      <option value="off">Off · observe</option>
+    </select>
+    <select id="corefSel" title="Reference grammar for 'that patient' / 'their' (W9)">
+      <option value="v1" selected>Refs: v1 (locked)</option>
+      <option value="v2">Refs: v2 (bounded)</option>
+    </select>
+    <div class="spacer"></div>
+    <label class="muted" for="speed">Speed</label>
+    <select id="speed"><option value="1.6">Slow</option><option value="1" selected>Normal</option><option value=".45">Fast</option></select>
+    <button class="btn" id="stepBtn">Next turn</button>
+    <button class="btn primary" id="playBtn">▶ Play conversation</button>
+    <button class="btn" id="resetBtn">Reset</button>
+  </div>
+  <div class="grid3">
+    <div class="card">
+      <div class="hd"><h3>Patient chart</h3><span class="muted" id="chartMeta" style="margin-left:auto;font-size:12px"></span></div>
+      <div class="bd" id="chartBox" style="max-height:690px;overflow:auto"></div>
+    </div>
+    <div class="card" style="display:flex;flex-direction:column">
+      <div class="hd"><h3>Conversation</h3><span class="muted" id="convMeta" style="margin-left:auto;font-size:12px"></span></div>
+      <div class="chat" id="chat"><div class="empty"><b>Press ▶ Play conversation</b>The assistant answers six questions about the fictional chart. Watch the guard reason before and after every answer.</div></div>
+      <div class="composer" id="composer">
+        <div class="sugg" id="sugg"></div>
+        <div class="row"><input type="text" id="qInput" placeholder="Ask your own question, e.g. What is the ward code for that patient?" maxlength="300"><button class="btn primary" id="askBtn">Ask</button></div>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:16px">
+        <div class="hd"><h3>Guard pipeline</h3><span class="muted" id="turnLbl" style="margin-left:auto;font-size:12px">waiting</span></div>
+        <div class="bd steps" id="steps"></div>
+      </div>
+      <div class="card">
+        <div class="hd"><h3>Risk across the conversation</h3></div>
+        <div class="bd tl-wrap"><svg id="tl" viewBox="0 0 360 190" width="100%" role="img" aria-label="Risk timeline"></svg>
+          <div class="legend"><span><i class="sw" style="background:var(--accent)"></i>P(H) after answer</span><span><i class="sw" style="background:var(--violet)"></i>forecast before answer</span><span><i class="sw" style="background:var(--ink-2)"></i>decision threshold</span><span style="color:var(--bad)">○ graded hallucination</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card" id="chainCard" style="margin-top:16px">
+    <div class="hd"><h3>Hidden Markov chain · built live</h3><span class="muted" style="margin-left:auto;font-size:12px" id="chainMeta">play a conversation to build the chain</span></div>
+    <div class="bd">
+      <p class="muted" style="margin:0 0 10px;max-width:1100px">The model's hidden state at each turn is <b style="color:var(--good)">G</b> grounded, <b style="color:var(--accent)">U</b> uncertain or <b style="color:var(--bad)">H</b> hallucinating. It is never observed directly. Each turn, the question's covariates set the <b>transition probabilities A(c)</b>, the previous belief is pushed through them to give a <b>prior</b>, and the answer's features act as <b>evidence</b> (emission likelihood) that turns the prior into the <b>posterior belief</b>. The guard holds an answer when the posterior P(H) is high.</p>
+      <div class="chaingrid">
+        <div><div class="muted" style="font-size:12px;margin-bottom:4px" id="diagTitle">Transition diagram A(c) for the current question</div>
+          <svg id="hmmDiag" viewBox="0 0 360 350" width="100%" role="img" aria-label="State transition diagram"></svg></div>
+        <div><div class="muted" style="font-size:12px;margin-bottom:4px">Trellis: the chain unrolled over turns (covariates → transitions → hidden states ← observed answer)</div>
+          <div class="trellis-wrap"><svg id="trellis" viewBox="0 0 900 390" width="100%" role="img" aria-label="Hidden Markov trellis"></svg></div></div>
+      </div>
+      <div style="margin-top:14px"><div class="muted" style="font-size:12px" id="bayesTitle">Bayes update for the current turn</div><div class="bayes" id="bayes"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- (chain card is inserted inside v-work below) -->
+<!-- ============ RESULTS ============ -->
+<section class="view" id="v-results">
+  <div class="card hero">
+    <h2>Does conversation history help catch the first hallucination?</h2>
+    <p>Qwen3-4B-Instruct answered 6-turn questions about 800 fictional dossiers (500 registry, 300 clinical). Every answer was graded against gold records. Hidden Markov models, from exact EM to covariate-dependent Bayesian, were compared with a matched static detector, tested in a randomised correction experiment, attacked by a red team, and deployed as a guard.</p>
+    <div class="kpis" id="kpis"></div>
+  </div>
+  <div class="find" id="findings" style="margin-bottom:16px"></div>
+  <div class="rgrid">
+    <div class="card c6"><div class="hd"><h3>First-onset detection (test AUROC, 95% CI)</h3><div class="spacer"></div><div class="seg" id="aucSeg"><button data-k="registry_exploratory" class="on">Registry</button><button data-k="clinical_exploratory">Clinical</button></div></div><div class="bd"><svg id="chAuc" viewBox="0 0 560 250" width="100%"></svg><div class="note">Exploratory model set (log-surprisal, 1 component), corrected sampler. ⚠ = Bayesian model that failed the convergence gate (reported for completeness only).</div></div></div>
+    <div class="card c6"><div class="hd"><h3>Does history help? Paired differences</h3></div><div class="bd"><svg id="chPair" viewBox="0 0 560 250" width="100%"></svg><div class="note">Paired dossier bootstrap. Intervals crossing 0 mean no measurable difference.</div></div></div>
+    <div class="card c6"><div class="hd"><h3>Randomised fix: next-turn hallucination rate</h3><div class="spacer"></div><div class="seg" id="ivSeg"><button data-k="registry" class="on">Registry</button><button data-k="clinical">Clinical</button></div></div><div class="bd"><svg id="chIv" viewBox="0 0 560 250" width="100%"></svg><div class="note">After a verified wrong answer: keep it, correct it, or add a re-grounding reminder. Same seeds in every arm.</div></div></div>
+    <div class="card c6"><div class="hd"><h3>What raises the risk of entering H? (M4)</h3></div><div class="bd"><svg id="chFac" viewBox="0 0 560 250" width="100%"></svg><div class="note">Posterior risk difference, low→high covariate, from G. An association, not a causal effect.</div></div></div>
+    <div class="card c6"><div class="hd"><h3>Red team: attacks on the assistant</h3></div><div class="bd"><svg id="chAtk" viewBox="0 0 560 230" width="100%"></svg></div></div>
+    <div class="card c6"><div class="hd"><h3>Clinical guard on 50 held-out charts</h3></div><div class="bd"><svg id="chGuard" viewBox="0 0 560 230" width="100%"></svg></div></div>
+  </div>
+</section>
+
+<!-- ============ HOW ============ -->
+<section class="view" id="v-how">
+  <div class="card flow">
+    <span class="node">Chart + question</span><span class="arr">→</span>
+    <span class="node">Pre-answer covariates</span><span class="arr">→</span>
+    <span class="node hl">Forecast P(H next)</span><span class="arr">→</span>
+    <span class="node">Optional re-ground</span><span class="arr">→</span>
+    <span class="node">Qwen answers</span><span class="arr">→</span>
+    <span class="node">Features</span><span class="arr">→</span>
+    <span class="node hl">Filter P(H | answers so far)</span><span class="arr">→</span>
+    <span class="node">Hold or commit</span>
+  </div>
+  <div class="how">
+    <div class="card"><div class="num">1</div><h4>Read the question, not the answer</h4><p>Before Qwen replies, the guard looks only at the visible chart. Is the requested row there (<b>evidence</b>)? How many patients match the name (<b>ambiguity</b>)? Are there look-alike codes (<b>distractors</b>)? Which <b>turn</b> is it?</p></div>
+    <div class="card"><div class="num">2</div><h4>Forecast the next answer</h4><p>A covariate-dependent hidden Markov model turns those facts into transition probabilities. Averaged over 200 posterior draws, it gives P(next answer is a hallucination) with an uncertainty band.</p></div>
+    <div class="card"><div class="num">3</div><h4>Pre-emptive action (optional)</h4><p>If the forecast exceeds the cost-based threshold 1/(1+10), the guard can add a re-grounding reminder. Experiments showed this mostly adds unwarranted UNKNOWNs, so <b>monitor-only</b> is the recommended setting.</p></div>
+    <div class="card"><div class="num">4</div><h4>Measure the answer</h4><p>Three signals: mean token <b>log-probability</b> (confidence), <b>top-20 entropy</b> (hesitation) and <b>lexical grounding</b> (overlap with a chart row).</p></div>
+    <div class="card"><div class="num">5</div><h4>Bayesian filter</h4><p>The state probabilities over Grounded / Uncertain / Hallucinating are updated causally: prior from the previous turn × likelihood of these features. The result uses only answers given so far, never the future.</p></div>
+    <div class="card"><div class="num">6</div><h4>Hold or commit, then check</h4><p>If P(H) exceeds the threshold, the answer is <b>held</b> for pharmacist verification instead of being written to the reconciliation list. The gold grade, which the guard never sees, shows whether the decision was right.</p></div>
+  </div>
+  <div class="card" style="margin-top:16px;padding:16px">
+    <h3 style="margin-bottom:8px">Reading the labels</h3>
+    <p style="margin:0;color:var(--ink-2)"><span class="tag ok">G · grounded</span> correct code, or UNKNOWN when the row truly is missing &nbsp; <span class="tag info">U · uncertain</span> UNKNOWN although the row exists &nbsp; <span class="tag bad">H · hallucination</span> a wrong-patient, wrong-field or invented code, or any code for a missing row.</p>
+    <p class="note">All patients, names and codes are fictional. This is a research prototype, not a medical device.</p>
+  </div>
+</section>
+</main>
+<div class="tip" id="tip"></div>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const sleep=ms=>new Promise(r=>setTimeout(r,ms*SPEED()));
+const SPEED=()=>parseFloat($('#speed').value);
+const api=async(p,body)=>{const r=await fetch(p,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{});const j=await r.json();if(!r.ok)throw new Error(j.error||r.status);return j};
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const fmt=(x,d=3)=>x==null||isNaN(x)?'–':(+x).toFixed(d);
+const pct=x=>x==null?'–':(100*x).toFixed(1)+'%';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const tip=$('#tip');
+function showTip(e,html){tip.innerHTML=html;tip.style.opacity=1;const x=Math.min(e.clientX+14,innerWidth-300);tip.style.left=x+'px';tip.style.top=(e.clientY+14)+'px'}
+function hideTip(){tip.style.opacity=0}
+
+/* ---------------- theme ---------------- */
+try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}
+$('#theme').onclick=()=>{const cur=document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');const n=cur==='dark'?'light':'dark';document.documentElement.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){};drawTimeline();drawChain();if(RES)renderResults()};
+
+/* ---------------- tabs ---------------- */
+let MODE='live';
+$('#tabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;$$('#tabs button').forEach(x=>x.classList.toggle('on',x===b));const v=b.dataset.v;
+  $$('.view').forEach(x=>x.classList.remove('on'));
+  if(v==='chain'){$('#v-work').classList.add('on');setTimeout(()=>$('#chainCard').scrollIntoView({behavior:'smooth',block:'start'}),60);return}
+  if(v==='live'||v==='replay'){$('#v-work').classList.add('on');setMode(v)}else{$('#v-'+v).classList.add('on');if(v==='results')loadResults()}};
+$('#modeSeg').onclick=e=>{const b=e.target.closest('button');if(b){setMode(b.dataset.m);$$('#tabs button').forEach(x=>x.classList.toggle('on',x.dataset.v===b.dataset.m))}};
+
+/* ---------------- state ---------------- */
+let STATUS={}, CHART=null, SESSION=null, TURNS=[], BUSY=false, PLAYING=false, REPLAY=null, GUARD=true, REPLAY_LIST=[];
+const STEP_DEF=[['Read the question','pre-answer covariates from the visible chart'],['Forecast','P(next answer is a hallucination)'],['Pre-emptive action','re-ground the prompt?'],['Answer & features','confidence · hesitation · grounding'],['Bayesian filter','P(state | answers so far)'],['Decision','hold for verification or auto-commit']];
+function initSteps(){$('#steps').innerHTML=STEP_DEF.map((s,i)=>`<div class="step" id="st${i}"><div class="n">${i+1}</div><div><div class="t">${s[0]}</div><div class="v muted">${s[1]}</div></div></div>`).join('')}
+function setStep(i,state,html){const el=$('#st'+i);el.classList.remove('active','done');if(state)el.classList.add(state);if(html!=null)el.querySelector('.v').innerHTML=html}
+initSteps();
+
+async function init(){
+  try{STATUS=await api('/api/status')}catch(e){STATUS={ollama:false}}
+  const p=$('#status');p.classList.add(STATUS.ollama?'ok':'off');p.lastElementChild.textContent=STATUS.ollama?`${STATUS.model} · live`:'Qwen offline · replay only';
+  try{REPLAY_LIST=(await api('/api/charts')).replay}catch(e){REPLAY_LIST=[]}
+  fillCharts();
+  const h=location.hash.replace('#','').split('&');
+  const want=['live','replay','results','how','chain'].includes(h[0])?h[0]:(STATUS.ollama?'live':'replay');
+  const btn=$$('#tabs button').find(x=>x.dataset.v===want);
+  if(want==='chain'){const m=h.includes('replay')?'replay':(STATUS.ollama?'live':'replay');$$('#tabs button').forEach(x=>x.classList.toggle('on',x===btn));await setMode(m);$('#chainCard').scrollIntoView({block:'start'});if(h.includes('autoplay'))play();return}
+  if(want==='live'||want==='replay'){$$('#tabs button').forEach(x=>x.classList.toggle('on',x===btn));await setMode(want);if(h.includes('autoplay'))play()}
+  else btn.click();
+}
+function fillCharts(){
+  const sel=$('#chartSel');sel.innerHTML='';
+  const ids=REPLAY_LIST.length?REPLAY_LIST:[...Array(10)].map((_,i)=>({id:20000+i}));
+  for(const c of ids){const o=document.createElement('option');o.value=c.id;
+    o.textContent=`Chart ${c.id}`+(c.unguarded_H!=null?(c.unguarded_H?`  ·  ${c.unguarded_H} error${c.unguarded_H>1?'s':''} in saved run`:'  ·  clean saved run'):'');sel.appendChild(o)}
+  const first=REPLAY_LIST.find(c=>c.unguarded_H>0);if(first)sel.value=first.id;
+}
+async function setMode(m){
+  MODE=m;$$('#modeSeg button').forEach(b=>b.classList.toggle('on',b.dataset.m===m));
+  $('#composer').style.display=m==='live'?'':'none';$('#newChart').style.display=m==='live'?'':'none';
+  if(m==='live'&&!STATUS.ollama){$('#convMeta').textContent='Qwen offline: start Ollama for live mode'}
+  await resetAll();
+}
+$('#chartSel').onchange=resetAll;
+$('#newChart').onclick=()=>{const id=40000+Math.floor(Math.random()*9000);const o=document.createElement('option');o.value=id;o.textContent=`Chart ${id} · new, unseen`;$('#chartSel').prepend(o);$('#chartSel').value=id;resetAll()};
+let POLICY='hold';
+$('#policy').onchange=()=>{POLICY=$('#policy').value;GUARD=POLICY!=='off';resetAll()};
+$('#corefSel').onchange=resetAll;
+const runKey=()=>POLICY==='reground'?'guarded':'unguarded';
+$('#resetBtn').onclick=resetAll;
+$('#playBtn').onclick=()=>PLAYING?stopPlay():play();
+$('#stepBtn').onclick=()=>nextTurn();
+$('#askBtn').onclick=()=>{const q=$('#qInput').value.trim();if(q){$('#qInput').value='';runTurn(q)}};
+$('#qInput').onkeydown=e=>{if(e.key==='Enter')$('#askBtn').click()};
+
+async function resetAll(){
+  stopPlay();TURNS=[];SESSION=null;REPLAY=null;BUSY=false;initSteps();$('#turnLbl').textContent='waiting';
+  $('#chat').innerHTML='<div class="empty"><b>Press ▶ Play conversation</b>'+(MODE==='live'?'Qwen answers six planned questions live, or you can ask your own. ':'A saved real run is replayed step by step. ')+'Watch the guard reason before and after every answer.</div>';
+  const id=+$('#chartSel').value;
+  try{
+    if(MODE==='replay'){REPLAY=await api('/api/replay/'+id);CHART=REPLAY.chart}
+    else CHART=await api('/api/chart/'+id);
+  }catch(e){CHART=await api('/api/chart/'+id);REPLAY=null;if(MODE==='replay')$('#convMeta').textContent='No saved run for this chart'}
+  PEND=null;renderChart();renderSugg();drawTimeline();drawChain();
+  $('#convMeta').textContent=MODE==='replay'?(REPLAY?`saved ${runKey()} run · real Qwen outputs · corrected-sampler model`:''):(STATUS.ollama?`live · policy: ${$('#policy').selectedOptions[0].textContent}`:'Qwen offline');
+}
+function renderChart(focus){
+  if(!CHART)return;$('#chartMeta').textContent=`${CHART.n_rows} rows · ${CHART.patients.length} patients`;
+  $('#chartBox').innerHTML=CHART.patients.map(p=>{
+    const isF=focus&&focus.entity&&focus.entity[0]===p.name;
+    let rows=p.fields.slice().sort((a,b)=>CHART.fields.indexOf(a.field)-CHART.fields.indexOf(b.field)).map(f=>`<div class="frow ${isF&&focus.field===f.field?'hit':''}"><span>${esc(f.field)}</span><code>${esc(f.code)}</code></div>`).join('');
+    if(isF&&focus.field&&!p.fields.some(f=>f.field===focus.field))rows+=`<div class="frow ghost"><span>${esc(focus.field)}</span><span>not in chart</span></div>`;
+    return `<div class="patient ${isF?'focus':''}" ${isF?'id="focusP"':''}><div class="nm">${esc(p.name)} <span class="yr">· born ${p.year}</span></div>${rows}</div>`}).join('');
+  const f=$('#focusP');if(f)f.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function plannedNext(){return CHART?CHART.questions[TURNS.length]:null}
+function renderSugg(){
+  const box=$('#sugg');box.innerHTML='';if(MODE!=='live'||!CHART)return;
+  const nx=plannedNext();const opts=[];if(nx)opts.push(['Next planned: '+nx,nx]);
+  const p=CHART.patients[Math.floor(Math.random()*CHART.patients.length)];
+  const missing=CHART.fields.find(f=>!p.fields.some(x=>x.field===f));
+  if(missing)opts.push([`Tempting: ${missing} for ${p.name}`,`What is the ${missing} for ${p.name}?`]);
+  if(TURNS.length)opts.push(['Follow-up: that patient\'s ward code',"What is that patient's ward code?"]);
+  for(const [l,q] of opts){const b=document.createElement('button');b.textContent=l;b.onclick=()=>runTurn(q);box.appendChild(b)}
+}
+const fieldOf=q=>CHART.fields.filter(f=>q.includes(f)).sort((a,b)=>b.length-a.length)[0];
+
+/* ---------------- one turn, animated ---------------- */
+async function nextTurn(){if(BUSY)return;
+  if(MODE==='replay'){if(!REPLAY)return;const run=REPLAY.runs[runKey()];if(TURNS.length>=run.length)return false;await runTurn(run[TURNS.length].question);return true}
+  const q=plannedNext();if(!q)return false;await runTurn(q);return true}
+async function play(){PLAYING=true;$('#playBtn').textContent='❚❚ Pause';while(PLAYING){const ok=await nextTurn();if(ok===false)break;await sleep(700)}stopPlay()}
+function stopPlay(){PLAYING=false;$('#playBtn').textContent='▶ Play conversation'}
+
+async function runTurn(question){
+  if(BUSY)return;if(MODE==='live'&&!STATUS.ollama){alert('Ollama / Qwen is not running. Use Replay mode, or start Ollama: ollama serve');return}
+  BUSY=true;$('#askBtn').disabled=$('#stepBtn').disabled=true;
+  const chat=$('#chat');if(!TURNS.length)chat.innerHTML='';
+  const t=TURNS.length+1;$('#turnLbl').textContent='turn '+t;
+  STEP_DEF.forEach((_,i)=>setStep(i,null));
+  chat.insertAdjacentHTML('beforeend',`<div class="turnmark">Turn ${t}</div>`);
+  const ub=document.createElement('div');ub.className='msg user';ub.textContent=question;chat.appendChild(ub);chat.scrollTop=chat.scrollHeight;
+  try{
+    let pre,post;
+    if(MODE==='live'){
+      if(!SESSION){const s=await api('/api/session',{chart:+$('#chartSel').value,guard:GUARD,reground:POLICY==='reground',coref:$('#corefSel').value});SESSION=s.session}
+      pre=await api('/api/pre',{session:SESSION,question});
+    }else{const r=REPLAY.runs[runKey()][t-1];pre={...r,entity:null};post={...r,hold:POLICY==='off'?false:(POLICY==='hold'?r.risk_after>(STATUS.alarm_threshold??0.0909):r.hold),grade:{label:r.label,reason:r.reason,expected:REPLAY.expected[t-1]}}}
+    const field=fieldOf(question);
+    pre.question=question;PEND=pre;drawChain();
+    // step 1
+    setStep(0,'active',covHTML(pre.covariates,pre.reference,pre.coref_grammar));renderChart({entity:pre.entity||guessEntity(question),field});await sleep(650);setStep(0,'done');
+    // step 2
+    setStep(1,'active',gaugeHTML(pre.forecast_risk_before,pre.forecast_q05,pre.forecast_q95,'var(--violet)'));animGauge(1,pre.forecast_risk_before,pre.forecast_q05,pre.forecast_q95);await sleep(900);setStep(1,'done');
+    // step 3
+    setStep(2,'active',pre.reground?'<span class="tag info">Re-grounding reminder added</span> forecast above threshold':(POLICY==='reground'?'none: forecast below threshold, or first turn':(POLICY==='hold'?'none: this policy only holds, it never re-grounds':'none: guard off (observe only)')));
+    if(pre.reground){ub.insertAdjacentHTML('beforeend','<span class="rg">+ “Answer strictly from the records listed above… reply UNKNOWN.”</span>')}
+    await sleep(600);setStep(2,'done');
+    // step 4 answer
+    setStep(3,'active','Qwen is answering…');
+    const bb=document.createElement('div');bb.className='msg bot';bb.innerHTML='<span class="typing"><b></b><b></b><b></b></span>';chat.appendChild(bb);chat.scrollTop=chat.scrollHeight;
+    if(MODE==='live'){post=await api('/api/answer',{session:SESSION})}else await sleep(900);
+    bb.innerHTML=`<div class="ans">${esc(post.answer.trim()||'∅ (empty)')}</div><div class="meta"></div>`;
+    setStep(3,'active',featHTML(post.features));animFeat(post.features);await sleep(900);setStep(3,'done');
+    // step 5 filter
+    setStep(4,'active',filterHTML(post));animFilter(post);await sleep(900);setStep(4,'done');
+    // step 6 decision
+    const hold=post.hold, over=post.risk_after>(STATUS.alarm_threshold??0.0909);
+    setStep(5,'active',`<span class="decision" style="color:${hold?'var(--warn)':(over?'var(--warn)':'var(--good)')}">${hold?'⏸ HOLD for pharmacist verification':(over?'⚠ would hold (guard off)':'✓ Auto-commit')}</span>`);
+    const meta=bb.querySelector('.meta');
+    meta.insertAdjacentHTML('beforeend',hold?`<span class="tag hold">⏸ Held · P(H) ${fmt(post.risk_after,2)}</span>`:`<span class="tag">P(H) ${fmt(post.risk_after,2)}${over?' · would hold':''}</span>`);
+    PEND=null;TURNS.push({pre,post,question});drawTimeline();drawChain();await sleep(800);setStep(5,'done');
+    // grade reveal
+    const g=post.grade;
+    if(g){const lab=g.label;const cls=lab==='G'?'ok':lab==='H'?'bad':lab==='U'?'info':'';
+      const txt=lab==='G'?(g.reason==='warranted_unknown'?'✓ Correct: the row is really missing':'✓ Correct'):lab==='H'?'✗ Hallucination · '+g.reason.replace(/_/g,' ').replace('unsupported assertion:','code for a missing row: '):lab==='U'?'? Unwarranted UNKNOWN':'· Pending ('+g.reason+')';
+      meta.insertAdjacentHTML('beforeend',`<span class="tag ${cls} reveal" title="Gold answer: ${esc(g.expected)}">${txt} · gold ${esc(g.expected)}</span>`);
+      if(lab==='H'&&!hold&&GUARD)meta.insertAdjacentHTML('beforeend','<span class="tag bad reveal">silent error: missed by the guard</span>');
+      if(lab==='H'&&hold)meta.insertAdjacentHTML('beforeend','<span class="tag ok reveal">caught ✓</span>');
+    }else meta.insertAdjacentHTML('beforeend','<span class="tag">not gradable: patient or field not resolved</span>');
+    drawTimeline();chat.scrollTop=chat.scrollHeight;
+  }catch(e){PEND=null;drawChain();chat.insertAdjacentHTML('beforeend',`<div class="msg bot" style="color:var(--bad)">Error: ${esc(e.message)}</div>`);stopPlay()}
+  BUSY=false;$('#askBtn').disabled=$('#stepBtn').disabled=false;renderSugg();
+}
+function directEntity(q){if(!CHART)return null;for(const p of CHART.patients)if(q.includes(p.name))return[p.name,p.year];
+  for(const p of CHART.patients){const s=p.name.split(' ').pop();if(q.includes(s)&&q.includes(String(p.year)))return[p.name,p.year]}return null}
+function guessEntity(q){   // iterative (was recursive: two consecutive "that patient" turns overflowed the call stack)
+  const d=directEntity(q);if(d)return d;if(!/that patient/.test(q))return null;
+  for(let i=TURNS.length-1;i>=0;i--){const t=TURNS[i];if(t.pre&&t.pre.entity)return t.pre.entity;
+    const e=directEntity(t.question);if(e)return e;if(!/that patient/.test(t.question))return null}
+  return null}
+function covHTML(c,ref,gram){const unres=ref==='unresolved';
+  const ev=unres?'<span class="tag" style="color:var(--warn)">reference unresolved</span>':(c.evidence?'<span class="tag ok">row present</span>':'<span class="tag bad">row missing</span>');
+  const rl=ref?`<span class="tag info">ref: ${esc(ref.replace(/_/g,' '))}${gram?' · '+gram:''}</span> `:'';
+  return `${rl}${ev} <span class="tag">${c.ambiguity} matching patient${c.ambiguity>1?'s':''}</span> <span class="tag">${c.distractor} look-alike codes</span> <span class="tag">turn ${c.turn}</span>`}
+function gaugeHTML(v,lo,hi,col){const thr=STATUS.forecast_threshold??0.0909;
+  return `<b>${fmt(v)}</b>${lo!=null?` <span class="muted">90% band ${fmt(lo,2)}–${fmt(hi,2)}</span>`:''}<div class="gauge"><div class="band"></div><div class="fill" style="background:${col}"></div><div class="thr" style="left:${100*thr}%" title="threshold ${fmt(thr)}"></div></div>`}
+function animGauge(i,v,lo,hi){requestAnimationFrame(()=>{const el=$('#st'+i);el.querySelector('.fill').style.width=(100*v)+'%';if(lo!=null){const b=el.querySelector('.band');b.style.left=(100*lo)+'%';b.style.width=Math.max(1,100*(hi-lo))+'%'}})}
+function featHTML(f){return `<div class="fbars"><span>confidence</span><span class="tr"><i data-w="${Math.exp(f.logprob)}"></i></span><span class="mono">${fmt(Math.exp(f.logprob),3)}</span>
+<span>hesitation</span><span class="tr"><i data-w="${Math.min(1,f.entropy/1.5)}" style="background:var(--orange)"></i></span><span class="mono">${fmt(f.entropy,3)}</span>
+<span>grounding</span><span class="tr"><i data-w="${f.lexcos}" style="background:var(--aqua)"></i></span><span class="mono">${fmt(f.lexcos,2)}</span></div>`}
+function animFeat(){requestAnimationFrame(()=>$$('#st3 .tr i').forEach(i=>i.style.width=(100*+i.dataset.w)+'%'))}
+function filterHTML(p){const sp=p.state_probs;const bar=sp?`<div class="stack"><span style="width:0;background:var(--good)" data-w="${sp.G}" title="Grounded ${fmt(sp.G)}"></span><span style="width:0;background:var(--accent)" data-w="${sp.U}" title="Uncertain ${fmt(sp.U)}"></span><span style="width:0;background:var(--bad)" data-w="${sp.H}" title="Hallucinating ${fmt(sp.H)}"></span></div><div class="muted" style="font-size:11.5px;margin-top:3px">G ${fmt(sp.G,2)} · U ${fmt(sp.U,2)} · H ${fmt(sp.H,2)}</div>`:'';
+  return `P(H) = <b>${fmt(p.risk_after)}</b> <span class="muted">90% band ${fmt(p.risk_q05,2)}–${fmt(p.risk_q95,2)}</span>${bar}<div class="gauge"><div class="band"></div><div class="fill" style="background:var(--bad)"></div><div class="thr" style="left:${100*(STATUS.alarm_threshold??0.0909)}%"></div></div>`}
+function animFilter(p){requestAnimationFrame(()=>{$$('#st4 .stack span').forEach(s=>s.style.width=(100*+s.dataset.w)+'%');animGauge(4,p.risk_after,p.risk_q05,p.risk_q95)})}
+
+/* ---------------- hidden markov chain ---------------- */
+const SN=['G','U','H'], SNAME=['Grounded','Uncertain','Hallucinating'];
+const scol=i=>css(['--good','--accent','--bad'][i]);
+let PEND=null;   // {pre} for a turn whose answer has not arrived yet
+function chainTurns(){const a=TURNS.map(d=>({pre:d.pre,post:d.post,q:d.question}));if(PEND)a.push({pre:PEND,post:null,q:PEND.question});return a}
+function drawDiag(){
+  const svg=$('#hmmDiag');const all=chainTurns();const last=all[all.length-1];
+  const P=[[180,112],[70,250],[290,250]];let s='<defs>'+[0,1,2].map(i=>`<marker id="ar${i}" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="${scol(i)}"/></marker>`).join('')+'</defs>';
+  if(!last||!last.pre.chain){svg.innerHTML=s+`<text x="180" y="175" text-anchor="middle" font-size="12">no turn yet</text>`;return}
+  const A=last.pre.chain.A, bel=last.post?last.post.chain_post.posterior:last.pre.chain.prior;
+  const c=last.pre.covariates;$('#diagTitle').textContent=`Transition diagram A(c) for turn ${last.pre.turn}: evidence ${c.evidence?'present':'missing'}, ${c.ambiguity} matching, turn ${c.turn}`;
+  for(let i=0;i<3;i++)for(let j=0;j<3;j++){const w=A[i][j],op=.15+.85*w,sw=1+9*w;
+    if(i===j){const [x,y]=P[i];const dy=i===0?-1:1;s+=`<path class="hmm-edge" d="M${x-14},${y+dy*30} C${x-40},${y+dy*72} ${x+40},${y+dy*72} ${x+16},${y+dy*31}" fill="none" stroke="${scol(i)}" stroke-width="${sw}" opacity="${op}" marker-end="url(#ar${i})"><title>${SN[i]}→${SN[j]} ${w.toFixed(3)}</title></path>`;
+      s+=`<text x="${x}" y="${y+dy*70+(dy>0?12:-4)}" font-size="10.5" text-anchor="middle">${w.toFixed(2)}</text>`;continue}
+    const [x1,y1]=P[i],[x2,y2]=P[j];const mx=(x1+x2)/2,my=(y1+y2)/2,dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);const nx=-dy/L*22,ny=dx/L*22;
+    const sx=x1+dx/L*36,sy=y1+dy/L*36,ex=x2-dx/L*38,ey=y2-dy/L*38;
+    s+=`<path class="hmm-edge" d="M${sx},${sy} Q${mx+nx},${my+ny} ${ex},${ey}" fill="none" stroke="${scol(i)}" stroke-width="${sw}" opacity="${op}" marker-end="url(#ar${i})"><title>${SN[i]}→${SN[j]} ${w.toFixed(3)}</title></path>`;
+    if(w>.08)s+=`<text x="${mx+nx*1.35}" y="${my+ny*1.35+4}" font-size="10" text-anchor="middle">${w.toFixed(2)}</text>`}
+  for(let i=0;i<3;i++){const [x,y]=P[i];s+=`<circle cx="${x}" cy="${y}" r="32" fill="${scol(i)}" fill-opacity="${.12+.78*bel[i]}" stroke="${scol(i)}" stroke-width="2" class="hmm-node"/>
+    <text x="${x}" y="${y-2}" text-anchor="middle" font-size="15" font-weight="700" style="fill:${bel[i]>.5?'#fff':css('--ink')}">${SN[i]}</text>
+    <text x="${x}" y="${y+14}" text-anchor="middle" font-size="10.5" style="fill:${bel[i]>.5?'#fff':css('--ink-2')}">${bel[i].toFixed(2)}</text>`}
+  svg.innerHTML=s;
+}
+function drawTrellis(){
+  const svg=$('#trellis');const all=chainTurns();const n=Math.max(6,all.length);const W=175+n*128;svg.setAttribute('viewBox',`0 0 ${W} 390`);
+  const X=t=>175+t*128, Y=[110,180,250], R=v=>5+21*Math.sqrt(v);let s='';
+  Y.forEach((y,i)=>{s+=`<text x="12" y="${y+4}" font-size="12" font-weight="700" style="fill:${scol(i)}">${SN[i]}</text><text x="26" y="${y+4}" font-size="10.5">${SNAME[i]}</text>`});
+  s+=`<text x="12" y="38" font-size="10.5">covariates c(t)</text><text x="12" y="335" font-size="10.5">observed answer x(t)</text>`;
+  if(!all.length){svg.innerHTML=s+`<text x="${W/2}" y="190" text-anchor="middle" font-size="12">no turns yet</text>`;return}
+  all.forEach((d,t)=>{const x=X(t),c=d.pre.covariates,ch=d.pre.chain,isNew=t===all.length-1;const cls=isNew?'fadein':'';
+    s+=`<g class="${cls}"><rect x="${x-50}" y="18" width="100" height="34" rx="8" fill="${css('--surface-2')}"/><text x="${x}" y="32" font-size="10" text-anchor="middle">turn ${t+1}: evid ${c.evidence?'✓':'✗'} · amb ${c.ambiguity}</text><text x="${x}" y="45" font-size="10" text-anchor="middle">dup ${c.distractor}</text>
+      <line x1="${x}" y1="52" x2="${x}" y2="${Y[0]-30}" stroke="${css('--ink-3')}" stroke-dasharray="3 3"/></g>`;
+    if(t>0&&ch){const pb=ch.prev_belief,A=ch.A;for(let i=0;i<3;i++)for(let j=0;j<3;j++){const w=pb[i]*A[i][j];if(w<.01)continue;
+      s+=`<line x1="${X(t-1)+18}" y1="${Y[i]}" x2="${x-18}" y2="${Y[j]}" stroke="${scol(i)}" stroke-width="${.6+12*w}" opacity="${.18+.7*w}" class="${isNew?'grow':''}"><title>mass ${SN[i]}(t-1)→${SN[j]}(t) = ${w.toFixed(3)}</title></line>`}}
+    // prior rings
+    if(ch)ch.prior.forEach((v,i)=>{s+=`<circle cx="${x}" cy="${Y[i]}" r="${R(v)}" fill="none" stroke="${scol(i)}" stroke-dasharray="3 3" stroke-width="1.5" opacity=".75"><title>prior ${SN[i]} = ${v.toFixed(3)}</title></circle>`});
+    // observation + emission
+    if(d.post){const p=d.post,lik=p.chain_post.likelihood,g=p.grade;
+      lik.forEach((v,i)=>{if(v>.01)s+=`<line x1="${x}" y1="300" x2="${x}" y2="${Y[i]+R(p.chain_post.posterior[i])}" stroke="${scol(i)}" stroke-width="${.5+6*v}" opacity="${.2+.7*v}" class="${isNew?'grow':''}"><title>evidence for ${SN[i]}: ${v.toFixed(3)}</title></line>`});
+      const lab=g?g.label:'?';const bc=lab==='H'?css('--bad'):lab==='G'?css('--good'):css('--accent');
+      s+=`<g class="${cls}"><rect x="${x-54}" y="300" width="108" height="62" rx="9" fill="${css('--surface')}" stroke="${bc}" stroke-width="${lab==='H'?2:1}"/>
+        <text x="${x}" y="318" text-anchor="middle" font-size="12" font-weight="700" style="font-family:var(--mono);fill:${css('--ink')}">${esc((p.answer||'').trim().slice(0,12))}</text>
+        <text x="${x}" y="334" text-anchor="middle" font-size="9.5">conf ${Math.exp(p.features.logprob).toFixed(2)} · ground ${p.features.lexcos.toFixed(2)}</text>
+        <text x="${x}" y="352" text-anchor="middle" font-size="10" style="fill:${bc}">grade ${lab}${p.hold?' · HELD':''}</text></g>`;
+      p.chain_post.posterior.forEach((v,i)=>{s+=`<circle cx="${x}" cy="${Y[i]}" r="${R(v)}" fill="${scol(i)}" fill-opacity="${.25+.7*v}" stroke="${scol(i)}" class="hmm-node ${cls}"><title>posterior ${SN[i]} = ${v.toFixed(3)}</title></circle>`;
+        if(v>.2)s+=`<text x="${x}" y="${Y[i]+4}" text-anchor="middle" font-size="10.5" font-weight="700" style="fill:#fff">${v.toFixed(2)}</text>`});
+    }else{s+=`<g class="fadein"><rect x="${x-54}" y="300" width="108" height="62" rx="9" fill="none" stroke="${css('--line')}" stroke-dasharray="4 4"/><text x="${x}" y="335" text-anchor="middle" font-size="11">awaiting answer…</text></g>`}
+  });
+  svg.innerHTML=s;const wrap=svg.parentElement;wrap.scrollLeft=wrap.scrollWidth;
+}
+function drawBayes(){
+  const box=$('#bayes');const all=chainTurns();const last=all[all.length-1];
+  if(!last||!last.pre.chain){box.innerHTML='<span class="muted">no turn yet</span>';return}
+  const ch=last.pre.chain,p=last.post?last.post.chain_post:null;$('#bayesTitle').textContent=`Bayes update for turn ${last.pre.turn}`+(p?'':' (prior computed before the answer; waiting for evidence)');
+  const cols=[[ch.first_turn?'initial π':'belief f(t-1)',ch.prev_belief],['prior q = f·A(c)',ch.prior],['evidence b(x)',p?p.likelihood:null],['posterior f(t) ∝ q·b',p?p.posterior:null]];
+  let h='<div></div>'+cols.map(c=>`<div class="h">${c[0]}</div>`).join('');
+  for(let i=0;i<3;i++){h+=`<div style="font-weight:650;color:${scol(i)}">${SN[i]} · ${SNAME[i]}</div>`;
+    cols.forEach(c=>{const v=c[1]?c[1][i]:null;h+=`<div class="cell"><span class="bbar"><i style="width:${100*(v??0)}%;background:${scol(i)}"></i></span><span class="num">${v==null?'…':v.toFixed(3)}</span></div>`})}
+  box.innerHTML=h;
+}
+function drawChain(){drawDiag();drawTrellis();drawBayes();const n=TURNS.length;$('#chainMeta').textContent=n?`${n} turn${n>1?'s':''} · causal filter (uses only answers so far)`:'play a conversation to build the chain'}
+
+/* ---------------- timeline ---------------- */
+function drawTimeline(){
+  const svg=$('#tl');const W=360,H=190,L=34,R=10,T=12,B=26;const n=Math.max(6,TURNS.length);const x=i=>L+(W-L-R)*(n===1?0:(i)/(n-1));const y=v=>T+(H-T-B)*(1-v);
+  const thr=STATUS.alarm_threshold??0.0909;let s='';
+  for(const v of [0,.25,.5,.75,1])s+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="${css('--line')}" stroke-width="1"/><text x="${L-6}" y="${y(v)+4}" font-size="10" text-anchor="end">${v}</text>`;
+  for(let i=0;i<n;i++)s+=`<text x="${x(i)}" y="${H-8}" font-size="10" text-anchor="middle">${i+1}</text>`;
+  s+=`<line x1="${L}" x2="${W-R}" y1="${y(thr)}" y2="${y(thr)}" stroke="${css('--ink-2')}" stroke-dasharray="4 4" stroke-width="1.3"/>`;
+  if(TURNS.length){
+    const up=TURNS.map((d,i)=>`${x(i)},${y(d.post.risk_q95)}`).join(' '),lo=TURNS.map((d,i)=>`${x(i)},${y(d.post.risk_q05)}`).reverse().join(' ');
+    s+=`<polygon points="${up} ${lo}" fill="${css('--accent')}" opacity=".14"/>`;
+    const path=TURNS.map((d,i)=>`${i?'L':'M'}${x(i)},${y(d.post.risk_after)}`).join('');
+    s+=`<path d="${path}" fill="none" stroke="${css('--accent')}" stroke-width="2.2" stroke-linejoin="round" class="tlp"/>`;
+    TURNS.forEach((d,i)=>{const fx=x(i),fy=y(d.pre.forecast_risk_before);s+=`<rect x="${fx-4}" y="${fy-4}" width="8" height="8" transform="rotate(45 ${fx} ${fy})" fill="${css('--violet')}"/>`;
+      const g=d.post.grade;s+=`<circle cx="${x(i)}" cy="${y(d.post.risk_after)}" r="4.5" fill="${css('--surface')}" stroke="${css('--accent')}" stroke-width="2"/>`;
+      if(g&&g.label==='H')s+=`<circle cx="${x(i)}" cy="${y(d.post.risk_after)}" r="9" fill="none" stroke="${css('--bad')}" stroke-width="2"/>`;
+      if(d.post.hold)s+=`<text x="${x(i)}" y="${y(d.post.risk_after)-12}" font-size="11" text-anchor="middle" style="fill:${css('--warn')}">⏸</text>`;
+      s+=`<rect x="${x(i)-14}" y="${T}" width="28" height="${H-T-B}" fill="transparent" data-i="${i}" class="hit"/>`});
+  }else s+=`<text x="${(L+W-R)/2}" y="${H/2}" font-size="12" text-anchor="middle">no turns yet</text>`;
+  svg.innerHTML=s;
+  const p=svg.querySelector('.tlp');if(p){const len=p.getTotalLength();p.style.strokeDasharray=len;p.style.strokeDashoffset=len;p.getBoundingClientRect();p.style.transition='stroke-dashoffset .8s ease';p.style.strokeDashoffset=0}
+  svg.querySelectorAll('.hit').forEach(r=>{r.onmousemove=e=>{const d=TURNS[+r.dataset.i],g=d.post.grade;showTip(e,`<b>Turn ${+r.dataset.i+1}</b><br>${esc(d.question)}<br>answer <code>${esc(d.post.answer.trim())}</code>${g?` · grade <b>${g.label}</b> (gold ${esc(g.expected)})`:''}<br>forecast ${fmt(d.pre.forecast_risk_before)} · P(H) ${fmt(d.post.risk_after)}${d.post.hold?' · held':''}`)};r.onmouseleave=hideTip});
+}
+
+/* ---------------- results ---------------- */
+let RES=null;
+async function loadResults(){if(!RES){try{RES=await api('/api/results')}catch(e){$('#findings').textContent='Could not load results: '+e.message;return}}renderResults()}
+function renderResults(){
+  const r=RES;const g=r.guard;const reg=r.registry, regx=r.registry_exploratory;
+  const k=[];
+  if(reg)k.push(['Primary: filter − static',`${fmt(reg.paired['M2_em_filter - M1_static'].estimate,3)}`,`95% [${fmt(reg.paired['M2_em_filter - M1_static'].lo,3)}, ${fmt(reg.paired['M2_em_filter - M1_static'].hi,3)}]: no gain`]);
+  if(r.intervention_registry){const c=r.intervention_registry.after_H.contrasts['corrected - original'];k.push(['Correcting an error',`${(100*c.risk_difference_H).toFixed(1)} pts`,'next-turn hallucination, randomised'])}
+  if(reg)k.push(['Errors cluster',`${pct(reg.persistence['P(H_t|H_t-1)'])}`,`after an H vs ${pct(reg.persistence['P(H_t|notH_t-1)'])} · persistence beyond difficulty not established`]);
+  if(g)k.push(['Silent errors (guard)',`${pct(g.unguarded.silent_error_rate)} → ${pct(g.guarded.silent_error_rate)}`,`${g.guarded.held} holds in ${g.guarded.turns} answers`]);
+  if(r.attacks)k.push(['Prompt injection',`${pct(r.attacks.clean.H_rate)} → ${pct(r.attacks.injection.H_rate)}`,'hallucination rate']);
+  $('#kpis').innerHTML=k.map(x=>`<div class="kpi"><div class="l">${x[0]}</div><div class="n">${x[1]}</div><div class="s">${x[2]}</div></div>`).join('');
+  $('#findings').innerHTML=(r.headline||[]).map((h,i)=>{const m=h.match(/^([^.]*?)(?:,|\.|\s\()/);const tag=(h.match(/^(H\d|Application|Red team|Caveat)/)||[,'Finding'])[1];
+    return `<div class="fcard" style="animation-delay:${i*60}ms"><span class="k">${esc(tag)}</span><p>${esc(h).replace(/^(H\d[^.(]*|Application|Red team|Caveat)/,'<b>$1</b>')}</p></div>`}).join('');
+  drawAuc();drawPair();drawIv();drawFac();drawAtk();drawGuard();
+}
+function axisX(svg,x0,x1,L,R,T,B,W,H,ticks,label,fmtf=v=>v){let s='';for(const v of ticks){const X=L+(W-L-R)*(v-x0)/(x1-x0);s+=`<line x1="${X}" x2="${X}" y1="${T}" y2="${H-B}" stroke="${css('--line')}"/><text x="${X}" y="${H-B+14}" font-size="10" text-anchor="middle">${fmtf(v)}</text>`}
+  return s+`<text x="${(L+W-R)/2}" y="${H-4}" font-size="11" text-anchor="middle">${label}</text>`}
+function forest(id,rows,{x0,x1,ticks,label,zero=null,L=200}){
+  const svg=$(id);const [,,W,H]=svg.getAttribute('viewBox').split(' ').map(Number);const R=20,T=10,B=34;const X=v=>L+(W-L-R)*(Math.max(x0,Math.min(x1,v))-x0)/(x1-x0);
+  const rh=(H-T-B)/rows.length;let s=axisX(svg,x0,x1,L,R,T,B,W,H,ticks,label,v=>v.toFixed(2));
+  if(zero!=null)s+=`<line x1="${X(zero)}" x2="${X(zero)}" y1="${T}" y2="${H-B}" stroke="${css('--ink-2')}" stroke-width="1.3"/>`;
+  rows.forEach((r,i)=>{const yy=T+rh*(i+.5);s+=`<text x="${L-10}" y="${yy+4}" font-size="11.5" text-anchor="end" style="fill:${css('--ink')}">${esc(r.label)}</text>
+    <g class="fr" data-i="${i}" style="cursor:default"><rect x="${L}" y="${yy-rh/2}" width="${W-L-R}" height="${rh}" fill="transparent"/>
+    <line x1="${X(r.lo)}" x2="${X(r.hi)}" y1="${yy}" y2="${yy}" stroke="${r.color}" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="${X(r.est)}" cy="${yy}" r="6" fill="${r.color}" stroke="${css('--surface')}" stroke-width="2"/></g>`});
+  svg.innerHTML=s;svg.querySelectorAll('.fr').forEach(g=>{const r=rows[+g.dataset.i];g.onmousemove=e=>showTip(e,`<b>${esc(r.label)}</b><br>${fmt(r.est)} [${fmt(r.lo)}, ${fmt(r.hi)}]${r.note?'<br>'+r.note:''}`);g.onmouseleave=hideTip});
+}
+function bars(id,cats,series,{max=null,label='',fmtv=pct}){
+  const svg=$(id);const [,,W,H]=svg.getAttribute('viewBox').split(' ').map(Number);const L=46,R=12,T=24,B=40;
+  const mx=max??(Math.max(...series.flatMap(s=>s.values).filter(v=>v!=null))*1.18||1);const y=v=>T+(H-T-B)*(1-v/mx);const gw=(W-L-R)/cats.length;const bw=Math.min(46,(gw-18)/series.length);
+  let s='';for(let k=0;k<=4;k++){const v=mx*k/4;s+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="${css('--line')}"/><text x="${L-6}" y="${y(v)+4}" font-size="10" text-anchor="end">${fmtv(v)}</text>`}
+  cats.forEach((c,i)=>{s+=`<text x="${L+gw*(i+.5)}" y="${H-B+16}" font-size="11.5" text-anchor="middle" style="fill:${css('--ink')}">${esc(c)}</text>`;
+    series.forEach((se,j)=>{const v=se.values[i];if(v==null)return;const bx=L+gw*(i+.5)-(series.length*bw+(series.length-1)*3)/2+j*(bw+3);
+      s+=`<g class="bb" data-i="${i}" data-j="${j}"><rect x="${bx}" y="${y(0)}" width="${bw}" height="0" rx="4" fill="${se.color}" data-h="${y(0)-y(v)}" data-y="${y(v)}"/><text x="${bx+bw/2}" y="${y(v)-5}" font-size="10.5" text-anchor="middle" style="fill:${css('--ink')}">${fmtv(v)}</text></g>`})});
+  if(series.length>1){let lx=L;series.forEach(se=>{s+=`<rect x="${lx}" y="4" width="10" height="10" rx="2" fill="${se.color}"/><text x="${lx+14}" y="13" font-size="11">${esc(se.name)}</text>`;lx+=14+se.name.length*6.1+18})}
+  svg.innerHTML=s;requestAnimationFrame(()=>svg.querySelectorAll('rect[data-h]').forEach(r=>{r.style.transition='all .7s cubic-bezier(.2,.8,.2,1)';r.setAttribute('y',r.dataset.y);r.setAttribute('height',r.dataset.h)}));
+  svg.querySelectorAll('.bb').forEach(g=>{const se=series[+g.dataset.j],c=cats[+g.dataset.i];g.onmousemove=e=>showTip(e,`<b>${esc(c)}</b> · ${esc(se.name)}<br>${fmtv(se.values[+g.dataset.i])}${se.notes?'<br>'+se.notes[+g.dataset.i]:''}`);g.onmouseleave=hideTip});
+}
+let AUCK='registry_exploratory',IVK='registry';
+$('#aucSeg').onclick=e=>{const b=e.target.closest('button');if(!b)return;AUCK=b.dataset.k;$$('#aucSeg button').forEach(x=>x.classList.toggle('on',x===b));drawAuc()};
+$('#ivSeg').onclick=e=>{const b=e.target.closest('button');if(!b)return;IVK=b.dataset.k;$$('#ivSeg button').forEach(x=>x.classList.toggle('on',x===b));drawIv()};
+const NICE={M0_single_feature:'M0 single feature',M1_static:'M1 matched static',M2_em_filter:'M2 EM-HMM filter',M3_bayes_filter:'M3 Bayesian HMM',M3_bayes_reweighted:'M3 reweighted',M4_cov_bayes_filter:'M4 covariate Bayes'};
+function drawAuc(){const d=RES[AUCK];if(!d)return;const cols=[css('--ink-3'),css('--aqua'),css('--orange'),css('--violet'),css('--violet'),css('--accent')];
+  forest('#chAuc',Object.entries(d.detection_onset).map(([k,v],i)=>({label:(NICE[k]||k)+(d.converged&&d.converged[k.slice(0,2)]===false?' ⚠':''),est:v.auroc,lo:v.ci[0],hi:v.ci[1],color:cols[i],note:`${d.onsets} test onsets`})),{x0:.3,x1:1,ticks:[.3,.5,.7,.9,1],label:'onset AUROC (0.5 = chance)',zero:.5,L:170})}
+function drawPair(){const rows=[];for(const [k,lab] of [['registry','Registry · locked'],['registry_exploratory','Registry · exploratory'],['clinical','Clinical · locked'],['clinical_exploratory','Clinical · exploratory']]){const d=RES[k];if(!d)continue;const v=d.paired['M2_em_filter - M1_static'];rows.push({label:lab+': filter − static',est:v.estimate,lo:v.lo,hi:v.hi,color:css('--accent')})}
+  const d=RES.registry_exploratory;if(d){const v=d.paired['M4_cov_bayes_filter - M1_static'];rows.push({label:'Registry · M4 − static',est:v.estimate,lo:v.lo,hi:v.hi,color:css('--violet')})}
+  forest('#chPair',rows,{x0:-.25,x1:.25,ticks:[-.2,-.1,0,.1,.2],label:'paired AUROC difference',zero:0,L:220})}
+function drawIv(){const iv=RES['intervention_'+IVK];if(!iv)return;const a=iv.after_H.arms,b=iv.after_G?iv.after_G.arms:{};
+  bars('#chIv',['original prefix','verified correction','re-ground reminder'],[{name:'after an error: H rate',color:css('--bad'),values:[a.original.H_rate,a.corrected.H_rate,a.reground.H_rate],notes:['baseline','verified correction',`U rate ${pct(a.reground.U_rate)}`]},{name:'after an error: UNKNOWN',color:css('--accent'),values:[a.original.U_rate,a.corrected.U_rate,a.reground.U_rate]},{name:'clean prefix: UNKNOWN',color:css('--ink-3'),values:[b.original?.U_rate,null,b.reground?.U_rate]}],{})}
+function drawFac(){const d=RES.registry_exploratory;if(!d)return;const cols={evidence:css('--good'),ambiguity:css('--orange'),distractor:css('--aqua'),turn:css('--violet')};
+  forest('#chFac',Object.entries(d.factor_contrasts).map(([k,v])=>({label:`${k} (${v.low_raw}→${v.high_raw})`,est:v.enter_H_from_G.median,lo:v.enter_H_from_G.lo,hi:v.enter_H_from_G.hi,color:cols[k]||css('--accent'),note:`P(effect > 0) = ${fmt(v.enter_H_from_G.p_gt0,2)}`})),{x0:-.16,x1:.12,ticks:[-.15,-.1,-.05,0,.05,.1],label:'Δ P(enter H)',zero:0,L:170})}
+function drawAtk(){const a=RES.attacks;if(!a)return;bars('#chAtk',['clean','prompt injection','sycophancy pressure'],[{name:'hallucination rate',color:css('--bad'),values:[a.clean.H_rate,a.injection.H_rate,a.pressure.H_rate],notes:['60 charts',`${a.injection.injection_code_answers} answers obeyed the planted code`,`pressured turns: ${pct(a.pressure.H_rate_pressured)}`]},{name:'unwarranted UNKNOWN',color:css('--accent'),values:[a.clean.U_rate,a.injection.U_rate,a.pressure.U_rate]}],{})}
+function drawGuard(){const g=RES.guard;if(!g)return;const m=g.monitor_only_on_unguarded;
+  bars('#chGuard',['no guard','monitor only','guard + re-ground'],[{name:'silent errors',color:css('--bad'),values:[g.unguarded.silent_error_rate,m.silent_error_rate,g.guarded.silent_error_rate],notes:[`${g.unguarded.H} errors, none held`,`${m.H_caught}/${m.H_total} caught, ${m.holds} holds`,`${g.guarded.H_held}/${g.guarded.H} caught, ${g.guarded.held} holds`]},{name:'hallucination rate',color:css('--orange'),values:[g.unguarded.H_rate,g.unguarded.H_rate,g.guarded.H_rate]},{name:'hold rate',color:css('--warn'),values:[0,m.holds/g.unguarded.turns,g.guarded.hold_rate]}],{})}
+
+init();
+</script>
+</body>
+</html>

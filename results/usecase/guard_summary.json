@@ -1,0 +1,52 @@
+{
+ "synthetic": false,
+ "domain": "clinical (fictional patients)",
+ "dossiers": 50,
+ "forecast_threshold": 0.09090909090909091,
+ "alarm_threshold": 0.09090909090909091,
+ "cost_ratio": 10.0,
+ "model_results": "results/clinical_exploratory",
+ "unguarded": {
+  "turns": 300,
+  "H": 7,
+  "H_rate": 0.023333333333333334,
+  "U_rate": 0.06333333333333334,
+  "held": 0,
+  "hold_rate": 0.0,
+  "H_held": 0,
+  "H_unheld (silent errors)": 7,
+  "silent_error_rate": 0.023333333333333334,
+  "hold_precision": null,
+  "hold_recall": 0.0,
+  "regrounded_turns": 0,
+  "dossiers_with_any_H": 7
+ },
+ "guarded": {
+  "turns": 300,
+  "H": 11,
+  "H_rate": 0.03666666666666667,
+  "U_rate": 0.08,
+  "held": 38,
+  "hold_rate": 0.12666666666666668,
+  "H_held": 9,
+  "H_unheld (silent errors)": 2,
+  "silent_error_rate": 0.006666666666666667,
+  "hold_precision": 0.23684210526315788,
+  "hold_recall": 0.8181818181818182,
+  "regrounded_turns": 131,
+  "dossiers_with_any_H": 8
+ },
+ "monitor_only_on_unguarded": {
+  "holds": 31,
+  "H_caught": 5,
+  "H_total": 7,
+  "silent_error_rate": 0.006666666666666667
+ },
+ "paired_H_rate_difference_guarded_minus_unguarded": {
+  "estimate": 0.013333333333333332,
+  "boot95": [
+   -0.003333333333333333,
+   0.03666666666666667
+  ]
+ }
+}
